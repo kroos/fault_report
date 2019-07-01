@@ -90,9 +90,9 @@ use Carbon\CarbonPeriod;
 						@endif
 					</td>
 					<td>
-						@if(\Auth::user()->belongtostaff->id == $fa->id)
 						<a href="{!! route('fault.edit', $fa->id) !!}" title="Update"><i class="far fa-edit"></i></a>
 						<span class="text-danger inactivate" data-id="{!! $fa->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
+						@if(\Auth::user()->belongtostaff->id == $fa->id)
 						@endif
 					</td>
 				</tr>

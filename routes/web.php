@@ -88,6 +88,7 @@ Route::patch('/update/{staff}', [
 Route::resources([
 	'fault' => 'Fault\FaultController',
 	'faultImage' => 'Fault\FaultImageController',
+	'building' => 'BuildingController',
 ]);
 
 // delete fault system
