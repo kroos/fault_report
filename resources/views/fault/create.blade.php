@@ -178,7 +178,7 @@ $(adddtag).click(function(){
 	}
 });
 
-$(wrapaatd).on("click",".remove_dtag", function(e){
+$(wrapdtag).on("click",".remove_dtag", function(e){
 	//user click on remove text
 	e.preventDefault();
 	//var $row = $(this).parent('.rowdtag');
@@ -234,22 +234,22 @@ $('#form').bootstrapValidator({
 			}
 		},
 @for($l1=0;$l1<10;$l1++)
-		'attd[{{ $l1 }}][attendees_id]': {
-			validators: {
-				notEmpty: {
-					message: 'Please select. '
-				},
-			}
-		},
+		// 'attd[{{ $l1 }}][attendees_id]': {
+		// 	validators: {
+		// 		notEmpty: {
+		// 			message: 'Please select. '
+		// 		},
+		// 	}
+		// },
 @endfor
 @for($l2=0;$l2<10;$l2++)
-		'dtag[{{ $l2 }}][device_tag]': {
-			validators: {
-				notEmpty: {
-					message: 'Please insert device tag. '
-				},
-			}
-		},
+		// 'dtag[{{ $l2 }}][device_tag]': {
+		// 	validators: {
+		// 		notEmpty: {
+		// 			message: 'Please insert device tag. '
+		// 		},
+		// 	}
+		// },
 @endfor
 		issue: {
 			validators: {
@@ -258,13 +258,13 @@ $('#form').bootstrapValidator({
 				},
 			}
 		},
-		solution: {
-			validators: {
-				notEmpty: {
-					message: 'Please insert data. '
-				},
-			}
-		},
+		// solution: {
+		// 	validators: {
+		// 		notEmpty: {
+		// 			message: 'Please insert data. '
+		// 		},
+		// 	}
+		// },
 
 	}
 });

@@ -19,10 +19,10 @@ class FaultRequest extends FormRequest
 			'building_id' => 'required',
 			'subsystem' => 'required',
 			'issue' => 'required',
-			'solution' => 'required',
+			// 'solution' => 'required',
 			'syst.*.system_id' => 'required',
-			'attd.*.attendees_id' => 'required',
-			'dtag.*.device_tag' => 'required',
+			// 'attd.*.attendees_id' => 'required',
+			// 'dtag.*.device_tag' => 'required',
 		];
 	}
 	
