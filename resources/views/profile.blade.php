@@ -16,10 +16,10 @@
 				</div>
 			</div>
 
-			<div class="form-group row {{ $errors->has('name') ? 'has-error' : '' }}">
+			<div class="form-group row {{ $errors->has('username') ? 'has-error' : '' }}">
 				{{ Form::label( 'nam', 'RAPID Pass ID : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 				<div class="col-md-6">
-					{{ Form::text('name', \Auth::user()->username, ['class' => 'form-control', 'id' => 'nam', 'placeholder' => 'Name', 'autocomplete' => 'off', 'disabled' => 'disabled']) }}
+					{{ Form::text('username', \Auth::user()->username, ['class' => 'form-control', 'id' => 'nam', 'placeholder' => 'Name', 'autocomplete' => 'off', 'disabled' => 'disabled']) }}
 				</div>
 			</div>
 

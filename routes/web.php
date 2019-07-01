@@ -89,6 +89,7 @@ Route::resources([
 	'fault' => 'Fault\FaultController',
 	'faultImage' => 'Fault\FaultImageController',
 	'building' => 'BuildingController',
+	'staff' => 'StaffController',
 ]);
 
 // delete fault system

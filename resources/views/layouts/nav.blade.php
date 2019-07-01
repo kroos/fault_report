@@ -34,6 +34,7 @@ use Carbon\CarbonPeriod;
  -->					</a>
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{ route('staff.create') }}">{{ __('Create New Members') }}</a>
 						<a class="dropdown-item" href="{{ route('profile.edit', \Auth::user()->belongtostaff->id) }}">{{ __('Profile') }}</a>
 						<a class="dropdown-item" href="{{ route('change_password', \Auth::user()->id) }}">{{ __('Change Password') }}</a>
 
