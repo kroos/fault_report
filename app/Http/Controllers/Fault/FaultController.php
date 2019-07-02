@@ -90,7 +90,7 @@ class FaultController extends Controller
 				$fault->hasmanyimage()->create([
 					'image' => $image
 				]);
-				Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
+				// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 			}
 		}
 
