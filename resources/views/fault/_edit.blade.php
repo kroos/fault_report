@@ -116,7 +116,7 @@ $r14 = 1;
 						<select name="attd[{{ $r13++ }}][attendees_id]" id="attd_{{ $r14++ }}" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">
 							<option value="">Please choose</option>
 @foreach( \App\Model\Staff::where('active', 1)->get() as $mod )
-							<option value="{!! $mod->id !!}" {{ ($mod->id == \Auth::user()->belongtostaff->id)?'selected':'' }}>{!! $mod->name !!}</option>
+							<option value="{!! $mod->id !!}" {{ ($mod->id == $fauat->id)?'selected':'' }}>{!! $mod->name !!}</option>
 @endforeach
 						</select>
 					</div>

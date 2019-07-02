@@ -19,6 +19,9 @@ use Session;
 // load array helper
 // use Illuminate\Support\Arr;
 
+// load storage
+use Illuminate\Support\Facades\Storage;
+
 class FaultController extends Controller
 {
 	public function __construct()
@@ -59,18 +62,20 @@ class FaultController extends Controller
 				]);
 			}
 		}
+
+// echo storage_path('app/');
+// die();
 		// dd($request->image);
 		if ($request->has('image')) {
 			foreach ($request->file('image') as $v3) {
-
 				$filename = $v3->store('public/images/fault');
-// die();
 				// $extension = $v3->getClientOriginalExtension();
 				$ass1 = explode('/', $filename);
 				$ass2 = array_except($ass1, ['0']);
 				$image = implode('/', $ass2);
 
 				$imag = Image::make(storage_path('app/'.$filename));
+				// $imag = Image::make( 'C:\Users\User\Desktop\image\fault' );
 
 				// resize the image to a height of 400 and constrain aspect ratio (auto width)
 				$imag->resize(NULL, 800, function ($constraint) {
@@ -85,11 +90,12 @@ class FaultController extends Controller
 				$fault->hasmanyimage()->create([
 					'image' => $image
 				]);
+				Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 			}
 		}
 
-		Session::flash('flash_message', 'Data successfully stored!');
-		return redirect(route('fault.index'));
+		// Session::flash('flash_message', 'Data successfully stored!');
+		// return redirect(route('fault.index'));
 	}
 
 	public function show(Fault $fault)

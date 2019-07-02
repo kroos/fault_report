@@ -29,7 +29,7 @@ class SendResetPasswordLink extends Mailable
 
         return $this->markdown('mailer.sendPasswordResetLink')
             // ->from('address', 'name')
-            ->from('admin@prpcuf.com', 'Fault Report Admin')
+            ->from('noreply@prpctelecommania.com', 'Admin of Finding Report')
             // ->text('emails.orders.shipped_plain');
             // ->replyTo($address, $name)
             ->subject('Reset Password Link for '.$name)
