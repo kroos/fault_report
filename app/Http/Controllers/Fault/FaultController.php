@@ -94,8 +94,8 @@ class FaultController extends Controller
 			}
 		}
 
-		// Session::flash('flash_message', 'Data successfully stored!');
-		// return redirect(route('fault.index'));
+		Session::flash('flash_message', 'Data successfully stored!');
+		return redirect(route('fault.index'));
 	}
 
 	public function show(Fault $fault)
