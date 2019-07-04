@@ -24,7 +24,7 @@ class FaultImageController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware('faultImageCreator', ['only' => ['show', 'edit', 'update', 'destroy']]);
+		// $this->middleware('faultImageCreator', ['only' => ['show', 'edit', 'update', 'destroy']]);
 	}
 
 	public function index()

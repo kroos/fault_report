@@ -29,7 +29,7 @@ class FaultController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware( 'faultCreator', ['only' => [/*'show', 'edit', 'update',*/ 'destroy']] );
+		// $this->middleware( 'faultCreator', ['only' => [/*'show', 'edit', 'update',*/ 'destroy']] );
 	}
 
 	public function index()
@@ -94,7 +94,7 @@ class FaultController extends Controller
 				]);
 				// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 				// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
-				// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/storage/'.$filename);
+				File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 				// public_html/storage/images/fault
 			}
 		}
