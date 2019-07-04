@@ -61,7 +61,7 @@ use Carbon\CarbonPeriod;
 								<div class="row">
 									<span class="text-danger delete_image" data-id="{!! $im->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 									<span data-toggle="modal" data-target="#form-{!! $im->id !!}">
-										<img src="{{ asset($im->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+										<img src="{{ asset('public/'.$im->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
 									</span>
 								</div>
 
@@ -76,7 +76,7 @@ use Carbon\CarbonPeriod;
 												</button>
 											</div>
 											<div class="modal-body">
-												<img src="{{ asset($im->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+												<img src="{{ asset('public/'.$im->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
 											</div>
 											<div class="modal-footer">
 												{!! Form::button('Close', ['type' => 'button', 'class' => 'btn btn-primary', 'data-dismiss' => 'modal']) !!}
