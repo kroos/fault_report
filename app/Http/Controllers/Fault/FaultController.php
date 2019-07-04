@@ -94,7 +94,7 @@ class FaultController extends Controller
 				]);
 				// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 				// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
-				File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/storage/'.$filename);
+				// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/storage/'.$filename);
 				// public_html/storage/images/fault
 			}
 		}
