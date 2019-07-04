@@ -16,6 +16,8 @@ use App\Http\Requests\FaultRequest;
 // load session
 use Session;
 
+use File;
+
 // load array helper
 // use Illuminate\Support\Arr;
 
@@ -27,7 +29,7 @@ class FaultController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware( 'faultCreator', ['only' => ['show', 'edit', 'update', 'destroy']] );
+		$this->middleware( 'faultCreator', ['only' => [/*'show', 'edit', 'update',*/ 'destroy']] );
 	}
 
 	public function index()
@@ -91,6 +93,9 @@ class FaultController extends Controller
 					'image' => $image
 				]);
 				// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
+				// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
+				File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/storage/'.$filename);
+				// public_html/storage/images/fault
 			}
 		}
 

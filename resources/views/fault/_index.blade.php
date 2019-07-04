@@ -58,7 +58,7 @@ use Carbon\CarbonPeriod;
 					<td>
 						@if($fa->hasmanyimage()->get()->count())
 							@foreach($fa->hasmanyimage()->get() as $im)
-								<div class="col-2 row">
+								<div class="row">
 									<span class="text-danger delete_image" data-id="{!! $im->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 									<span data-toggle="modal" data-target="#form-{!! $im->id !!}">
 										<img src="{{ asset('storage/'.$im->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
