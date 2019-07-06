@@ -8,7 +8,7 @@
 	<div class="card-body">
 			@include('layouts.info')
 			@include('layouts.errorform')
-		<img src="{{ asset('images/maintenance.jpg') }}" class="rounded mx-auto d-block" alt="RAPID Avengers">
+		<img src="{{ asset('images/maintenance.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="RAPID Avengers">
 <!-- 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 jumbotron">
