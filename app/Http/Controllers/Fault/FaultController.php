@@ -13,6 +13,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 // load validation
 use App\Http\Requests\FaultRequest;
 
+use \Carbon\Carbon;
+
 // load session
 use Session;
 
@@ -45,8 +47,10 @@ class FaultController extends Controller
 	public function store(FaultRequest $request)
 	{
 		print_r($request->all());
+		$dl = Carbon::parse($request->date)->format('Y-m-d H:i:s');
+		echo '<br/>'.$dl;
+		$fault = \Auth::user()->belongtostaff->hasmanyfault()->create(\Arr::add(\Arr::add($request->only(['dateline', 'building_id', 'priority_id', 'status_id', 'subsystem', 'issue', 'solution']), 'active', 1), 'date', $dl));
 // die();
-		$fault = \Auth::user()->belongtostaff->hasmanyfault()->create(\Arr::add($request->only(['date', 'building_id', 'subsystem', 'issue', 'solution']), 'active', 1));
 		if ($request->has('syst')) {
 			foreach ($request->syst as $k1 => $v1) {
 				$fault->belongtomanysystem()->attach($v1['system_id']);
@@ -117,7 +121,9 @@ class FaultController extends Controller
 	{
 		// print_r( $request->syst );
 		// $user->roles()->updateExistingPivot($roleId, $attributes);
-		$fault->update( $request->only(['date', 'building_id', 'subsystem', 'issue', 'solution']) );
+		$dl = Carbon::parse($request->date)->format('Y-m-d H:i:s');
+		// echo '<br/>'.$dl;
+		$fault->update( \Arr::add($request->only(['dateline', 'building_id', 'subsystem', 'issue', 'solution']), 'date', $dl) );
 		$syst = [];
 		if ($request->has('syst')) {
 			foreach($request->syst as $k5 => $v5) {
@@ -149,7 +155,6 @@ class FaultController extends Controller
 				// $fault->hasmanyimage()->updateOrCreate([
 				$fault->hasmanyimage()->create(['image' => $image]);
 			}
-
 		}
 
 		if ($request->has('dtag')) {

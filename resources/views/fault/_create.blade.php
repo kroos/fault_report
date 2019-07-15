@@ -1,21 +1,35 @@
 <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
 	{{ Form::label( 'image', 'Upload Image : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-auto">
-		{{ Form::file( 'image[]', ['class' => 'form-control form-control-file', 'id' => 'image', 'placeholder' => 'Staff Image', 'multiple' => 'multiple']) }}
+		{{ Form::file( 'image[]', ['class' => 'form-control form-control-sm form-control-file', 'id' => 'image', 'placeholder' => 'Staff Image', 'multiple' => 'multiple']) }}
 	</div>
 </div>
 
 <div class="form-group row {{ $errors->has('date') ? 'has-error' : '' }}">
 	{{ Form::label( 'date', 'Date : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-md-6">
-		{{ Form::text('date', @$value, ['class' => 'form-control', 'id' => 'date', 'placeholder' => 'Date', 'autocomplete' => 'off']) }}
+		{{ Form::text('date', @$value, ['class' => 'form-control form-control-sm', 'id' => 'date', 'placeholder' => 'Date', 'autocomplete' => 'off']) }}
+	</div>
+</div>
+
+<div class="form-group row {{ $errors->has('priority_id') ? 'has-error' : '' }}">
+	{{ Form::label( 'pri', 'Priority : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+	<div class="col-md-6">
+		{{ Form::select('priority_id', \App\Model\Priority::pluck('priority', 'id')->sortKeys()->toArray(), @$value, ['class' => 'form-control form-control-sm', 'id' => 'pri', 'placeholder' => 'Priority', 'autocomplete' => 'off']) }}
+	</div>
+</div>
+
+<div class="form-group row {{ $errors->has('dateline') ? 'has-error' : '' }}">
+	{{ Form::label( 'dateline', 'Dateline : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+	<div class="col-md-6">
+		{{ Form::text('dateline', @$value, ['class' => 'form-control form-control-sm', 'id' => 'dateline', 'placeholder' => 'Dateline', 'autocomplete' => 'off']) }}
 	</div>
 </div>
 
 <div class="form-group row {{ $errors->has('building_id') ? 'has-error' : '' }}">
 	{{ Form::label( 'bid', 'Building : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-md-6">
-		{{ Form::select('building_id', \App\Model\Building::pluck('building', 'id')->sortKeys()->toArray(), @$value, ['class' => 'form-control', 'id' => 'bid', 'placeholder' => 'Building', 'autocomplete' => 'off']) }}
+		{{ Form::select('building_id', \App\Model\Building::pluck('building', 'id')->sortKeys()->toArray(), @$value, ['class' => 'form-control form-control-sm', 'id' => 'bid', 'placeholder' => 'Building', 'autocomplete' => 'off']) }}
 	</div>
 </div>
 
@@ -49,7 +63,7 @@
 <div class="form-group row {{ $errors->has('subsystem') ? 'has-error' : '' }}">
 	{{ Form::label( 'subsystem', 'Subsystem (Keyword) : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-md-6">
-		{{ Form::text('subsystem', @$value, ['class' => 'form-control', 'id' => 'subsystem', 'placeholder' => 'Subsystem (Keyword)', 'autocomplete' => 'off']) }}
+		{{ Form::text('subsystem', @$value, ['class' => 'form-control form-control-sm', 'id' => 'subsystem', 'placeholder' => 'Subsystem (Keyword)', 'autocomplete' => 'off']) }}
 	</div>
 </div>
 
@@ -104,14 +118,21 @@
 <div class="form-group row {{ $errors->has('issue') ? 'has-error' : '' }}">
 	{{ Form::label( 'iss', 'Findings/Problem/Issues : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-md-6">
-		{{ Form::textarea('issue', @$value, ['class' => 'form-control', 'id' => 'iss', 'placeholder' => 'Findings/Problem/Issues', 'autocomplete' => 'off']) }}
+		{{ Form::textarea('issue', @$value, ['class' => 'form-control form-control-sm', 'id' => 'iss', 'placeholder' => 'Findings/Problem/Issues', 'autocomplete' => 'off']) }}
 	</div>
 </div>
 
 <div class="form-group row {{ $errors->has('solution') ? 'has-error' : '' }}">
 	{{ Form::label( 'sol', 'Solution : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-md-6">
-		{{ Form::textarea('solution', @$value, ['class' => 'form-control', 'id' => 'sol', 'placeholder' => 'Solution', 'autocomplete' => 'off']) }}
+		{{ Form::textarea('solution', @$value, ['class' => 'form-control form-control-sm', 'id' => 'sol', 'placeholder' => 'Solution', 'autocomplete' => 'off']) }}
+	</div>
+</div>
+
+<div class="form-group row {{ $errors->has('status_id') ? 'has-error' : '' }}">
+	{{ Form::label( 'sta', 'Status : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+	<div class="col-md-6">
+		{{ Form::select('status_id', \App\Model\Status::pluck('status', 'id')->sortKeys()->toArray(), @$value, ['class' => 'form-control form-control-sm', 'id' => 'sta', 'placeholder' => 'Status', 'autocomplete' => 'off']) }}
 	</div>
 </div>
 

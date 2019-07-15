@@ -51,8 +51,13 @@ class Fault extends Model
 		return $this->belongsTo('App\Model\Building', 'building_id');
 	}
 
-	// public function belongtosystem()
-	// {
-	// 	return $this->belongsTo()
-	// }
+	public function belongtostatus()
+	{
+		return $this->belongsTo('App\Model\Status', 'status_id');
+	}
+
+	public function belongtopriority()
+	{
+		return $this->belongsTo('App\Model\Priority', 'priority_id');
+	}
 }

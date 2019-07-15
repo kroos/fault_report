@@ -53,7 +53,7 @@ class FaultImageController extends Controller
 
 	public function destroy(FaultImage $faultImage)
 	{
-		// keja delete tp kita buat update
+		File::delete('/home/prpcdxws/public_html/'.$faultImage->image);
 		FaultImage::destroy($faultImage->id);
 		return response()->json([
 			'message' => 'Data deleted',

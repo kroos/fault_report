@@ -19,16 +19,36 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 // table
 $('#date').datetimepicker({
-	format:'YYYY-MM-DD',
+	format:'YYYY-MM-DD hh:mm A',
 	useCurrent: true,
+	icons: {
+		time: "far fa-clock",
+		date: "far fa-calendar-times",
+		up: "fas fa-arrow-up",
+		down: "fas fa-arrow-down"
+	}
 })
 .on('dp.change dp.show dp.update', function(e) {
 	$('#form').bootstrapValidator('revalidateField', 'date');
 });
 
+$('#dateline').datetimepicker({
+	format:'YYYY-MM-DD',
+	useCurrent: true,
+	icons: {
+		time: "far fa-clock",
+		date: "far fa-calendar-times",
+		up: "fas fa-arrow-up",
+		down: "fas fa-arrow-down"
+	}
+})
+.on('dp.change dp.show dp.update', function(e) {
+	$('#form').bootstrapValidator('revalidateField', 'dateline');
+});
+
 /////////////////////////////////////////////////////////////////////////////////////////
 // select2
-$('#bid,#ois_1,#attd_1').select2({
+$('#bid,#ois_1,#attd_1,#pri,#sta').select2({
 	placeholder: 'Please choose',
 	allowClear: true,
 	closeOnSelect: true,
@@ -205,12 +225,40 @@ $('#form').bootstrapValidator({
 		date: {
 			validators: {
 				date: {
-					format: 'YYYY-MM-DD',
+					format: 'YYYY-MM-DD hh:mm A',
 					message: 'The value is not a valid date. '
+				},
+				notEmpty:{
+					message:'Please insert date. '
 				},
 			}
 		},
+		dateline: {
+				validators: {
+					date: {
+						format: 'YYYY-MM-DD',
+						message: 'The value is not a valid date. '
+					},
+					notEmpty:{
+						message:'Please insert dateline. '
+					},
+				}
+			},
 		building_id: {
+			validators: {
+				notEmpty: {
+					message: 'Please select. '
+				},
+			}
+		},
+		priority_id: {
+			validators: {
+				notEmpty: {
+					message: 'Please select. '
+				},
+			}
+		},
+		status_id: {
 			validators: {
 				notEmpty: {
 					message: 'Please select. '
