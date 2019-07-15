@@ -8,6 +8,7 @@
 	<div class="card-body">
 			@include('layouts.info')
 			@include('layouts.errorform')
+		<p><a href="https://tickets.prpctelecommania.com">Please click here for Telecom Maintenance Submit Ticket</a></p>
 		<img src="{{ asset('images/maintenance.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="RAPID Avengers">
 <!-- 		<div class="container">
 			<div class="row">
