@@ -225,7 +225,7 @@ $(adddtag).click(function(){
 	}
 });
 
-$(wrapaatd).on("click",".remove_dtag", function(e){
+$(wrapdtag).on("click",".remove_dtag", function(e){
 	//user click on remove text
 	e.preventDefault();
 	//var $row = $(this).parent('.rowdtag');

@@ -19,6 +19,9 @@ use Session;
 // load array helper
 // use Illuminate\Support\Arr;
 
+// load file
+use File;
+
 class FaultImageController extends Controller
 {
 	public function __construct()

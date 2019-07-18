@@ -96,7 +96,7 @@ $r14 = 1;
 						<i class="fas fa-trash delete_dtag" aria-hidden="true" id="delete_dtag_1" data-id="{{ $fautg->id }}"></i>
 					</div>
 	@if(!is_null($fautg->id))
-						{!! Form::hidden('dtag['.$r6++.'][id]', $fau->id) !!}
+						{!! Form::hidden('dtag['.$r6++.'][id]', $fautg->id) !!}
 	@endif
 					<div class="form-group col {{ $errors->has('dtag.*.device_tag') ? 'has-error' : '' }}">
 						<input type="text" name="dtag[{{ $r8++ }}][device_tag]" id="devtag_{{ $r9++ }}" value="{{ $fautg->device_tag }}" class="form-control form-control-sm" placeholder="Device Tag" autocomplete="off">
