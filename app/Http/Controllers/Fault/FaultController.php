@@ -24,7 +24,7 @@ use File;
 // use Illuminate\Support\Arr;
 
 // load storage
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 
 class FaultController extends Controller
 {
@@ -102,7 +102,7 @@ class FaultController extends Controller
 				// public_html/storage/images/fault
 			}
 		}
-
+// die();
 		Session::flash('flash_message', 'Data successfully stored!');
 		return redirect(route('fault.index'));
 	}
@@ -154,6 +154,7 @@ class FaultController extends Controller
 
 				// $fault->hasmanyimage()->updateOrCreate([
 				$fault->hasmanyimage()->create(['image' => $image]);
+				File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 			}
 		}
 
