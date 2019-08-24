@@ -123,7 +123,7 @@ class FaultController extends Controller
 		// $user->roles()->updateExistingPivot($roleId, $attributes);
 		$dl = Carbon::parse($request->date)->format('Y-m-d H:i:s');
 		// echo '<br/>'.$dl;
-		$fault->update( \Arr::add($request->only(['dateline', 'building_id', 'subsystem', 'issue', 'solution']), 'date', $dl) );
+		$fault->update( \Arr::add($request->only(['dateline', 'building_id', 'subsystem', 'issue', 'solution', 'status_id']), 'date', $dl) );
 		$syst = [];
 		if ($request->has('syst')) {
 			foreach($request->syst as $k5 => $v5) {
