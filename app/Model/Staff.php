@@ -22,6 +22,11 @@ class Staff extends Model
 		return $this->hasMany('App\Model\Fault', 'staff_id');
 	}
 
+	function hasmanyswaccess()
+	{
+		return $this->hasMany('App\Model\SwitchAccess', 'staff_id');
+	}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // https://laravel.com/docs/5.6/eloquent-relationships#many-to-many

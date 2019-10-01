@@ -132,7 +132,18 @@
 <div class="form-group row {{ $errors->has('status_id') ? 'has-error' : '' }}">
 	{{ Form::label( 'sta', 'Status : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-md-6">
-		{{ Form::select('status_id', \App\Model\Status::pluck('status', 'id')->sortKeys()->toArray(), @$value, ['class' => 'form-control form-control-sm', 'id' => 'sta', 'placeholder' => 'Status', 'autocomplete' => 'off']) }}
+<?php
+$w1=0;
+$w2=0
+?>
+@foreach( \App\Model\Status::all() as $st )
+		<div class="pretty p-switch">
+			{{ Form::radio('status_id', $st->id, NULL, ['class' => 'form-check-input', 'id' => 'i'.$w1++]) }}
+			<div class="state p-success">
+				<label class="form-check-label" for="{!! 'i'.$w2++ !!}">{!! $st->status !!}</label>
+			</div>
+		</div>
+@endforeach
 	</div>
 </div>
 

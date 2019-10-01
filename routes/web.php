@@ -84,7 +84,7 @@ Route::patch('/update/{staff}', [
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////
-// fault extra route
+// fault route
 Route::resources([
 	'fault' => 'Fault\FaultController',
 	'faultImage' => 'Fault\FaultImageController',
@@ -108,6 +108,12 @@ Route::post('/faultdeviceTag/{fault}', [
 Route::post('/faultattendees/{fault}', [
 	'as' => 'fault.attendees',
 	'uses' => 'Fault\FaultController@deleteAttendees'
+]);
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// switch_access route
+Route::resources([
+	'swAccess' => 'SwitchAccess\SwAccessController',
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////
