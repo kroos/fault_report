@@ -227,7 +227,7 @@ $(adddtag).click(function(){
 						'<select name="sw1[' + xd + '][swtag_id]" id="sois_' + xd + '" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">' +
 							'<option value="">Please choose</option>' +
 @foreach( \App\Model\SwitchTag::all() as $mod1 )
-							'<option value="{!! $mod1->id !!}" data-chained="{{ $mod1->switch_id }}" {{ ($mod1->id == 0)?'selected':'' }}>{!! $mod1->tag_number !!}</option>' +
+							'<option value="{!! $mod1->id !!}" class="{{ $mod1->switch_id }}" {{ ($mod1->id == 0)?'selected':'' }}>{!! $mod1->tag_number !!}</option>' +
 @endforeach
 						'</select>' +
 					'</div>' +
