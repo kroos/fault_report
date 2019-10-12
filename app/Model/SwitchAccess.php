@@ -21,7 +21,7 @@ class SwitchAccess extends Model
 
 	public function hasmanyptw()
 	{
-		return $this->hasMany('App\Model\SwAccessPTW', 'system_id');
+		return $this->hasMany('App\Model\SwAccessPTW', 'swAccess_id');
 	}
 
 	// public function hasmanyimage()
@@ -38,12 +38,12 @@ class SwitchAccess extends Model
 // https://laravel.com/docs/5.6/eloquent-relationships#many-to-many
 	public function belongtomanyswitch()
 	{
-		return $this->belongsToMany('App\Model\Switches', 'swaccess_switch', 'swAccess_id', 'switch_id' )->withPivot('id')->withPivot('remarks')->withTimestamps();
+		return $this->belongsToMany('App\Model\Switches', 'swaccess_switch', 'swAccess_id', 'switch_id' )->withPivot(['id', 'swtag_id', 'remarks'])->withTimestamps();
 	}
 
 	public function belongtomanyswitchtag()
 	{
-		return $this->belongsToMany('App\Model\SwitchTag', 'swaccess_switch', 'swAccess_id', 'swtag_id' )->withPivot('id')->withPivot('remarks')->withTimestamps();
+		return $this->belongsToMany('App\Model\SwitchTag', 'swaccess_switch', 'swAccess_id', 'swtag_id' )->withPivot('id', 'switch_id', 'remarks')->withTimestamps();
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,18 +59,18 @@ class SwitchAccess extends Model
 	// 	return $this->belongsTo('App\Model\Building', 'building_id');
 	// }
 
-	// public function belongtostatus()
-	// {
-	// 	return $this->belongsTo('App\Model\Status', 'status_id');
-	// }
+	public function belongtostatus()
+	{
+		return $this->belongsTo('App\Model\Status', 'status_id');
+	}
 
 	// public function belongtopriority()
 	// {
 	// 	return $this->belongsTo('App\Model\Priority', 'priority_id');
 	// }
 
-	public function belongtostaff()
-	{
-		return $this->belongsTo('App\Model\Staff', 'staff_id');
-	}
+	// public function belongtostaff()
+	// {
+	// 	return $this->belongsTo('App\Model\Staff', 'staff_id');
+	// }
 }

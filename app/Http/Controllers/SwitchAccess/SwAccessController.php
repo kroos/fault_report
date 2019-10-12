@@ -4,7 +4,7 @@ namespace App\Http\Controllers\SwitchAccess;
 
 use App\Http\Controllers\Controller;
 
-use App\Model\SwAccess;
+use App\Model\SwitchAccess;
 use Illuminate\Http\Request;
 
 // load image library
@@ -44,35 +44,102 @@ class SwAccessController extends Controller
 		return view('swAccess.create');
 	}
 
-	public function store(FaultRequest $request)
+	public function store(SwAccessRequest $request)
 	{
+		print_r($request->all());
+		$sw = \Auth::user()->belongtostaff->hasmanyswaccess()->create($request->only(['date', 'company', 'subject', 'request_start', 'request_end', 'access_start', 'access_end', 'status_id']));
+		if ($request->has('pic')) {
+			foreach ($request->pic as $k1 => $v1) {
+				$sw->hasmanypic()->create([
+					'swAccess_PIC' => $v1['swAccess_PIC'],
+					'email' => $v1['email']
+				]);
+			}
+		}
+		if ($request->has('ptw')) {
+			foreach ($request->ptw as $k2 => $v2) {
+				$sw->hasmanyptw()->create([
+					'swAccess_PTW' => $v2['swAccess_PTW']
+				]);
+			}
+		}
+		if ($request->has('sw1')) {
+			foreach ($request->sw1 as $k3 => $v3) {
+				$sw->belongtomanyswitch()->attach(
+					$v3['switch_id'],
+					['swtag_id' => $v3['swtag_id']]
+				);
+			}
+		}
 
-// die();
 		Session::flash('flash_message', 'Data successfully stored!');
-		return redirect(route('fault.index'));
+		return redirect(route('swAccess.index'));
 	}
 
-	public function show(Fault $fault)
+	public function show(SwitchAccess $swAccess)
 	{
 	//
 	}
 
-	public function edit(Fault $fault)
+	public function edit(SwitchAccess $swAccess)
 	{
-		return view('fault.edit', compact(['fault']));
+		return view('swAccess.edit', compact(['swAccess']));
 	}
 
-	public function update(FaultRequest $request, Fault $fault)
+	public function update(SwAccessRequest $request, SwitchAccess $swAccess)
 	{
+		// print_r($request->all());
+		$swAccess->update($request->only(['date', 'company', 'subject', 'request_start', 'request_end', 'access_start', 'access_end', 'status_id']));
 
-// die();
+		if ($request->has('pic')) {
+			foreach ($request->pic as $k1 => $v1) {
+				$swAccess->hasmanypic()->updateOrCreate(
+					[
+						'id' => $v1['id']
+					],
+					[
+						'swAccess_PIC' => $v1['swAccess_PIC'],
+						'email' => $v1['email']
+					]
+				);
+			}
+		}
+		if ($request->has('ptw')) {
+			foreach ($request->ptw as $k2 => $v2) {
+				$swAccess->hasmanyptw()->updateOrCreate(
+					[
+						'id' => $v2['id']
+					],
+					[
+						'swAccess_PTW' => $v2['swAccess_PTW']
+					]
+				);
+			}
+		}
+
+		if ($request->has('sw1')) {
+			foreach ($request->sw1 as $k3 => $v3) {
+				// [1 => ['expires' => true]
+				$lk[$v3['switch_id']] = ['swtag_id' => $v3['swtag_id']];
+			}
+			$swAccess->belongtomanyswitch()->sync($lk);
+		}
+
 		Session::flash('flash_message', 'Data successfully Updated!');
-		return redirect(route('fault.index'));
+		return redirect(route('swAccess.index'));
 	}
 
-	public function destroy(Fault $fault)
+	public function destroy(SwitchAccess $swAccess)
 	{
-
+		SwitchAccess::destroy($swAccess->id);
+		$swAccess->hasmanypic()->delete();
+		$swAccess->hasmanyptw()->delete();
+		$swAccess->belongtomanyswitch()->detach();
+		// $swAccess->hasmanyptw()->detach();
+		return response()->json([
+			'message' => 'Data deleted',
+			'status' => 'success'
+		]);
 	}
 
 }

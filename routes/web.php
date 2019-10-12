@@ -114,6 +114,9 @@ Route::post('/faultattendees/{fault}', [
 // switch_access route
 Route::resources([
 	'swAccess' => 'SwitchAccess\SwAccessController',
+	'swAccPIC' => 'SwitchAccess\SwAccPICController',
+	'swAccPTW' => 'SwitchAccess\SwAccPTWController',
+	'swAccSW' => 'SwitchAccess\SwAccSWController',
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////

@@ -32,5 +32,56 @@ $("#orderitem1,#orderitem2").DataTable({
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////
+// order delete
+$(document).on('click', '.inactivate', function(e){
+	var productId = $(this).data('id');
+	SwalDelete(productId);
+	e.preventDefault();
+});
+
+function SwalDelete(productId){
+	swal.fire({
+		title: 'Are you sure?',
+		text: "Data will be deleted!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!',
+		showLoaderOnConfirm: true,
+
+		preConfirm: function() {
+			return new Promise(function(resolve) {
+				$.ajax({
+					type: 'DELETE',
+					url: '{{ url('swAccess') }}' + '/' + productId,
+					data: {
+							_token : $('meta[name=csrf-token]').attr('content'),
+							id: productId,
+					},
+					dataType: 'json'
+				})
+				.done(function(response){
+					swal.fire('Deleted!', response.message, response.status)
+					.then(function(){
+						window.location.reload(true);
+					});
+					//$('#disable_user_' + productId).parent().parent().remove();
+				})
+				.fail(function(){
+					swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+				})
+			});
+		},
+		allowOutsideClick: false
+	})
+	.then((result) => {
+		if (result.dismiss === swal.DismissReason.cancel) {
+			swal.fire('Cancelled', 'Your data is safe from delete', 'info')
+		}
+	});
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 @endsection

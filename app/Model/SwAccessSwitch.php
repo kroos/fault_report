@@ -49,20 +49,20 @@ class SwAccessSwitch extends Model
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // belongto
 
-	// public function belongtostaff()
-	// {
-	// 	return $this->belongsTo('App\Model\Staff', 'staff_id');
-	// }
+	public function belongtoswaccess()
+	{
+		return $this->belongsTo('App\Model\SwitchAccess', 'swAccess_id');
+	}
 
-	// public function belongtobuilding()
-	// {
-	// 	return $this->belongsTo('App\Model\Building', 'building_id');
-	// }
+	public function belongtoswitch()
+	{
+		return $this->belongsTo('App\Model\Switch', 'switch_id');
+	}
 
-	// public function belongtostatus()
-	// {
-	// 	return $this->belongsTo('App\Model\Status', 'status_id');
-	// }
+	public function belongtoswitchtag()
+	{
+		return $this->belongsTo('App\Model\SwitchTag', 'swtag_id');
+	}
 
 	// public function belongtopriority()
 	// {

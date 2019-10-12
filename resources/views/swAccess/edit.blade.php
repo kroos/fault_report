@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="card">
-	<div class="card-header"><h1 class="card-title">Create Switch Access</h1></div>
+	<div class="card-header"><h1 class="card-title">Edit Switch Access</h1></div>
 	<div class="card-body">
 		@include('layouts.info')
 		@include('layouts.errorform')
 
-		{!! Form::open(['route' => ['swAccess.store'], 'id' => 'form', 'autocomplete' => 'off', 'files' => true]) !!}
-			@include('swAccess._create')
+		{!! Form::model( $swAccess, ['route' => ['swAccess.update', $swAccess->id], 'method' => 'PATCH', 'id' => 'form', 'files' => true]) !!}
+			@include('swAccess._edit')
 		{{ Form::close() }}
 
 	</div>
@@ -90,7 +90,14 @@ $('#subsystem3').datetimepicker({
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////
-$('#sois_1,#ois_1').select2({
+<?php
+$g1=1;
+$g2=1;
+$g3=1;
+$g4=1;
+?>
+@foreach($swAccess->belongtomanyswitch()->get() as $ty)
+$('#sois_{!! $g1++ !!},#ois_{!! $g2++ !!}').select2({
 	placeholder: 'Please choose',
 	allowClear: true,
 	closeOnSelect: true,
@@ -99,8 +106,9 @@ $('#sois_1,#ois_1').select2({
 
 
 $(document).ready(function() {
-$('#sois_1').chained('#ois_1');
+$('#sois_{!! $g3++ !!}').chained('#ois_{!! $g4++ !!}');
 });
+@endforeach()
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // add system : add and remove row
@@ -108,7 +116,7 @@ var max_fields	= 10; //maximum input boxes allowed
 var add_buttons	= $(".add_pic");
 var wrappers	= $(".pic_wrap");
 
-var xs = 1;
+var xs = {!! $swAccess->hasmanypic()->get()->count() !!};
 $(add_buttons).click(function(){
 	// e.preventDefault();
 
@@ -119,6 +127,7 @@ $(add_buttons).click(function(){
 			'<div class="rowpic">' +
 				'<div class="col-sm-12 form-row ">' +
 					'<div class="col-sm-1 text-danger">' +
+						'<input type="hidden" name="pic[' + xs + '][id]" value="">' +
 							'<i class="fas fa-trash remove_pic" aria-hidden="true"></i>' +
 					'</div>' +
 					'<div class="form-group col {{ $errors->has('pic.*.swAccess_PIC') ? 'has-error' : NULL }}">' +
@@ -158,7 +167,7 @@ var maxattd	= 10; //maximum input boxes allowed
 var addattd	= $(".add_ptw");
 var wrapaatd	= $(".ptw_wrap");
 
-var xa = 1;
+var xa = {!! $swAccess->hasmanyptw()->get()->count() !!};
 $(addattd).click(function(){
 	// e.preventDefault();
 
@@ -169,6 +178,7 @@ $(addattd).click(function(){
 			'<div class="rowptw">' +
 				'<div class="col-sm-12 form-row ">' +
 					'<div class="col-sm-1 text-danger">' +
+						'<input type="hidden" name="ptw[' + xa + '][id]" value="">' +
 							'<i class="fas fa-trash remove_ptw" aria-hidden="true"></i>' +
 					'</div>' +
 					'<div class="form-group col {{ $errors->has('ptw.*.swAccess_PTW') ? 'has-error' : NULL }}">' +
@@ -202,7 +212,7 @@ var maxdtag	= 10; //maximum input boxes allowed
 var adddtag	= $(".add_switch");
 var wrapdtag	= $(".switch_wrap");
 
-var xd = 1;
+var xd = {!! $swAccess->belongtomanyswitch()->get()->count() !!};
 $(adddtag).click(function(){
 	// e.preventDefault();
 
@@ -214,6 +224,7 @@ $(adddtag).click(function(){
 				'<div class="col-sm-12 form-row">' +
 					'<div class="col-sm-1 text-danger">' +
 							'<i class="fas fa-trash remove_switch" aria-hidden="true" ></i>' +
+							'<input type="hidden" name="sw1[' + xd + '][id]" value="">' +
 					'</div>' +
 					'<div class="form-group col {{ $errors->has('sw1.*.switch_id') ? 'has-error' : '' }}">' +
 						'<select name="sw1[' + xd + '][switch_id]" id="ois_' + xd + '" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">' +
@@ -265,6 +276,158 @@ $(wrapdtag).on("click",".remove_switch", function(e){
 })
 
 /////////////////////////////////////////////////////////////////////////////////////////
+// requester delete
+$(document).on('click', '.delete_pic', function(e){
+	var productId = $(this).data('id');
+	SwalDelete(productId);
+	e.preventDefault();
+});
+
+function SwalDelete(productId){
+	swal.fire({
+		title: 'Are you sure?',
+		text: "Data will be deleted!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!',
+		showLoaderOnConfirm: true,
+
+		preConfirm: function() {
+			return new Promise(function(resolve) {
+				$.ajax({
+					type: 'DELETE',
+					url: '{{ url('swAccPIC') }}' + '/' + productId,
+					data: {
+							_token : $('meta[name=csrf-token]').attr('content'),
+							id: productId,
+					},
+					dataType: 'json'
+				})
+				.done(function(response){
+					swal.fire('Deleted!', response.message, response.status)
+					.then(function(){
+						window.location.reload(true);
+					});
+					//$('#disable_user_' + productId).parent().parent().remove();
+				})
+				.fail(function(){
+					swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+				})
+			});
+		},
+		allowOutsideClick: false
+	})
+	.then((result) => {
+		if (result.dismiss === swal.DismissReason.cancel) {
+			swal.fire('Cancelled', 'Your data is safe from delete', 'info')
+		}
+	});
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// requester delete
+$(document).on('click', '.delete_ptw', function(e){
+	var productId = $(this).data('id');
+	DeletePTW(productId);
+	e.preventDefault();
+});
+
+function DeletePTW(productId){
+	swal.fire({
+		title: 'Are you sure?',
+		text: "Data will be deleted!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!',
+		showLoaderOnConfirm: true,
+
+		preConfirm: function() {
+			return new Promise(function(resolve) {
+				$.ajax({
+					type: 'DELETE',
+					url: '{{ url('swAccPTW') }}' + '/' + productId,
+					data: {
+							_token : $('meta[name=csrf-token]').attr('content'),
+							id: productId,
+					},
+					dataType: 'json'
+				})
+				.done(function(response){
+					swal.fire('Deleted!', response.message, response.status)
+					.then(function(){
+						window.location.reload(true);
+					});
+					//$('#disable_user_' + productId).parent().parent().remove();
+				})
+				.fail(function(){
+					swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+				})
+			});
+		},
+		allowOutsideClick: false
+	})
+	.then((result) => {
+		if (result.dismiss === swal.DismissReason.cancel) {
+			swal.fire('Cancelled', 'Your data is safe from delete', 'info')
+		}
+	});
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// requester delete
+$(document).on('click', '.delete_switch', function(e){
+	var productId = $(this).data('id');
+	DeleteSwitch(productId);
+	e.preventDefault();
+});
+
+function DeleteSwitch(productId){
+	swal.fire({
+		title: 'Are you sure?',
+		text: "Data will be deleted!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!',
+		showLoaderOnConfirm: true,
+
+		preConfirm: function() {
+			return new Promise(function(resolve) {
+				$.ajax({
+					type: 'DELETE',
+					url: '{{ url('swAccSW') }}' + '/' + productId,
+					data: {
+							_token : $('meta[name=csrf-token]').attr('content'),
+							id: productId,
+					},
+					dataType: 'json'
+				})
+				.done(function(response){
+					swal.fire('Deleted!', response.message, response.status)
+					.then(function(){
+						window.location.reload(true);
+					});
+					//$('#disable_user_' + productId).parent().parent().remove();
+				})
+				.fail(function(){
+					swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+				})
+			});
+		},
+		allowOutsideClick: false
+	})
+	.then((result) => {
+		if (result.dismiss === swal.DismissReason.cancel) {
+			swal.fire('Cancelled', 'Your data is safe from delete', 'info')
+		}
+	});
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 // bootstrap validator
 
