@@ -198,7 +198,7 @@ $(wrapaatd).on("click",".remove_ptw", function(e){
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // add attendees : add and remove row
-var maxdtag	= 10; //maximum input boxes allowed
+var maxdtag	= 20; //maximum input boxes allowed
 var adddtag	= $(".add_switch");
 var wrapdtag	= $(".switch_wrap");
 
@@ -347,7 +347,7 @@ $('#form').bootstrapValidator({
 				},
 			}
 		},
-@for($l4=0;$l4<10;$l4++)
+@for($l4=0;$l4<20;$l4++)
 		'sw1[{{ $l4 }}][switch_id]': {
 			validators: {
 				notEmpty: {
@@ -356,7 +356,7 @@ $('#form').bootstrapValidator({
 			}
 		},
 @endfor
-@for($l5=0;$l5<10;$l5++)
+@for($l5=0;$l5<20;$l5++)
 		'sw2[{{ $l5 }}][swtag_id]': {
 			validators: {
 				notEmpty: {
