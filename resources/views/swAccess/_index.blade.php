@@ -41,7 +41,8 @@ use Carbon\CarbonPeriod;
 					<td>
 						@if($sw->hasmanypic()->get()->count())
 							@foreach($sw->hasmanypic()->get() as $b)
-								<!-- {!! $b->swAccess_PIC !!}&nbsp;{!! $b->email !!}<br /> -->
+								{!! $b->swAccess_PIC !!}<br />
+								<!-- {!! $b->email !!} -->
 							@endforeach
 						@endif
 					</td>
@@ -128,7 +129,8 @@ use Carbon\CarbonPeriod;
 					<td>
 						@if($sw->hasmanypic()->get()->count())
 							@foreach($sw->hasmanypic()->get() as $b)
-								<!-- {!! $b->swAccess_PIC !!}&nbsp;{!! $b->email !!}<br /> -->
+								{!! $b->swAccess_PIC !!}
+								<!-- {!! $b->email !!}<br /> -->
 							@endforeach
 						@endif
 					</td>
