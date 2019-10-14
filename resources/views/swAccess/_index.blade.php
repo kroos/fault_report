@@ -75,10 +75,10 @@ use Carbon\CarbonPeriod;
 							@endforeach
 						@endif
 					</td>
-					<td>{!! Carbon::parse($sw->request_start)->format('D, j M Y') !!}</td>
-					<td>{!! Carbon::parse($sw->request_end)->format('D, j M Y') !!}</td>
-					<td>{!! Carbon::parse($sw->access_start)->format('D, j M Y') !!}</td>
-					<td>{!! Carbon::parse($sw->access_end)->format('D, j M Y') !!}</td>
+					<td>{!! (!is_null($sw->request_start))?Carbon::parse($sw->request_start)->format('D, j M Y'):NULL !!}</td>
+					<td>{!! (!is_null($sw->request_end))?Carbon::parse($sw->request_end)->format('D, j M Y'):NULL !!}</td>
+					<td>{!! (!is_null($sw->access_start))?Carbon::parse($sw->access_start)->format('D, j M Y'):NULL !!}</td>
+					<td>{!! (!is_null($sw->access_end))?Carbon::parse($sw->access_end)->format('D, j M Y'):NULL !!}</td>
 					<td>{!! $sw->belongtostatus->status !!}</td>
 				</tr>
 @endforeach
@@ -162,10 +162,10 @@ use Carbon\CarbonPeriod;
 							@endforeach
 						@endif
 					</td>
-					<td>{!! Carbon::parse($sw->request_start)->format('D, j M Y') !!}</td>
-					<td>{!! Carbon::parse($sw->request_end)->format('D, j M Y') !!}</td>
-					<td>{!! Carbon::parse($sw->access_start)->format('D, j M Y') !!}</td>
-					<td>{!! Carbon::parse($sw->access_end)->format('D, j M Y') !!}</td>
+					<td>{!! (!is_null($sw->request_start))?Carbon::parse($sw->request_start)->format('D, j M Y'):NULL !!}</td>
+					<td>{!! (!is_null($sw->request_end))?Carbon::parse($sw->request_end)->format('D, j M Y'):NULL !!}</td>
+					<td>{!! (!is_null($sw->access_start))?Carbon::parse($sw->access_start)->format('D, j M Y'):NULL !!}</td>
+					<td>{!! (!is_null($sw->access_end))?Carbon::parse($sw->access_end)->format('D, j M Y'):NULL !!}</td>
 					<td>{!! $sw->belongtostatus->status !!}</td>
 				</tr>
 @endforeach
