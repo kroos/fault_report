@@ -17,7 +17,7 @@ use Carbon\CarbonPeriod;
 					<th>ID</th>
 					<th>Date</th>
 					<th>PIC</th>
-					<th>Company</th>
+					<!-- <th>Company</th> -->
 					<th>Subject</th>
 					<th>Hostname</th>
 					<th>IP Address</th>
@@ -45,7 +45,7 @@ use Carbon\CarbonPeriod;
 							@endforeach
 						@endif
 					</td>
-					<td>{!! $sw->company !!}</td>
+					<!-- <td>{!! $sw->company !!}</td> -->
 					<td>{!! $sw->subject !!}</td>
 					<td>
 						@if($sw->belongtomanyswitch()->get()->count())
