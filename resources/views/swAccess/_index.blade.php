@@ -104,7 +104,7 @@ use Carbon\CarbonPeriod;
 					<th>ID</th>
 					<th>Date</th>
 					<th>PIC</th>
-					<th>Company</th>
+					<!-- <th>Company</th> -->
 					<th>Subject</th>
 					<th>Hostname</th>
 					<th>IP Address</th>
@@ -128,11 +128,11 @@ use Carbon\CarbonPeriod;
 					<td>
 						@if($sw->hasmanypic()->get()->count())
 							@foreach($sw->hasmanypic()->get() as $b)
-								{!! $b->swAccess_PIC !!}&nbsp;{!! $b->email !!}<br />
+								<!-- {!! $b->swAccess_PIC !!}&nbsp;{!! $b->email !!}<br /> -->
 							@endforeach
 						@endif
 					</td>
-					<td>{!! $sw->company !!}</td>
+					<!-- <td>{!! $sw->company !!}</td> -->
 					<td>{!! $sw->subject !!}</td>
 					<td>
 						@if($sw->belongtomanyswitch()->get()->count())
