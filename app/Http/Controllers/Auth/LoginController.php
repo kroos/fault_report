@@ -36,4 +36,17 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|exists:logins,' . $this->username() . ',active,1',
+            'password' => 'required|string',
+        ], [
+            $this->username() . '.exists' => 'The selected account is invalid or the account has been disabled.'
+        ],[
+            'username' => 'RAPID ID'
+        ]);
+    }
+
 }
