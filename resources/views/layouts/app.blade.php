@@ -36,6 +36,25 @@
 		</main>
 	</div>
 
+
+	<footer class="mt-auto  py-4 bg-dark text-white-50 ">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div>
+						<img src="{{ asset('images/logo-149x103.png') }}" class="img-fluid rounded" width="10%" alt="logo">
+						<small>
+							<span class="font-weight-bold">{{ config('app.name') }} - All Rights Reserved</span> <br>
+							<span>&copy; Copyright {{ \Carbon\Carbon::now()->format('Y') }}</span>
+						</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
 	<!-- Scripts -->
 	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
