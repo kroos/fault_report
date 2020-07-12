@@ -30,6 +30,9 @@ use Carbon\CarbonPeriod;
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('swAccess.index') }}">{{ __('Switches Access') }}</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('checklist.index') }}">{{ __('PPM Checklist') }}</a>
+				</li>
 				<li class="nav-item dropdown">
 					<a id="navbarDropdown" class="btn btn-sm btn-info text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->belongtostaff->name }}
 <!-- 						<span class="badge badge-danger">{{ __('$allleaves') }}</span>

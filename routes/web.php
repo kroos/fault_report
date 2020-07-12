@@ -120,3 +120,14 @@ Route::resources([
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////
+// PPM Checklist
+Route::get('/checklist', 'Checklist\ChecklistController@index')->name('checklist.index')->middleware('auth');
+Route::get('/checklist_create', 'Checklist\ChecklistController@create')->name('checklist.create')->middleware('auth');
+
+
+
+
+Route::get('/checklist_template', 'Checklist\TemplateController@index')->name('template.index')->middleware('auth');
+Route::get('/checklist_template_create', 'Checklist\TemplateController@create')->name('template.create')->middleware('auth');
+Route::post('/checklist_template_store', 'Checklist\TemplateController@store')->name('template.store')->middleware('auth');
+

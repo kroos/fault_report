@@ -22,9 +22,14 @@ class Staff extends Model
 		return $this->hasMany('App\Model\Fault', 'staff_id');
 	}
 
-	function hasmanyswaccess()
+	public function hasmanyswaccess()
 	{
 		return $this->hasMany('App\Model\SwitchAccess', 'staff_id');
+	}
+
+	public function hasmanytemplate()
+	{
+		return $this->hasMany('App\Model\Template', 'staff_id');
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

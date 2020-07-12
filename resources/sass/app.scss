@@ -75,7 +75,11 @@ h1, h2, h3, h4, h5, h6 {
 	// background-color: #9eff98;
 	// background-color: #f56686;
 }
-
+#app{
+	margin-bottom: 7em; /* same as footer height */
+	position:relative;
+	z-index: 1;
+}
 footer{
 	height: 7em;
 	position: fixed;

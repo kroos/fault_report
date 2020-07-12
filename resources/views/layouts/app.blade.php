@@ -18,7 +18,7 @@
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body>
+<body class="d-flex flex-column">
 	<div id="app">
 		@include('layouts.nav')
 
