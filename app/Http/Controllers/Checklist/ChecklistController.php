@@ -36,9 +36,9 @@ class ChecklistController extends Controller
 		return view('checklist.index');
 	}
 
-	public function create()
+	public function create(Request $request)
 	{
-		
+		return view('checklist.create');
 	}
 
 	public function store(Request $request)

@@ -11,12 +11,24 @@
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('template.index') }}">Template</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{ route('checklist.index') }}">Checklist</a>
-			</li>
 		</ul>
 
-		@include('checklist._index')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	</div>
 </div>

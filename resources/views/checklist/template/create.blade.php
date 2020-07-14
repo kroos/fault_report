@@ -21,7 +21,7 @@
 			</div>
 		</div>
 
-		<div class="form-group row {{ $errors->has('system_id') ? 'has-error' : '' }}">
+		<div class="form-group row {{ $errors->has('system_id') ? 'has-error' : NULL }}">
 			{{ Form::label( 'system_id', 'System : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 			<div class="col-6">
 				{{ Form::select('system_id', \App\Model\System::pluck('system', 'id')->sortKeys()->toArray(), @$value, ['class' => 'form-control form-control-sm', 'id' => 'system', 'placeholder' => 'Please Choose', 'autocomplete' => 'off']) }}
@@ -43,7 +43,7 @@
 									<i class="fas fa-trash remove_system1" aria-hidden="true" id="delete_system_1"></i>
 							</div>
 
-							<div class="form-group col-5 {{ $errors->has('form.*.formtype') ? 'has-error' : '' }}">
+							<div class="form-group col-5 {{ $errors->has('form.*.formtype') ? 'has-error' : NULL }}">
 								<select name="form[1][formtype]" id="ois_1" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">
 									<option value="">Please choose</option>
 		@foreach( config('fr.formtype') as $mod => $mo )
@@ -57,7 +57,7 @@
 								@endif
 							</div>
 
-							<div class="form-group col-6 {{ $errors->has('form.*.label') ? 'has-error' : '' }}">
+							<div class="form-group col-6 {{ $errors->has('form.*.label') ? 'has-error' : NULL }}">
 								<input type="text" name="form[1][label]" id="oil_1" class="form-control form-control-sm" autocomplete="off" placeholder="Form Label">
 								@if ($errors->has('form.*.label'))
 								<span class="invalid-feedback" role="alert">
@@ -136,7 +136,7 @@ $('#system,#ois_1,#attd_1,#pri,#sta').select2({
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // add system : add and remove row
-var max_fields	= 10; //maximum input boxes allowed
+var max_fields	= 50; //maximum input boxes allowed
 var add_buttons	= $(".add_system");
 var wrappers	= $(".system_wrap");
 
@@ -213,43 +213,14 @@ $('#form').bootstrapValidator({
 		validating: ''
 	},
 	fields: {
-		date: {
-			validators: {
-				date: {
-					format: 'YYYY-MM-DD hh:mm A',
-					message: 'The value is not a valid date. '
-				},
-				notEmpty:{
-					message:'Please insert date. '
-				},
-			}
-		},
-		dateline: {
-				validators: {
-					date: {
-						format: 'YYYY-MM-DD',
-						message: 'The value is not a valid date. '
-					},
-					notEmpty:{
-						message:'Please insert dateline. '
-					},
-				}
-			},
-		building_id: {
+		title: {
 			validators: {
 				notEmpty: {
 					message: 'Please select. '
 				},
 			}
 		},
-		priority_id: {
-			validators: {
-				notEmpty: {
-					message: 'Please select. '
-				},
-			}
-		},
-		status_id: {
+		system_id: {
 			validators: {
 				notEmpty: {
 					message: 'Please select. '
@@ -257,7 +228,7 @@ $('#form').bootstrapValidator({
 			}
 		},
 @for($l=0;$l<10;$l++)
-		'syst[{{ $l }}][system_id]': {
+		'form[{{ $l }}][formtype]': {
 			validators: {
 				notEmpty: {
 					message: 'Please select. '
@@ -265,46 +236,22 @@ $('#form').bootstrapValidator({
 			}
 		},
 @endfor
-		subsystem: {
+@for($l=0;$l<10;$l++)
+		'form[{{ $l }}][label]': {
 			validators: {
 				notEmpty: {
 					message: 'Please select. '
 				},
 			}
 		},
-@for($l1=0;$l1<10;$l1++)
-		// 'attd[{{ $l1 }}][attendees_id]': {
-		// 	validators: {
-		// 		notEmpty: {
-		// 			message: 'Please select. '
-		// 		},
-		// 	}
-		// },
 @endfor
-@for($l2=0;$l2<10;$l2++)
-		// 'dtag[{{ $l2 }}][device_tag]': {
-		// 	validators: {
-		// 		notEmpty: {
-		// 			message: 'Please insert device tag. '
-		// 		},
-		// 	}
-		// },
-@endfor
-		issue: {
+		description: {
 			validators: {
 				notEmpty: {
 					message: 'Please insert data. '
 				},
 			}
 		},
-		// solution: {
-		// 	validators: {
-		// 		notEmpty: {
-		// 			message: 'Please insert data. '
-		// 		},
-		// 	}
-		// },
-
 	}
 });
 

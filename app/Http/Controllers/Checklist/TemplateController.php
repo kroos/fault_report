@@ -12,7 +12,7 @@ use App\Model\Template;
 use Intervention\Image\ImageManagerStatic as Image;
 
 // load validation
-// use App\Http\Requests\FaultRequest;
+use App\Http\Requests\TemplateRequest;
 
 use \Carbon\Carbon;
 
@@ -41,7 +41,7 @@ class TemplateController extends Controller
 		return view('checklist.template.create');
 	}
 
-	public function store(Request $request)
+	public function store(TemplateRequest $request)
 	{
 		// dd($request->all());
 		$template = \Auth::user()->belongtostaff->hasmanytemplate()->create($request->only(['title', 'system_id', 'description']));
@@ -57,22 +57,22 @@ class TemplateController extends Controller
 		return redirect(route('template.index'));
 	}
 
-	public function show($id)
+	public function show(Template $template)
 	{
 //
 	}
 
-	public function edit($id)
+	public function edit(Template $template)
 	{
 //
 	}
 
-	public function update(Request $request, $id)
+	public function update(Request $request, Template $template)
 	{
 //
 	}
 
-	public function destroy($id)
+	public function destroy(Template $template)
 	{
 //
 	}
