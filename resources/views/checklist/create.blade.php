@@ -1,8 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+use Illuminate\Http\Request;
+use App\Model\Template;
+
+$template = Template::find(request('template'));
+$system = $template->belongtosystem->system;
+
+$i = 1;
+?>
 <div class="card">
-	<div class="card-header"><h1 class="card-title">PPM Checklist Create</h1></div>
+	<div class="card-header"><h1 class="card-title">PPM {{ $system }} Checklist Create</h1></div>
 	<div class="card-body">
 		@include('layouts.info')
 		@include('layouts.errorform')
@@ -85,16 +94,24 @@
 	</div>
 
 	<div class="card">
-		<div class="card-header">Front Page</div>
-		<div class="card-body">gerabah</div>
+		<div class="card-header">Checklist</div>
+		<div class="card-body">
+
+		@if($template->count() > 0)
+			@foreach($template->hasmanychecklist()->get() as $chec)
+
+				{!! $i++ !!} | {!! $chec->label !!} | {!! config('fr.formtype.'.$chec->form_type) !!}<br/>
+
+			@endforeach
+		@endif
+		
+
+		</div>
 	</div>
-
-
-
 
 	<div class="form-group row mb-0">
 		<div class="col-8 offset-4">
-			{!! Form::button('Save', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
+			{!! Form::button('Submit', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
 		</div>
 	</div>
 	{{ Form::close() }}
