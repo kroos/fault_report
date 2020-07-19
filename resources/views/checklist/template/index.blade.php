@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
 	<div class="card-header">
-		<h1 class="card-title">PPM Checklist Template</h1>
+		<h1>PPM Inspection Checklist Template</h1>
 		<span class="float-right">
 			<a href="{!! route('template.create') !!}" class="btn btn-primary btn-sm">Create PPM Template Checklist</a>
 		</span>

@@ -16,7 +16,7 @@ class TemplateRequest extends FormRequest
 		return [
 			'title' => 'required|max:5000',
 			'system_id' => 'required',
-			'form.*.formtype' => 'required',
+			'form.*.input_type' => 'required',
 			'form.*.label' => 'required',
 			'description' => 'required',
 		];
@@ -33,7 +33,7 @@ class TemplateRequest extends FormRequest
 		return [
 			'title' => 'Title',
 			'system_id' => 'System',
-			'form.*.formtype' => 'Form Type',
+			'form.*.input_type' => 'Input Type',
 			'form.*.label' => 'Form Label',
 			'description' => 'Description',
 		];

@@ -16,7 +16,7 @@
 			<td>{{ $tem->belongtostaff->name }}</td>
 			<td>{{ $tem->belongtosystem->system }}</td>
 			<td>
-				<a href="{{ route('checklist.create', 'template='.$tem->id) }}" title="Create Checklist">{{ $tem->title }} <i class="fas fa-angle-double-right"></i></a>
+				<a href="{{ route('inspection.create', 'template='.$tem->id) }}" title="Create Inspection">{{ $tem->title }} <i class="fas fa-angle-double-right"></i></a>
 			</td>
 			<td>{{ $tem->description }}</td>
 			<td>

@@ -187,6 +187,10 @@ return [
 
         // https://github.com/maddhatter/laravel-fullcalendar
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+
+        // custom helper provider
+        App\Providers\Helper\HelperServiceProvider::class,
+
     ],
 
     /*

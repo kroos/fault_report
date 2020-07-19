@@ -8,18 +8,19 @@ use App\Model\Template;
 $template = Template::find(request('template'));
 $system = $template->belongtosystem->system;
 
-$i = 1;
+$j = 1;
 ?>
 <div class="card">
-	<div class="card-header"><h1 class="card-title">PPM {{ $system }} Checklist Create</h1></div>
+	<div class="card-header"><h1 class="card-title">PPM {{ $system }} Checklist Inspection</h1></div>
 	<div class="card-body">
 		@include('layouts.info')
 		@include('layouts.errorform')
 
-	{!! Form::open(['route' => ['checklist.store'], 'id' => 'form', 'autocomplete' => 'off', 'files' => true]) !!}
+	{!! Form::open(['route' => ['inspection.store'], 'id' => 'form', 'autocomplete' => 'off', 'files' => true]) !!}
 	<div class="card">
 		<div class="card-header">Front Page</div>
 		<div class="card-body">
+			<input type="hidden" name="system_id" value="{{ $template->system_id }}">
 
 		<div class="form-group row {{ $errors->has('title') ? 'has-error' : NULL }}">
 			{{ Form::label( 'titl', 'PPM Checklist Title : ', ['class' => 'col-4 col-form-label text-right'] ) }}
@@ -94,18 +95,64 @@ $i = 1;
 	</div>
 
 	<div class="card">
-		<div class="card-header">Checklist</div>
+		<div class="card-header">Inspection List</div>
 		<div class="card-body">
 
 		@if($template->count() > 0)
 			@foreach($template->hasmanychecklist()->get() as $chec)
 
-				{!! $i++ !!} | {!! $chec->label !!} | {!! config('fr.formtype.'.$chec->form_type) !!}<br/>
+				@if($chec->input_type == 1)
+					{!! \App\Helpers\FormHTML::fselectyesno($j++, $chec->label, $chec->input_type) !!}
+				@endif
+
+				@if($chec->input_type == 2)
+					{!! \App\Helpers\FormHTML::fselectpassfail($j++, $chec->label, $chec->input_type) !!}
+				@endif
+
+				@if($chec->input_type == 3)
+					{!! \App\Helpers\FormHTML::fselectgoodbad($j++, $chec->label, $chec->input_type) !!}
+				@endif
+
+				@if($chec->input_type == 4)
+					{!! \App\Helpers\FormHTML::fselectcompliantnoncompliant($j++, $chec->label, $chec->input_type) !!}
+				@endif
+
+				@if($chec->input_type == 5)
+					{!! \App\Helpers\FormHTML::ftext($j++, $chec->label, $chec->input_type) !!}
+				@endif
+
+				@if($chec->input_type == 6)
+					{!! \App\Helpers\FormHTML::ftextarea($j++, $chec->label, $chec->input_type) !!}
+				@endif
+
+				@if($chec->input_type == 7)
+					{!! \App\Helpers\FormHTML::fuploadimage($j++, $chec->label, $chec->input_type) !!}
+				@endif
+
+				@if($chec->input_type == 8)
+					{!! \App\Helpers\FormHTML::fuploaddoc($j++, $chec->label, $chec->input_type) !!}
+				@endif
 
 			@endforeach
 		@endif
-		
 
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header">Remarks</div>
+		<div class="card-body">
+			<div class="form-group row {{ $errors->has('remarks') ? 'has-error' : NULL }}">
+				<label for="rem" class="col-4 col-form-label text-right">Remarks : </label>
+				<div class="col-6">
+					<textarea name="remarks" class="form-control form-control-sm" id="rem" placeholder="Remarks" autocomplete="off" ></textarea>
+						@if ($errors->has('remarks'))
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $errors->first('remarks') }}</strong>
+						</span>
+						@endif
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -221,42 +268,40 @@ $('#form').bootstrapValidator({
 		validating: ''
 	},
 	fields: {
-		date: {
-			validators: {
-				date: {
-					// format: 'YYYY-MM-DD hh:mm A',
-					format: 'YYYY-MM-DD',
-					message: 'The value is not a valid date. '
-				},
-				notEmpty:{
-					message:'Please insert date. '
-				},
-			}
-		},
-		building: {
-			validators: {
-				notEmpty: {
-					message: 'Please insert building / Area. '
-				},
-			}
-		},
+//		date: {
+//			validators: {
+//				date: {
+//					// format: 'YYYY-MM-DD hh:mm A',
+//					format: 'YYYY-MM-DD',
+//					message: 'The value is not a valid date. '
+//				},
+//				notEmpty:{
+//					message:'Please insert date. '
+//				},
+//			}
+//		},
+//		building: {
+//			validators: {
+//				notEmpty: {
+//					message: 'Please insert building / Area. '
+//				},
+//			}
+//		},
+//		title: {
+//			validators: {
+//				notEmpty: {
+//					message: 'Please insert building / Area. '
+//				},
+//			}
+//		},
 @for($l1=0;$l1<10;$l1++)
-		// 'attd[{{ $l1 }}][attendees_id]': {
-		// 	validators: {
-		// 		notEmpty: {
-		// 			message: 'Please select. '
-		// 		},
-		// 	}
-		// },
-@endfor
-@for($l2=0;$l2<10;$l2++)
-		// 'dtag[{{ $l2 }}][device_tag]': {
-		// 	validators: {
-		// 		notEmpty: {
-		// 			message: 'Please insert device tag. '
-		// 		},
-		// 	}
-		// },
+//		'attd[{{ $l1 }}][attendees_id]': {
+//			validators: {
+//				notEmpty: {
+//					message: 'Please select. '
+//				},
+//			}
+//		},
 @endfor
 	}
 });

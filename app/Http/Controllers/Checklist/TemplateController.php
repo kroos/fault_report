@@ -48,7 +48,7 @@ class TemplateController extends Controller
 		if ($request->has('form')) {
 			foreach ($request->form as $k1 => $v1) {
 				$template->hasmanychecklist()->create([
-					'form_type' => $v1['formtype'],
+					'input_type' => $v1['input_type'],
 					'label' => $v1['label']
 				]);
 			}

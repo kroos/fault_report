@@ -43,16 +43,16 @@
 									<i class="fas fa-trash remove_system1" aria-hidden="true" id="delete_system_1"></i>
 							</div>
 
-							<div class="form-group col-5 {{ $errors->has('form.*.formtype') ? 'has-error' : NULL }}">
-								<select name="form[1][formtype]" id="ois_1" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">
+							<div class="form-group col-5 {{ $errors->has('form.*.input_type') ? 'has-error' : NULL }}">
+								<select name="form[1][input_type]" id="ois_1" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">
 									<option value="">Please choose</option>
-		@foreach( config('fr.formtype') as $mod => $mo )
+		@foreach( config('fr.inputtype') as $mod => $mo )
 									<option value="{!! $mod !!}">{!! $mo !!}</option>
 		@endforeach
 								</select>
-								@if ($errors->has('form.*.formtype'))
+								@if ($errors->has('form.*.input_type'))
 								<span class="invalid-feedback" role="alert">
-									<strong>{{ $errors->first('form.*.formtype') }}</strong>
+									<strong>{{ $errors->first('form.*.input_type') }}</strong>
 								</span>
 								@endif
 							</div>
@@ -154,9 +154,9 @@ $(add_buttons).click(function(){
 							'<i class="fas fa-trash remove_system" aria-hidden="true" id="delete_system_' + xs + '"></i>' +
 					'</div>' +
 					'<div class="form-group col {{ $errors->has('form.*.formtype') ? 'has-error' : NULL }}">' +
-						'<select name="form[' + xs + '][formtype]" id="ois_' + xs + '" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">' +
+						'<select name="form[' + xs + '][input_type]" id="ois_' + xs + '" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">' +
 							'<option value="">Please choose</option>' +
-@foreach( config('fr.formtype') as $mod => $mo )
+@foreach( config('fr.inputtype') as $mod => $mo )
 							'<option value="{!! $mod !!}">{!! $mo !!}</option>' +
 @endforeach
 						'</select>' +
@@ -167,7 +167,7 @@ $(add_buttons).click(function(){
 						'@endif' +
 					'</div>' +
 					'<div class="form-group col-6 {{ $errors->has('form.*.label') ? 'has-error' : '' }}">' +
-						'<input type="text" name="form[' + xs + '][label]" id="oil_1" class="form-control form-control-sm" autocomplete="off" placeholder="Form Label">' +
+						'<input type="text" name="form[' + xs + '][label]" id="oil_' + xs + '" class="form-control form-control-sm" autocomplete="off" placeholder="Form Label">' +
 						'@if ($errors->has('form.*.label'))' +
 						'<span class="invalid-feedback" role="alert">' +
 							'<strong>{{ $errors->first('form.*.label') }}</strong>' +

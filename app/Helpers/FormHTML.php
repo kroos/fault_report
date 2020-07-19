@@ -1,0 +1,295 @@
+<?php
+namespace App\Helpers;
+
+class FormHTML
+{
+	public function __construct()
+	{
+	}
+
+	public static function fselectyesno($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+									<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									<div class="col-6">
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'0" name="form['.$id.'][input]" type="radio" value="Yes">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'0">Yes</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'1" name="form['.$id.'][input]" type="radio" value="No">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'1">No</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+
+	public static function fselectpassfail($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+									<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									<div class="col-6">
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'0" name="form['.$id.'][input]" type="radio" value="Pass">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'0">Pass</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'1" name="form['.$id.'][input]" type="radio" value="Fail">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'1">Fail</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+
+	public static function fselectgoodbad($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+									<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									<div class="col-6">
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'0" name="form['.$id.'][input]" type="radio" value="Good">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'0">Good</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'1" name="form['.$id.'][input]" type="radio" value="Bad">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'1">Bad</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+
+	public static function fselectcompliantnoncompliant($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+									<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									<div class="col-6">
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'0" name="form['.$id.'][input]" type="radio" value="Compliant">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'0">Compliant</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'1" name="form['.$id.'][input]" type="radio" value="Non Compliant">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'1">Non Compliant</label>
+											</div>
+										</div>
+										<div class="pretty p-switch">
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available">
+											<div class="state p-success">
+												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+
+	public static function ftext($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][input]" class="form-control form-control-sm" id="'.$id.'" placeholder="'.$label.'" autocomplete="off" type="text">
+										<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+										<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									</div>
+								</div>
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+
+	public static function ftextarea($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<div class="col-6">
+										<textarea name="form['.$id.'][input]" class="form-control form-control-sm" id="'.$id.'" placeholder="'.$label.'" autocomplete="off"></textarea>
+										<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+										<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									</div>
+								</div>
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+
+	public static function fuploadimage($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<div class="col-6">
+										<input type="file" name="form['.$id.'][input]" class="custom-file-input form-input-sm" id="'.$id.'" >
+										<label class="custom-file-label" for="'.$id.'">Upload</label>
+										<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+										<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									</div>
+								</div>
+								<div class="form-group row custom-file mb-3">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+
+	public static function fuploaddoc($id='', $label='', $input_type='')
+	{
+		$text = '
+					<div class="col-8 offset-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="form-group row ">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
+									<div class="col-6">
+										<input type="file" name="form['.$id.'][input]" class="custom-file-input form-input-sm" id="'.$id.'" >
+										<label class="custom-file-label" for="'.$id.'">Upload</label>
+										<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
+										<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+									</div>
+								</div>
+								<div class="form-group row custom-file mb-3">
+									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
+									<div class="col-6">
+										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		';
+		return $text;
+	}
+}
