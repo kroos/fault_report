@@ -3,34 +3,24 @@
 namespace App\Model;
 
 // use Illuminate\Database\Eloquent\Model;
-class Inspection extends Model
+class InspectionImage extends Model
 {
 
 	protected $connection = 'mysql';
-	protected $table = 'inspections';
+	protected $table = 'inspection_images';
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// hasmanyinspectionchecklist
-	public function hasmanyinspchecklist()
-	{
-		return $this->hasMany('App\Model\InspectionChecklist', 'inspection_id');
-	}
+// hasmany
+	// public function hasmany()
+	// {
+	// 	return $this->hasMany('App\Model\FaultSystem', 'system_id');
+	// }
 
-	public function hasmanyinspimage()
-	{
-		return $this->hasMany('App\Model\InspectionImage', 'inspection_id');
-	}
-
-	public function hasmanyinspdoc()
-	{
-		return $this->hasMany('App\Model\InspectionDocument', 'inspection_id');
-	}
-
-	public function hasmanyinspattendees()
-	{
-		return $this->hasMany('App\Model\InspectionAttendee', 'inspection_id');
-	}
+	// public function hasmanyattendees()
+	// {
+	// 	return $this->hasMany('App\Model\TemplateChecklist', 'template_id');
+	// }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // https://laravel.com/docs/5.6/eloquent-relationships#many-to-many
@@ -47,14 +37,14 @@ class Inspection extends Model
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // belongto
 
-	public function belongtostaff()
-	{
-		return $this->belongsTo('App\Model\Staff', 'staff_id');
-	}
+	// public function belongtostaff()
+	// {
+	// 	return $this->belongsTo('App\Model\Staff', 'staff_id');
+	// }
 
-	public function belongtosystem()
+	public function belongtoinspection()
 	{
-		return $this->belongsTo('App\Model\System', 'system_id');
+		return $this->belongsTo('App\Model\Inspection', 'inspection_id');
 	}
 
 	// public function belongtostatus()

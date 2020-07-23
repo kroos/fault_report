@@ -23,9 +23,9 @@ $j = 1;
 			<input type="hidden" name="system_id" value="{{ $template->system_id }}">
 
 		<div class="form-group row {{ $errors->has('title') ? 'has-error' : NULL }}">
-			{{ Form::label( 'titl', 'PPM Checklist Title : ', ['class' => 'col-4 col-form-label text-right'] ) }}
+			{{ Form::label( 'titl', 'PPM Inspection Checklist Title : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 			<div class="col-6">
-				{{ Form::text('title', @$value, ['class' => 'form-control form-control-sm', 'id' => 'titl', 'placeholder' => 'PPM Checklist Title', 'autocomplete' => 'off']) }}
+				{{ Form::text('title', @$value, ['class' => 'form-control form-control-sm', 'id' => 'titl', 'placeholder' => 'PPM Inspection Checklist Title', 'autocomplete' => 'off']) }}
 				@if ($errors->has('title'))
 				<span class="invalid-feedback" role="alert">
 					<strong>{{ $errors->first('title') }}</strong>

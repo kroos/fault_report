@@ -122,8 +122,11 @@ Route::resources([
 /////////////////////////////////////////////////////////////////////////////////////////
 // PPM Checklist
 Route::get('/inspection', 'Checklist\InspectionController@index')->name('inspection.index')->middleware('auth');
-Route::get('/inspection_create', 'Checklist\InspectionController@create')->name('inspection.create')->middleware('auth');
-Route::post('/inspection_store', 'Checklist\InspectionController@store')->name('inspection.store')->middleware('auth');
+Route::get('/inspection/create', 'Checklist\InspectionController@create')->name('inspection.create')->middleware('auth');
+Route::post('/inspection/store', 'Checklist\InspectionController@store')->name('inspection.store')->middleware('auth');
+Route::get('/inspection/{inspection}/show', 'Checklist\InspectionController@show')->name('inspection.show')->middleware('auth');
+Route::get('/inspection/{inspection}/pdf', 'Checklist\InspectionController@showpdf')->name('inspection.showpdf')->middleware('auth');
+Route::get('/inspection/{inspection}/edit', 'Checklist\InspectionController@edit')->name('inspection.edit')->middleware('auth');
 
 
 

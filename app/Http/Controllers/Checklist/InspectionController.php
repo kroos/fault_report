@@ -43,7 +43,55 @@ class InspectionController extends Controller
 
 	public function store(InspectionRequest $request)
 	{
-		dd($request->all());
+		// dd($request->all());
+		// dd($request->image, $request->file('image.*.input'), /*$request->file('image.*.input')->*/);
+
+		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create($request->only(['title', 'date', 'building', 'system_id', 'remarks']));
+
+		if ($request->has('attd')) {
+			foreach($request->attd as $k => $v){
+				$insp->hasmanyinspattendees()->create([
+					'attendees_id' => $v['attendees_id']
+				]);
+			}
+		}
+
+		if ($request->has('form')) {
+			foreach($request->form as $k => $v){
+				$insp->hasmanyinspchecklist()->create([
+					'input' => $v['input'],
+					'label' => $v['label'],
+					'input_type' => $v['input_type'],
+					'remarks' => $v['remarks'],
+				]);
+			}
+		}
+
+		if ($request->has('image')) {
+			foreach($request->image as $k => $v){
+				$insp->hasmanyinspimage()->create([
+					'input' => $v['input']->store('images'),
+					'label' => $v['label'],
+					'original_name' => $v['input']->getClientOriginalName(),
+					'input_type' => $v['input_type'],
+					'remarks' => $v['remarks'],
+				]);
+			}
+		}
+
+		if ($request->has('doc')) {
+			foreach($request->doc as $k => $v){
+					$insp->hasmanyinspdoc()->create([
+						'input' => $v['input']->store('documents'),
+						'label' => $v['label'],
+						'original_name' => $v['input']->getClientOriginalName(),
+						'input_type' => $v['input_type'],
+						'remarks' => $v['remarks'],
+					]);
+			}
+		}
+        Session::flash('flash_message', 'Data successfully inserted!');
+        return redirect( route('inspection.index') );
 	}
 
 	public function show(Inspection $inspection)

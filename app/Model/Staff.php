@@ -32,6 +32,11 @@ class Staff extends Model
 		return $this->hasMany('App\Model\Template', 'staff_id');
 	}
 
+	public function hasmanyinspection()
+	{
+		return $this->hasMany('App\Model\Inspection', 'staff_id');
+	}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // https://laravel.com/docs/5.6/eloquent-relationships#many-to-many

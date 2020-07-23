@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-	<div class="card-header"><h1 class="card-title">PPM Checklist</h1></div>
+	<div class="card-header"><h1 class="card-title">PPM Inspection Checklist</h1></div>
 	<div class="card-body">
 		@include('layouts.info')
 		@include('layouts.errorform')
@@ -13,7 +13,35 @@
 			</li>
 		</ul>
 
-
+		<table class="table table-hover table-sm" style="font-size:12px" id="orderitem1">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>System</th>
+					<th>Title</th>
+					<th>Date</th>
+					<th>Building</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(App\Model\Inspection::all() as $ins)
+					<tr>
+						<td>{{ $ins->id }}</td>
+						<td>{{ $ins->belongtosystem->system }}</td>
+						<td>{{ $ins->title }}</td>
+						<td>{{ Carbon\Carbon::parse($ins->date)->format('D, j M Y') }}</td>
+						<td>{{ $ins->building }}</td>
+						<td>
+							<a href="{!! route('inspection.edit', $ins->id) !!}" title="Update "><i class="far fa-edit"></i></a>
+							<a href="{!! route('inspection.show', $ins->id) !!}" title="Show "><i class="far fa-eye"></i></a>
+							<a href="{!! route('inspection.showpdf', $ins->id) !!}" title="Download "><i class="far fa-file-pdf"></i></a>
+							<span class="text-danger inactivate" data-id="{!! $ins->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
+						</td>
+					</tr>
+				@endforeach
+			</tbody>
+		</table>
 
 
 

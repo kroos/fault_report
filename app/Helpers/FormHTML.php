@@ -13,7 +13,7 @@ class FormHTML
 					<div class="col-8 offset-2">
 						<div class="card">
 							<div class="card-body">
-								<div class="form-group row ">
+								<div class="form-group row">
 									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
 									<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
@@ -246,16 +246,16 @@ class FormHTML
 								<div class="form-group row ">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<div class="col-6">
-										<input type="file" name="form['.$id.'][input]" class="custom-file-input form-input-sm" id="'.$id.'" >
+										<input type="file" name="image['.$id.'][input]" class="custom-file-input form-input-sm" id="'.$id.'" >
 										<label class="custom-file-label" for="'.$id.'">Upload</label>
-										<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
-										<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+										<input type="hidden" name="image['.$id.'][label]" value="'.$label.'" />
+										<input type="hidden" name="image['.$id.'][input_type]" value="'.$input_type.'" />
 									</div>
 								</div>
 								<div class="form-group row custom-file mb-3">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
 									<div class="col-6">
-										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+										<input name="image['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
 							</div>
@@ -274,16 +274,16 @@ class FormHTML
 								<div class="form-group row ">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<div class="col-6">
-										<input type="file" name="form['.$id.'][input]" class="custom-file-input form-input-sm" id="'.$id.'" >
+										<input type="file" name="doc['.$id.'][input]" class="custom-file-input form-input-sm" id="'.$id.'" >
 										<label class="custom-file-label" for="'.$id.'">Upload</label>
-										<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
-										<input type="hidden" name="form['.$id.'][input_type]" value="'.$input_type.'" />
+										<input type="hidden" name="doc['.$id.'][label]" value="'.$label.'" />
+										<input type="hidden" name="doc['.$id.'][input_type]" value="'.$input_type.'" />
 									</div>
 								</div>
 								<div class="form-group row custom-file mb-3">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">Remarks : </label>
 									<div class="col-6">
-										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
+										<input name="doc['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
 							</div>
