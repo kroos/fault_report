@@ -70,24 +70,26 @@ class InspectionController extends Controller
 		if ($request->has('image')) {
 			foreach($request->image as $k => $v){
 				$insp->hasmanyinspimage()->create([
-					'input' => $v['input']->store('images'),
+					'input' => $v['input']->store('public/images/inspection/images'),
 					'label' => $v['label'],
 					'original_name' => $v['input']->getClientOriginalName(),
 					'input_type' => $v['input_type'],
 					'remarks' => $v['remarks'],
 				]);
+				File::move(storage_path('app/'.$v['input']->store('public/images/inspection/images')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/images'));
 			}
 		}
 
 		if ($request->has('doc')) {
 			foreach($request->doc as $k => $v){
-					$insp->hasmanyinspdoc()->create([
-						'input' => $v['input']->store('documents'),
-						'label' => $v['label'],
-						'original_name' => $v['input']->getClientOriginalName(),
-						'input_type' => $v['input_type'],
-						'remarks' => $v['remarks'],
-					]);
+				$insp->hasmanyinspdoc()->create([
+					'input' => $v['input']->store('public/images/inspection/documents'),
+					'label' => $v['label'],
+					'original_name' => $v['input']->getClientOriginalName(),
+					'input_type' => $v['input_type'],
+					'remarks' => $v['remarks'],
+				]);
+				File::move(storage_path('app/'.$v['input']->store('public/images/inspection/documents')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/documents'));
 			}
 		}
         Session::flash('flash_message', 'Data successfully inserted!');
@@ -96,7 +98,7 @@ class InspectionController extends Controller
 
 	public function show(Inspection $inspection)
 	{
-//
+		return view('checklist.show', compact(['inspection']));
 	}
 
 	public function edit(Inspection $inspection)

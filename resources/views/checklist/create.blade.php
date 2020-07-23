@@ -268,40 +268,128 @@ $('#form').bootstrapValidator({
 		validating: ''
 	},
 	fields: {
-//		date: {
-//			validators: {
-//				date: {
-//					// format: 'YYYY-MM-DD hh:mm A',
-//					format: 'YYYY-MM-DD',
-//					message: 'The value is not a valid date. '
-//				},
-//				notEmpty:{
-//					message:'Please insert date. '
-//				},
-//			}
-//		},
-//		building: {
-//			validators: {
-//				notEmpty: {
-//					message: 'Please insert building / Area. '
-//				},
-//			}
-//		},
-//		title: {
-//			validators: {
-//				notEmpty: {
-//					message: 'Please insert building / Area. '
-//				},
-//			}
-//		},
+		date: {
+			validators: {
+				date: {
+					// format: 'YYYY-MM-DD hh:mm A',
+					format: 'YYYY-MM-DD',
+					message: 'The value is not a valid date. '
+				},
+				notEmpty:{
+					message:'Please insert date. '
+				},
+			}
+		},
+		building: {
+			validators: {
+				notEmpty: {
+					message: 'Please insert Building / Area. '
+				},
+			}
+		},
+		title: {
+			validators: {
+				notEmpty: {
+					message: 'Please insert title. '
+				},
+			}
+		},
+		remarks: {
+			validators: {
+				notEmpty: {
+					message: 'Please insert remarks. '
+				},
+			}
+		},
 @for($l1=0;$l1<10;$l1++)
-//		'attd[{{ $l1 }}][attendees_id]': {
-//			validators: {
-//				notEmpty: {
-//					message: 'Please select. '
-//				},
-//			}
-//		},
+		'attd[{{ $l1 }}][attendees_id]': {
+			validators: {
+				notEmpty: {
+					message: 'Please select. '
+				},
+			}
+		},
+@endfor
+@for($l2=0;$l2<100;$l2++)
+		'form[{{ $l2 }}][label]': {
+			validators: {
+				notEmpty: {
+					message: 'Please insert value. '
+				},
+			}
+		},
+		'form[{{ $l2 }}][input]': {
+			validators: {
+				notEmpty: {
+					message: 'Please insert value. '
+				},
+			}
+		},
+		'form[{{ $l2 }}][input_type]': {
+			validators: {
+				notEmpty: {
+					message: 'Please insert value. '
+				},
+			}
+		},
+@endfor
+@for($l3=0;$l3<100;$l3++)
+		'image[{{ $l3 }}][label]': {
+			validators: {
+				notEmpty: {
+					message: 'Please insert value. '
+				},
+			}
+		},
+		'image[{{ $l3 }}][input]': {
+			validators: {
+				notEmpty:{
+					message: 'Please upload file. ',
+				},
+				file: {
+					extension: 'jpeg,bmp,png,jpg',
+					type: 'image/jpeg,image/png,image/bmp,image/jpg',
+					maxSize: 20480,
+					message: 'The selected file is not valid'
+				},
+			}
+		},
+		'image[{{ $l3 }}][input_type]': {
+			validators: {
+				notEmpty: {
+					message: 'Please insert value. '
+				},
+			}
+		},
+@endfor
+@for($l4=0;$l4<100;$l4++)
+		'doc[{{ $l4 }}][label]': {
+			validators: {
+				notEmpty: {
+					message: 'Please insert value. '
+				},
+			}
+		},
+		'doc[{{ $l4 }}][input]': {
+			validators: {
+				notEmpty:{
+					message: 'Please upload file. ',
+				},
+				file: {
+					extension: 'pdf,txt,log,docx,doc,xlsx,xls,ppt,pptx',
+					type: 'application/pdf,text/plain,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint',
+					maxSize: 20480,
+					message: 'The selected file is not valid'
+				},
+			}
+		},
+		'doc[{{ $l4 }}][input_type]': {
+			validators: {
+				notEmpty: {
+					message: 'Please insert value. '
+				},
+			}
+		},
 @endfor
 	}
 });

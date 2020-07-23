@@ -39,7 +39,7 @@ class InspectionAttendee extends Model
 
 	public function belongtostaff()
 	{
-		return $this->belongsTo('App\Model\Staff', 'staff_id');
+		return $this->belongsTo('App\Model\Staff', 'attendees_id');
 	}
 
 	public function belongtoinspection()
