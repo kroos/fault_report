@@ -47,7 +47,7 @@
 						<td>{{ $chec->input }}</td>
 					</tr>
 					<tr>
-						<td colspan="2"><p class="text-center">Remarks : {{ $chec->remarks }}</p></td>
+						<td colspan="2"><p class="text-center"><strong>Remarks : </strong>{{ $chec->remarks }}</p></td>
 					</tr>
 					@endforeach
 					@foreach($inspection->hasmanyinspdoc()->get() as $doc)
@@ -58,13 +58,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2"><p class="text-center">Remarks : {{ $doc->remarks }}</p></td>
+						<td colspan="2"><p class="text-center"><strong>Remarks : </strong>{{ $doc->remarks }}</p></td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
 		</div>
-
+<div class="row">
 		@foreach($inspection->hasmanyinspimage()->get() as $im)
 		<div class="col-6">
 				<span class="text-danger delete_image" data-id="{!! $im->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
@@ -74,16 +74,16 @@
 
 			<!-- Modal -->
 			<div class="modal fade" id="form-{!! $im->id !!}" tabindex="-1" role="dialog" aria-labelledby="Image-{!! $im->id !!}" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+				<div class="modal-dialog modal-dialog-centered ">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="Form-{!! $im->id !!}">Image</h5>
+							<h5 class="modal-title" id="Image-{!! $im->id !!}">Image</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body">
-							<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+							<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="{{ $im->remarks }}">
 						</div>
 						<div class="modal-footer">
 							{!! Form::button('Close', ['type' => 'button', 'class' => 'btn btn-primary', 'data-dismiss' => 'modal']) !!}
@@ -94,6 +94,7 @@
 			<!-- modal end -->
 		</div>
 		@endforeach
+</div>
 
 	</div>
 </div>

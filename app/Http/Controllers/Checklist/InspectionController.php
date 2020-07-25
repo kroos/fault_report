@@ -101,6 +101,11 @@ class InspectionController extends Controller
 		return view('checklist.show', compact(['inspection']));
 	}
 
+	public function showpdf(Inspection $inspection)
+	{
+		return view('checklist.showpdf', compact(['inspection']));
+	}
+
 	public function edit(Inspection $inspection)
 	{
 //
