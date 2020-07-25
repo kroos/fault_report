@@ -349,7 +349,7 @@ $('#form').bootstrapValidator({
 				file: {
 					extension: 'jpeg,bmp,png,jpg',
 					type: 'image/jpeg,image/png,image/bmp,image/jpg',
-					maxSize: 20480,
+					maxSize: 5120*4096,
 					message: 'The selected file is not valid'
 				},
 			}
@@ -378,7 +378,7 @@ $('#form').bootstrapValidator({
 				file: {
 					extension: 'pdf,txt,log,docx,doc,xlsx,xls,ppt,pptx',
 					type: 'application/pdf,text/plain,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint',
-					maxSize: 20480,
+					maxSize: 5120*4096,
 					message: 'The selected file is not valid'
 				},
 			}

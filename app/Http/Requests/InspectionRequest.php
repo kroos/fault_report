@@ -25,11 +25,11 @@ class InspectionRequest extends FormRequest
 			'form.*.input_type' => 'required',
 			'form.*.remarks' => 'nullable|max:4000',
 			'image.*.label' => 'required|max:255',
-			'image.*.input' => 'required|file|lte:20480|mimes:jpeg,bmp,png,jpg',
+			'image.*.input' => 'required|file|max:20480|mimes:jpeg,bmp,png,jpg',
 			'image.*.input_type' => 'required',
 			'image.*.remarks' => 'nullable|max:4000',
 			'doc.*.label' => 'required|max:255',
-			'doc.*.input' => 'required|file|lte:20480|mimes:pdf,txt,log,docx,doc,xlsx,xls,ppt,pptx',
+			'doc.*.input' => 'required|file|max:20480|mimes:pdf,txt,log,docx,doc,xlsx,xls,ppt,pptx',
 			'doc.*.input_type' => 'required',
 			'doc.*.remarks' => 'nullable|max:4000',
 		];

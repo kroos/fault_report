@@ -76,7 +76,7 @@ class InspectionController extends Controller
 					'input_type' => $v['input_type'],
 					'remarks' => $v['remarks'],
 				]);
-				File::move(storage_path('app/'.$v['input']->store('public/images/inspection/images')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/images'));
+				// File::move(storage_path('app/'.$v['input']->store('public/images/inspection/images')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/images'));
 			}
 		}
 
@@ -89,7 +89,7 @@ class InspectionController extends Controller
 					'input_type' => $v['input_type'],
 					'remarks' => $v['remarks'],
 				]);
-				File::move(storage_path('app/'.$v['input']->store('public/images/inspection/documents')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/documents'));
+				// File::move(storage_path('app/'.$v['input']->store('public/images/inspection/documents')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/documents'));
 			}
 		}
         Session::flash('flash_message', 'Data successfully inserted!');
