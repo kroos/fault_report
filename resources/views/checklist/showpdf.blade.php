@@ -326,13 +326,59 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 	// $pdf->Cell(0, 10, $inspection->remarks, 'BR', 1, 'C');
 
 	// // $pdf->Ln(5);
-	// // $pdf->Cell(40, 5, 'Delivery Instructions:', 0, 0, 'L');
 	// // $pdf->SetFont('Arial', 'B', 9);
 	// // $pdf->Cell(0, 5, 'inspectionItem::find($arr[0])->belongtoorderdelivery->delivery_method', 0, 1, 'L');
 	// // $pdf->SetFont('Arial', NULL, 9);
 	// // $pdf->Cell(40, 5, 'Delivery Remarks:', 0, 0, 'L');
-	// // $pdf->SetFont('Arial', 'B', 9);
-	// // $pdf->MultiCell(0, 5, 'inspectionItem::find($arr[0])->delivery_remarks', 0, 'L');
+	$pdf->Cell(30, 5, 'Remarks:', 0, 0, 'L');
+	$pdf->SetFont('Arial', 'B', 9);
+	$pdf->MultiCell(0, 5, $inspection->remarks, 0, 'L');
+	$pdf->SetFont('Arial', NULL, 9);
+
+
+	// start new page for image
+	$pdf->AddPage();
+
+	$pdf->Ln(5);
+	$pdf->SetFont('Arial', 'BU', 9);
+	$pdf->SetTextColor(25, 25, 255);
+	$pdf->Cell(0, 5, 'Inspection Image', 0, 1, 'C');
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->SetFont('Arial', NULL, 9);
+
+	$pdf->Ln(5);
+
+	foreach($inspection->hasmanyinspimage()->get() as $it) {
+		$pdf->Cell(95, $pdf->GetY(), NULL, 1, 1, 'C', $pdf->Image($it->input, $pdf->GetX(), $pdf->GetY(), 93));
+
+
+		// $pdf->Cell(25, 10, $pdf->GetY(), 1, 0, 'C');
+		// $pdf->Cell(25, 10, $pdf->GetX(), 1, 0, 'C');
+		// $pdf->Cell(90, 5, $it->remarks, 'L', 2, 'L');
+		// $pdf->Cell(90, 5, $it->remarks, 'LB', 0, 'L');
+		// $pdf->SetY( $pdf->GetY() );
+		// $pdf->SetX( 105 );
+		// $pdf->Cell(20, 10, $it->remarks, 'LB', 0, 'C');
+		// $pdf->Cell(20, 10, $it->remarks, 1, 0, 'C');
+		// $pdf->Cell(0, 10, $it->remarks, 'LBR', 1, 'C');
+	}
+
+	$pdf->Ln(5);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	// // 50mm from bottom
