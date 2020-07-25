@@ -17,6 +17,7 @@ class InspectionRequest extends FormRequest
 			'date' => 'required|date',
 			'system_id' => 'required',
 			'title' => 'required',
+			'tag' => 'required',
 			'attd.*.attendees_id' => 'required',
 			'building' => 'required|max:255',
 			'remarks' => 'nullable|max:4000',

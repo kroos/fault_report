@@ -10,16 +10,16 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<th scope="row"><span class="float-right">Building : </span></th>
-					<td>{{ $inspection->building }}</td>
-				</tr>
-				<tr>
 					<th scope="row"><span class="float-right">Date : </span></th>
 					<td>{{ Carbon\Carbon::parse($inspection->date)->format('D, j M Y') }}</td>
 				</tr>
 				<tr>
-					<th scope="row"><span class="float-right">Remarks : </span></th>
-					<td>{{ $inspection->remarks }}</td>
+					<th scope="row"><span class="float-right">Building : </span></th>
+					<td>{{ $inspection->building }}</td>
+				</tr>
+				<tr>
+					<th scope="row"><span class="float-right">Tag : </span></th>
+					<td>{{ $inspection->tag }}</td>
 				</tr>
 				<tr>
 					<th scope="row"><span class="float-right">Attendees : </span></th>
@@ -28,6 +28,10 @@
 							{{ $attd->belongtostaff->name }}<br />
 						@endforeach
 					</td>
+				</tr>
+				<tr>
+					<th scope="row"><span class="float-right">Remarks : </span></th>
+					<td>{{ $inspection->remarks }}</td>
 				</tr>
 			</tbody>
 		</table>
