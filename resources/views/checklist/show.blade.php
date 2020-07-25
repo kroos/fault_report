@@ -43,16 +43,22 @@
 				<tbody>
 					@foreach($inspection->hasmanyinspchecklist()->get() as $chec)
 					<tr>
-						<th scope="row"><span class="float-right">{{ $chec->label }}</span></th>
+						<th scope="row"><span class="float-right">{{ $chec->label }} : </span></th>
 						<td>{{ $chec->input }}</td>
+					</tr>
+					<tr>
+						<td colspan="2"><p class="text-center">Remarks : {{ $chec->remarks }}</p></td>
 					</tr>
 					@endforeach
 					@foreach($inspection->hasmanyinspdoc()->get() as $doc)
 					<tr>
-						<th scope="row"><span class="float-right">{{ $doc->label }}</span></th>
+						<th scope="row"><span class="float-right">{{ $doc->label }} : </span></th>
 						<td>
 							<a href="{{ asset($doc->input) }}" target="_blank">{{ $doc->original_name }}</a>
 						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><p class="text-center">Remarks : {{ $doc->remarks }}</p></td>
 					</tr>
 					@endforeach
 				</tbody>
