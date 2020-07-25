@@ -132,7 +132,7 @@ Route::get('/inspection/{inspection}/edit', 'Checklist\InspectionController@edit
 
 
 Route::get('/template', 'Checklist\TemplateController@index')->name('template.index')->middleware('auth');
-Route::get('/template_create', 'Checklist\TemplateController@create')->name('template.create')->middleware('auth');
-Route::post('/template_store', 'Checklist\TemplateController@store')->name('template.store')->middleware('auth');
-Route::get('/template_edit/{template}', 'Checklist\TemplateController@edit')->name('template.edit')->middleware('auth');
+Route::get('/template/create', 'Checklist\TemplateController@create')->name('template.create')->middleware('auth');
+Route::post('/template/store', 'Checklist\TemplateController@store')->name('template.store')->middleware('auth');
+Route::get('/template/{template}/edit', 'Checklist\TemplateController@edit')->name('template.edit')->middleware('auth');
 
