@@ -189,11 +189,93 @@ class PDF_MC_Table extends PDF {
 		}
 }
 
+class PDFTI extends PDF_MC_Table {
+	const DPI = 300;
+	const MM_IN_INCH = 25.4;
+	const A4_HEIGHT = 297;
+	const A4_WIDTH = 210;
+
+	/**
+	* Resize et fit une image image
+	*
+	* @param string $imgPath
+	* @param integer $x
+	* @param integer $y
+	* @param integer $containerWidth
+	* @param integer $containerHeight
+	* @param string $alignment
+	* @return void
+	*/
+	public function imageUniformToFill(string $imgPath, int $x = 0, int $y = 0, int $containerWidth = 210, int $containerHeight = 297, string $alignment = 'C')
+	{
+		list($width, $height) = $this->resizeToFit($imgPath, $containerWidth, $containerHeight);
+	
+		if ($alignment === 'R')
+		{
+			$this->Image($imgPath, $x+$containerWidth-$width, $y+($containerHeight-$height)/2, $width, $height);
+		}
+		else if ($alignment === 'B')
+		{
+			$this->Image($imgPath, $x, $y+$containerHeight-$height, $width, $height);
+		}
+		else if ($alignment === 'C')
+		{
+			$this->Image($imgPath, $x+($containerWidth-$width)/2, $y+($containerHeight-$height)/2, $width, $height);
+		}
+		else
+		{
+			$this->Image($imgPath, $x, $y, $width, $height);
+		}
+	}
+	
+	/**
+	* Convertit des pixels en mm
+	*
+	* @param integer $val
+	* @return integer
+	*/
+	protected function pixelsToMm(int $val) : int
+	{
+		return (int)(round($val * $this::MM_IN_INCH / $this::DPI));
+	}
+	
+	/**
+	* Convertit des mm en pixels
+	*
+	* @param integer $val
+	* @return integer
+	*/
+	protected function mmToPixels(int $val) : int
+	{
+		return (int)(round($this::DPI * $val / $this::MM_IN_INCH));
+	}
+	
+	/**
+	* Resize une image
+	*
+	* @param string $imgPath
+	* @param integer $maxWidth en mm
+	* @param integer $maxHeight en mm
+	* @return int[]
+	*/
+	protected function resizeToFit(string $imgPath, int $maxWidth = 210, int $maxHeight = 297) : array
+	{
+		list($width, $height) = getimagesize($imgPath);
+		$widthScale = $this->mmtopixels($maxWidth) / $width;
+		$heightScale = $this->mmToPixels($maxHeight) / $height;
+		$scale = min($widthScale, $heightScale);
+		return array(
+			$this->pixelsToMM($scale * $width),
+			$this->pixelsToMM($scale * $height)
+		);
+	}
+}
+
 // cari inspection
 $induk = $inspection->hasmanyinspchecklist()->get();
 
 // Instanciation of inherited class
-	$pdf = new PDF_MC_Table('P','mm', 'A4');
+	$pdf = new PDFTI('P','mm', 'A4');
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
 	$pdf->SetTitle($inspection->belongtosystem->system.' : PPM Inspection Checklist');
@@ -348,8 +430,9 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 
 	$pdf->Ln(5);
 
+	$kl = 1;
 	foreach($inspection->hasmanyinspimage()->get() as $it) {
-		$pdf->Cell(95, $pdf->GetY(), NULL, 1, 1, 'C', $pdf->Image($it->input, $pdf->GetX(), $pdf->GetY(), 93));
+		$pdf->Cell(95, 55, NULL, 0, $kl++%2==0?1:0, 'C', $pdf->imageUniformToFill($it->input, $pdf->GetX(), $pdf->GetY(), 93, 53, 'C'));
 
 
 		// $pdf->Cell(25, 10, $pdf->GetY(), 1, 0, 'C');
@@ -363,9 +446,18 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 		// $pdf->Cell(0, 10, $it->remarks, 'LBR', 1, 'C');
 	}
 
-	$pdf->Ln(5);
+	$pdf->AddPage();
 
+	$pdf->SetFont('Arial', 'BU', 9);
+	$pdf->SetTextColor(25, 25, 255);
+	$pdf->Cell(0, 5, 'Inspection Documents', 0, 1, 'C');
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->SetFont('Arial', NULL, 9);
 
+	foreach($inspection->hasmanyinspdoc()->get() as $it1){
+		$pdf_data = file_get_contents('C:/Users/Telecom/Desktop/fault_report/storage/app/'.$it1->input);
+		$pdf->Cell(0, 5, $it1->label.' : '.$it1->original_name, 0, 0, 'C', false, asset($it1->input));
+	}
 
 
 

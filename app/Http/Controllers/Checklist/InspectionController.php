@@ -46,7 +46,7 @@ class InspectionController extends Controller
 		// dd($request->all());
 		// dd($request->image, $request->file('image.*.input'), /*$request->file('image.*.input')->*/);
 
-		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create($request->only(['title', 'date', 'building', 'system_id', 'remarks']));
+		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create($request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks']));
 
 		if ($request->has('attd')) {
 			foreach($request->attd as $k => $v){
