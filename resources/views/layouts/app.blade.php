@@ -37,7 +37,7 @@
 	</div>
 
 
-	<footer class="mt-auto  py-4 bg-dark text-white-50 ">
+	<footer class="mt-auto py-4 bg-dark text-white-50 ">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">

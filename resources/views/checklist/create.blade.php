@@ -22,6 +22,18 @@ $j = 1;
 		<div class="card-body">
 			<input type="hidden" name="system_id" value="{{ $template->system_id }}">
 
+		<div class="form-group row {{ $errors->has('title') ? 'has-error' : NULL }}">
+			{{ Form::label( 'titlel', 'Title : ', ['class' => 'col-4 col-form-label text-right'] ) }}
+			<div class="col-6">
+				{{ Form::text('title', @$value, ['class' => 'form-control form-control-sm', 'id' => 'titlel', 'placeholder' => 'Title', 'autocomplete' => 'off']) }}
+				@if ($errors->has('title'))
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $errors->first('title') }}</strong>
+				</span>
+				@endif
+			</div>
+		</div>
+
 		<div class="form-group row {{ $errors->has('date') ? 'has-error' : NULL }}">
 			{{ Form::label( 'date', 'Conducted On : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 			<div class="col-6">

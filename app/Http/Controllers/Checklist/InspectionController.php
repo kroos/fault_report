@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 
 // load model
 use App\Model\Inspection;
+use App\Model\InspectionReviewed;
+use App\Model\InspectionApproved;
 
 // load image library
 use Intervention\Image\ImageManagerStatic as Image;
 
 // load validation
 use App\Http\Requests\InspectionRequest;
+use App\Http\Requests\InspectionReviewRequest;
 
 use \Carbon\Carbon;
 
@@ -111,9 +114,28 @@ class InspectionController extends Controller
 //
 	}
 
-	public function update(InspectionRequest $request, Inspection $inspection)
+	public function update(Request $request, Inspection $inspection)
 	{
-//
+		// dd($request->all());
+		// $inspection->update(  );
+	}
+
+	public function updatereview(InspectionReviewRequest $request, Inspection $inspection)
+	{
+		// dd($request->all());
+		if ($request->reviewed === 'false') {		// harey... rupanya benda ni string...
+			$inspection->update([
+				'ready' => NULL
+			]);
+		} else {
+			$inspection->update( ['reviewed' => 1] );
+		}
+
+		InspectionReviewed::create( \Arr::add(\Arr::add($request->only(['comments']), 'reviewed_id', \Auth::user()->id), 'inspection_id', $inspection->id) );
+		return response()->json([
+			'message' => 'Done Review',
+			'status' => 'success'
+		]);
 	}
 
 	public function destroy(Inspection $inspection)
