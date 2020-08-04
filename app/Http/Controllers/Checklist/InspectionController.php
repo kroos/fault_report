@@ -16,6 +16,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 // load validation
 use App\Http\Requests\InspectionRequest;
 use App\Http\Requests\InspectionReviewRequest;
+use App\Http\Requests\InspectionApproveRequest;
 
 use \Carbon\Carbon;
 
@@ -134,6 +135,25 @@ class InspectionController extends Controller
 		InspectionReviewed::create( \Arr::add(\Arr::add($request->only(['comments']), 'reviewed_id', \Auth::user()->id), 'inspection_id', $inspection->id) );
 		return response()->json([
 			'message' => 'Done Review',
+			'status' => 'success'
+		]);
+	}
+
+	public function updateapprove(InspectionApproveRequest $request, Inspection $inspection)
+	{
+		// dd($request->all());
+		if ($request->approved === 'false') {		// harey... rupanya benda ni string...
+			$inspection->update([
+				'ready' => NULL,
+				'reviewed' =>NULL
+			]);
+		} else {
+			$inspection->update( ['approved' => 1] );
+		}
+
+		InspectionApproved::create( \Arr::add(\Arr::add($request->only(['comments']), 'approved_id', \Auth::user()->id), 'inspection_id', $inspection->id) );
+		return response()->json([
+			'message' => 'Done Approved',
 			'status' => 'success'
 		]);
 	}

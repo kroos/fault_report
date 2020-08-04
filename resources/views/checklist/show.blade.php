@@ -106,7 +106,7 @@
 				<button class="btn btn-primary" role="button" aria-pressed="true" id="review"><i class="fas fa-binoculars"></i> Review</button>
 				@endif
 				@if($inspection->reviewed !== NULL && $inspection->approved == NULL)
-				<button class="btn btn-primary" role="button" aria-pressed="true" id=""><i class="far fa-thumbs-up"></i> Approval</button>
+				<button class="btn btn-primary" role="button" aria-pressed="true" id="approve"><i class="far fa-thumbs-up"></i> Approval</button>
 				@endif
 			</div>
 		</div>
@@ -118,7 +118,7 @@
 
 @section('js')
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $("#review").click(function (event){
 	event.preventDefault();
 	productId = {{ $inspection->id }};
@@ -189,6 +189,78 @@ $("#review").click(function (event){
 	})
 });
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$("#approve").click(function (event){
+	event.preventDefault();
+	productId = {{ $inspection->id }};
+
+	swal.fire({
+		width: '75%',
+		title: 'Approve Comment',
+		text: "Please approve",
+		type: 'question',
+		showCancelButton: true,
+		confirmButtonText: 'Submit',
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		showLoaderOnConfirm: true,
+		allowOutsideClick: false,
+		allowEscapeKey: false,
+		html:
+
+				'<div class="form-group row ">' +
+					'<label for="sta" class="col-md-4 col-form-label text-md-right">Approve : </label>' +
+					'<div class="col-md-6">' +
+						'<div class="form-check">' +
+							'<div class="pretty p-icon p-round p-pulse">' +
+								'<input type="checkbox" name="approved" class="form-check-input" id="p0" value="1" />' +
+								'<div class="state p-success">' +
+									'<i class="icon mdi mdi-check"></i>' +
+									'<label class="form-check-label" for="p0">Approved</label>' +
+								'</div>' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+				'<div class="form-group row ">' +
+					'<label for="iss" class="col-md-4 col-form-label text-md-right">Comment : </label>' +
+					'<div class="col-md-6">' +
+						'<textarea class="form-control form-control-sm" id="iss" placeholder="Comment" autocomplete="off" name="comments"></textarea>' +
+					'</div>' +
+				'</div>'
+		,
+		preConfirm: function() {
+			return new Promise(function(resolve) {
+				$.ajax({
+					type: 'PATCH',
+					url: '{{ url('inspection') }}' + '/' + productId + '/updateapprove',
+					data: {
+							_token : $('meta[name=csrf-token]').attr('content'),
+							id: productId,
+							approved: $('input[name="approved"]').prop("checked"),
+							comments: $('textarea[name="comments"]').val(),
+					},
+					dataType: 'json'
+				})
+				.done(function(response){
+					swal.fire('Done Approved', response.message, response.status)
+					.then(function(){
+						window.location.reload(true);
+					});
+				})
+				.fail(function(jqXHR, textStatus, errorThrown){
+					swal.fire({
+						type: 'error',
+						title: 'Please check your inputs',
+						html: '<p class="text-danger">' + jqXHR.responseJSON.errors.comments + '</p>',
+					});
+				})
+			});
+		},
+	})
+});
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
