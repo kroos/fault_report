@@ -168,6 +168,27 @@ $j = 1;
 		</div>
 	</div>
 
+	<div class="card">
+		<div class="card-header">Ready for Review and Approval</div>
+		<div class="card-body">
+			<div class="form-group row {{ $errors->has('ready') ? 'has-error' : NULL }}">
+				<label for="rem" class="col-4 col-form-label text-right">Ready : </label>
+				<div class="col-6">
+					<div class="form-check">
+						<div class="pretty p-icon p-round p-pulse">
+							<input type="hidden" name="ready" value="" checked />
+							<input type="checkbox" name="ready" class="form-check-input" id="p0" value="1" />
+							<div class="state p-success">
+								<i class="icon mdi mdi-check"></i>
+								<label class="form-check-label" for="p0">Ready for Review and Approval</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="form-group row mb-0">
 		<div class="col-8 offset-4">
 			{!! Form::button('Submit', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
@@ -362,9 +383,9 @@ $('#form').bootstrapValidator({
 		},
 		'image[{{ $l3 }}][input]': {
 			validators: {
-				notEmpty:{
-					message: 'Please upload file. ',
-				},
+//				notEmpty:{
+//					message: 'Please upload file. ',
+//				},
 				file: {
 					extension: 'jpeg,bmp,png,jpg',
 					type: 'image/jpeg,image/png,image/bmp,image/jpg',
@@ -391,9 +412,9 @@ $('#form').bootstrapValidator({
 		},
 		'doc[{{ $l4 }}][input]': {
 			validators: {
-				notEmpty:{
-					message: 'Please upload file. ',
-				},
+//				notEmpty:{
+//					message: 'Please upload file. ',
+//				},
 				file: {
 					extension: 'pdf,txt,log,docx,doc,xlsx,xls,ppt,pptx',
 					type: 'application/pdf,text/plain,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint',

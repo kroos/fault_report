@@ -35,7 +35,7 @@
 						<td>
 							<a href="{!! route('inspection.edit', $ins->id) !!}" title="Update "><i class="far fa-edit"></i></a>
 							<a href="{!! route('inspection.show', $ins->id) !!}" title="Show "><i class="far fa-eye"></i></a>
-							<a href="{!! route('inspection.showpdf', $ins->id) !!}" title="Download "><i class="far fa-file-pdf"></i></a>
+							<a href="{!! route('inspection.showpdf', $ins->id) !!}" title="Download" target="_blank"><i class="far fa-file-pdf"></i></a>
 							<span class="text-danger delete" data-id="{!! $ins->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 						</td>
 					</tr>

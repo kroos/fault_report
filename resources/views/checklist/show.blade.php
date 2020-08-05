@@ -99,14 +99,51 @@
 			</div>
 			@endforeach
 		</div>
+<p>&nbsp;</p>
+
+		<div class="row">
+			<div class="col-6">
+				<div class="card">
+					<div class="card-header">Reviewer</div>
+					<div class="card-body">
+						@foreach($inspection->hasmanyinspreviewed()->get() as $ir)
+							<div class="row justify-content-center">
+								<div class="col-4">{{ $ir->belongtostaff->name }}</div>
+								<div class="col-8">{{ $ir->comments }}</div>
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-6">
+				<div class="card">
+					<div class="card-header">Approver</div>
+					<div class="card-body">
+						@foreach($inspection->hasmanyinspapproved()->get() as $ir)
+							<div class="row justify-content-center">
+								<div class="col-4">{{ $ir->belongtostaff->name }}</div>
+								<div class="col-8">{{ $ir->comments }}</div>
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</div>
+
 		@if($inspection->ready == 1)
 		<div class="row justify-content-center">
 			<div class="col-auto">
 				@if($inspection->reviewed == NULL)
-				<button class="btn btn-primary" role="button" aria-pressed="true" id="review"><i class="fas fa-binoculars"></i> Review</button>
+				@if( $inspection->staff_id !=  \Auth::user()->belongtostaff->id )
+				@if( \Auth::user()->belongtostaff->id == 3 || \Auth::user()->belongtostaff->id == 6 || \Auth::user()->belongtostaff->id == 7 )
+					<button class="btn btn-primary" role="button" aria-pressed="true" id="review"><i class="fas fa-binoculars"></i> Review</button>
+				@endif
+				@endif
 				@endif
 				@if($inspection->reviewed !== NULL && $inspection->approved == NULL)
-				<button class="btn btn-primary" role="button" aria-pressed="true" id="approve"><i class="far fa-thumbs-up"></i> Approval</button>
+				@if(\Auth::user()->belongtostaff->id == 2 || \Auth::user()->belongtostaff->id == 7)
+					<button class="btn btn-primary" role="button" aria-pressed="true" id="approve"><i class="far fa-thumbs-up"></i> Approval</button>
+				@endif
 				@endif
 			</div>
 		</div>

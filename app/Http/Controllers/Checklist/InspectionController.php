@@ -48,9 +48,9 @@ class InspectionController extends Controller
 	public function store(InspectionRequest $request)
 	{
 		// dd($request->all());
-		// dd($request->image, $request->file('image.*.input'), /*$request->file('image.*.input')->*/);
+		// dd($request->image, $request->file('image.*.input'), $request->has('image.*.input'));
 
-		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create($request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks']));
+		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create($request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']));
 
 		if ($request->has('attd')) {
 			foreach($request->attd as $k => $v){
@@ -71,7 +71,7 @@ class InspectionController extends Controller
 			}
 		}
 
-		if ($request->has('image')) {
+		if ($request->has('image.*.input')) {
 			foreach($request->image as $k => $v){
 				$insp->hasmanyinspimage()->create([
 					'input' => $v['input']->store('public/images/inspection/images'),
@@ -84,7 +84,7 @@ class InspectionController extends Controller
 			}
 		}
 
-		if ($request->has('doc')) {
+		if ($request->has('doc.*.input')) {
 			foreach($request->doc as $k => $v){
 				$insp->hasmanyinspdoc()->create([
 					'input' => $v['input']->store('public/images/inspection/documents'),
