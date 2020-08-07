@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 // load model
 use App\Model\Inspection;
+use App\Model\InspectionAttendee;
+use App\Model\InspectionChecklist;
+use App\Model\InspectionImage;
+use App\Model\InspectionDocument;
 use App\Model\InspectionReviewed;
 use App\Model\InspectionApproved;
 
@@ -71,7 +75,7 @@ class InspectionController extends Controller
 			}
 		}
 
-		if ($request->has('image.*.input')) {
+		if ($request->file('image.*.input')) {
 			foreach($request->image as $k => $v){
 				$insp->hasmanyinspimage()->create([
 					'input' => $v['input']->store('public/images/inspection/images'),
@@ -84,7 +88,7 @@ class InspectionController extends Controller
 			}
 		}
 
-		if ($request->has('doc.*.input')) {
+		if ($request->file('doc.*.input')) {
 			foreach($request->doc as $k => $v){
 				$insp->hasmanyinspdoc()->create([
 					'input' => $v['input']->store('public/images/inspection/documents'),
@@ -96,8 +100,8 @@ class InspectionController extends Controller
 				File::move(storage_path('app/'.$v['input']->store('public/images/inspection/documents')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/documents'));
 			}
 		}
-        Session::flash('flash_message', 'Data successfully inserted!');
-        return redirect( route('inspection.index') );
+		Session::flash('flash_message', 'Data successfully inserted!');
+		return redirect( route('inspection.index') );
 	}
 
 	public function show(Inspection $inspection)
@@ -112,13 +116,74 @@ class InspectionController extends Controller
 
 	public function edit(Inspection $inspection)
 	{
-//
+		return view('checklist.edit', compact(['inspection']));
 	}
 
-	public function update(Request $request, Inspection $inspection)
+	public function update(InspectionRequest $request, Inspection $inspection)
 	{
 		// dd($request->all());
-		// $inspection->update(  );
+		$inspection->update( $request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']) );
+
+		if ($request->has('attd')) {
+			foreach($request->attd as $k => $v){
+				InspectionAttendee::updateOrCreate(
+					['id' => $v['id']],
+					[
+						'inspection_id' => $inspection->id,
+						'attendees_id' => $v['attendees_id']
+					]);
+			}
+		}
+
+		if ($request->has('form')) {
+			foreach($request->form as $k => $v){
+				InspectionChecklist::updateOrCreate(
+					['id' => $v['id']],
+					[
+					'inspection_id' => $inspection->id,
+					'input' => $v['input'],
+					'label' => $v['label'],
+					'input_type' => $v['input_type'],
+					'remarks' => $v['remarks'],
+				]);
+			}
+		}
+
+		if ($request->file('image.*.input')) {
+			foreach($request->image as $k => $v){
+				InspectionImage::UpdateOrCreate(
+				// $inspection->hasmanyinspimage()->create(
+					['id' => $v['id']],
+					[
+					'inspection_id' => $inspection->id,
+					'input' => $v['input']->store('public/images/inspection/images'),
+					'label' => $v['label'],
+					'original_name' => $v['input']->getClientOriginalName(),
+					'input_type' => $v['input_type'],
+					'remarks' => $v['remarks'],
+				]);
+				// File::move(storage_path('app/'.$v['input']->store('public/images/inspection/images')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/images'));
+			}
+		}
+
+		if ($request->file('doc.*.input')) {
+			foreach($request->doc as $k => $v){
+				InspectionDocument::UpdateOrCreate(
+				// $inspection->hasmanyinspdoc()->create(
+					['id' => $v['id']],
+					[
+					'inspection_id' => $inspection->id,
+					'input' => $v['input']->store('public/images/inspection/documents'),
+					'label' => $v['label'],
+					'original_name' => $v['input']->getClientOriginalName(),
+					'input_type' => $v['input_type'],
+					'remarks' => $v['remarks'],
+				]);
+				// File::move(storage_path('app/'.$v['input']->store('public/images/inspection/documents')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/documents'));
+			}
+		}
+        Session::flash('flash_message', 'Data successfully inserted!');
+        return redirect( route('inspection.index') );
 	}
 
 	public function updatereview(InspectionReviewRequest $request, Inspection $inspection)
@@ -160,6 +225,16 @@ class InspectionController extends Controller
 
 	public function destroy(Inspection $inspection)
 	{
-//
+		$inspection->hasmanyinspattendees()->delete();
+		$inspection->hasmanyinspchecklist()->delete();
+
+		$inspection->hasmanyinspimage()->delete();
+
+		$inspection->hasmanyinspdoc()->delete();
+		Inspection::destroy($inspection->id);
+		return response()->json([
+			'message' => 'Data deleted',
+			'status' => 'success'
+		]);
 	}
 }

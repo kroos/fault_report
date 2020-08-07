@@ -71,9 +71,9 @@
 		<div class="row">
 			@foreach($inspection->hasmanyinspimage()->get() as $im)
 			<div class="col-6">
-					<span class="text-danger delete_image" data-id="{!! $im->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
+					<span class="text-danger delete_image" title="Delete" data-id="{!! $im->id !!}"><i class="far fa-trash-alt"></i></span>
 					<span data-toggle="modal" data-target="#form-{!! $im->id !!}">
-						<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+						<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="" >
 					</span>
 
 				<!-- Modal -->
@@ -129,6 +129,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 		@if($inspection->ready == 1)
 		<div class="row justify-content-center">
@@ -298,9 +299,56 @@ $("#approve").click(function (event){
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// delete image
+$(document).on('click', '.delete_image', function(e){
+	var productId = $(this).data('id');
+	SwalDelete(productId);
+	e.preventDefault();
+});
+
+function SwalDelete(productId){
+	swal.fire({
+		title: 'Are you sure?',
+		text: "It will be deleted permanently!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!',
+		showLoaderOnConfirm: true,
+
+		preConfirm: function() {
+			return new Promise(function(resolve) {
+				$.ajax({
+					type: 'DELETE',
+					url: '{{ url('inspectionImage') }}' + '/' + productId,
+					data: {
+							_token : $('meta[name=csrf-token]').attr('content'),
+							id: productId,
+					},
+					dataType: 'json'
+				})
+				.done(function(response){
+					swal.fire('Deleted!', response.message, response.status)
+					.then(function(){
+						window.location.reload(true);
+					});
+					//$('#disable_user_' + productId).parent().parent().remove();
+				})
+				.fail(function(){
+					swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+				})
+			});
+		},
+		allowOutsideClick: false
+	})
+	.then((result) => {
+		if (result.dismiss === swal.DismissReason.cancel) {
+			swal.fire('Cancelled', 'Your data is safe from delete', 'info')
+		}
+	});
+}
 
 
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @endsection

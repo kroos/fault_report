@@ -421,134 +421,141 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 	// start new page for image
 	$pdf->AddPage();
 
-	$pdf->Ln(5);
-	$pdf->SetFont('Arial', 'BU', 9);
-	$pdf->SetTextColor(25, 25, 255);
-	$pdf->Cell(0, 5, 'Inspection Image', 0, 1, 'C');
-	$pdf->SetTextColor(0, 0, 0);
-	$pdf->SetFont('Arial', NULL, 9);
+	if ($inspection->hasmanyinspimage()->count()) {
+		$pdf->Ln(5);
+		$pdf->SetFont('Arial', 'BU', 9);
+		$pdf->SetTextColor(25, 25, 255);
+		$pdf->Cell(0, 5, 'Inspection Image', 0, 1, 'C');
+		$pdf->SetTextColor(0, 0, 0);
+		$pdf->SetFont('Arial', NULL, 9);
 
-	$pdf->Ln(5);
+		$pdf->Ln(5);
 
-	$kl = 1;
-	$k = 1;
-	$y = 1;
-	$x = 1;
-	foreach($inspection->hasmanyinspimage()->get() as $it) {
-		$pdf->Cell(95, 55, $y++%2!=0?($x++==$inspection->hasmanyinspimage()->count()?1:0):1, 0, $kl++%2==0?1:($k++==$inspection->hasmanyinspimage()->count()?1:0), 'C', $pdf->imageUniformToFill($it->input, $pdf->GetX(), $pdf->GetY(), 93, 53, 'C'));
+		$kl = 1;
+		$k = 1;
+		$y = 1;
+		$x = 1;
+		foreach($inspection->hasmanyinspimage()->get() as $it) {
+			$pdf->Cell(95, 55, $y++%2!=0?($x++==$inspection->hasmanyinspimage()->count()?1:0):1, 0, $kl++%2==0?1:($k++==$inspection->hasmanyinspimage()->count()?1:0), 'C', $pdf->imageUniformToFill($it->input, $pdf->GetX(), $pdf->GetY(), 93, 53, 'C'));
+		}
+
+		if ($inspection->hasmanyinspimage()->count() % 2 != 0) {
+			$pdf->Ln();
+		} else {
+			$pdf->Ln(5);
+		}
+		// $pdf->AddPage();
 	}
 
-	if ($inspection->hasmanyinspimage()->count() % 2 != 0) {
-		$pdf->Ln();
-	} else {
+	if ($inspection->hasmanyinspdoc()->count()) {
+		$pdf->SetFont('Arial', 'BU', 9);
+		$pdf->SetTextColor(25, 25, 255);
+		$pdf->Cell(0, 5, 'Inspection Documents', 0, 1, 'C');
+		$pdf->SetTextColor(0, 0, 0);
+		$pdf->SetFont('Arial', NULL, 9);
+
+		foreach($inspection->hasmanyinspdoc()->get() as $it1){
+			$pdf->Cell(0, 5, $it1->label.' : '.$it1->original_name, 0, 1, 'C', false, asset($it1->input));
+		}
 		$pdf->Ln(5);
 	}
-	// $pdf->AddPage();
 
-	$pdf->SetFont('Arial', 'BU', 9);
-	$pdf->SetTextColor(25, 25, 255);
-	$pdf->Cell(0, 5, 'Inspection Documents', 0, 1, 'C');
-	$pdf->SetTextColor(0, 0, 0);
-	$pdf->SetFont('Arial', NULL, 9);
+	if ($inspection->hasmanyinspreviewed()->count()) {
+		$pdf->SetFont('Arial', 'BU', 9);
+		$pdf->SetTextColor(25, 25, 255);
+		$pdf->Cell(0, 5, 'Inspection Review.', 0, 1, 'C');
+		$pdf->SetTextColor(0, 0, 0);
 
-	foreach($inspection->hasmanyinspdoc()->get() as $it1){
-		$pdf->Cell(0, 5, $it1->label.' : '.$it1->original_name, 0, 1, 'C', false, asset($it1->input));
-	}
-	$pdf->Ln(5);
+		// $pdf->Ln(5);
 
-	$pdf->SetFont('Arial', 'BU', 9);
-	$pdf->SetTextColor(25, 25, 255);
-	$pdf->Cell(0, 5, 'Inspection Review.', 0, 1, 'C');
-	$pdf->SetTextColor(0, 0, 0);
+		$pdf->SetFont('Arial', 'B', 9);
+		$pdf->SetWidths([10, 60, 120]);
 
-	// $pdf->Ln(5);
+		// // set alignment
+		$pdf->SetAligns(['C', 'C', 'C']);
 
-	$pdf->SetFont('Arial', 'B', 9);
-	$pdf->SetWidths([10, 60, 120]);
-
-	// // set alignment
-	$pdf->SetAligns(['C', 'C', 'C']);
-
-	// // set line heights. This is the height of each lines, not rows.
-	$pdf->SetLineHeight(5);
-
-	$pdf->Row([
-		'#',
-		'Reviewer',
-		'Comment',
-	]);
-
-	$pdf->SetFont('Arial', NULL, 9);
-
-	// starting PDF_MC_Table
-	// set width for each column (5 columns)
-	$pdf->SetWidths([10, 60, 120]);
-
-	// // set alignment
-	$pdf->SetAligns(['C', 'L', 'L']);
-
-	// set line heights. This is the height of each lines, not rows.
-	$pdf->SetLineHeight(5);
-
-	$l = 1;
-	foreach($inspection->hasmanyinspreviewed()->get() as $it) {
+		// // set line heights. This is the height of each lines, not rows.
+		$pdf->SetLineHeight(5);
 
 		$pdf->Row([
-			// $it->order_item."\r\n".$it->item_additional_info,
-			$l++,
-			$it->belongtostaff->name,
-			$it->comments,
+			'#',
+			'Reviewer',
+			'Comment',
 		]);
+
+		$pdf->SetFont('Arial', NULL, 9);
+
+		// starting PDF_MC_Table
+		// set width for each column (5 columns)
+		$pdf->SetWidths([10, 60, 120]);
+
+		// // set alignment
+		$pdf->SetAligns(['C', 'L', 'L']);
+
+		// set line heights. This is the height of each lines, not rows.
+		$pdf->SetLineHeight(5);
+
+		$l = 1;
+		foreach($inspection->hasmanyinspreviewed()->get() as $it) {
+
+			$pdf->Row([
+				// $it->order_item."\r\n".$it->item_additional_info,
+				$l++,
+				$it->belongtostaff->name,
+				$it->comments,
+			]);
+		}
+
+		$pdf->Ln(5);
 	}
 
-	$pdf->Ln(5);
+	if ($inspection->hasmanyinspapproved()->count()) {
+		$pdf->SetFont('Arial', 'BU', 9);
+		$pdf->SetTextColor(25, 25, 255);
+		$pdf->Cell(0, 5, 'Inspection Approve.', 0, 1, 'C');
+		$pdf->SetTextColor(0, 0, 0);
 
-	$pdf->SetFont('Arial', 'BU', 9);
-	$pdf->SetTextColor(25, 25, 255);
-	$pdf->Cell(0, 5, 'Inspection Approve.', 0, 1, 'C');
-	$pdf->SetTextColor(0, 0, 0);
+		// $pdf->Ln(5);
 
-	// $pdf->Ln(5);
+		$pdf->SetFont('Arial', 'B', 9);
+		$pdf->SetWidths([10, 60, 120]);
 
-	$pdf->SetFont('Arial', 'B', 9);
-	$pdf->SetWidths([10, 60, 120]);
+		// // set alignment
+		$pdf->SetAligns(['C', 'C', 'C']);
 
-	// // set alignment
-	$pdf->SetAligns(['C', 'C', 'C']);
-
-	// // set line heights. This is the height of each lines, not rows.
-	$pdf->SetLineHeight(5);
-
-	$pdf->Row([
-		'#',
-		'Approver',
-		'Comment',
-	]);
-
-	$pdf->SetFont('Arial', NULL, 9);
-
-	// starting PDF_MC_Table
-	// set width for each column (5 columns)
-	$pdf->SetWidths([10, 60, 120]);
-
-	// // set alignment
-	$pdf->SetAligns(['C', 'L', 'L']);
-
-	// set line heights. This is the height of each lines, not rows.
-	$pdf->SetLineHeight(5);
-
-	$l = 1;
-	foreach($inspection->hasmanyinspapproved()->get() as $it) {
+		// // set line heights. This is the height of each lines, not rows.
+		$pdf->SetLineHeight(5);
 
 		$pdf->Row([
-			// $it->order_item."\r\n".$it->item_additional_info,
-			$l++,
-			$it->belongtostaff->name,
-			$it->comments,
+			'#',
+			'Approver',
+			'Comment',
 		]);
-	}
 
-	$pdf->Ln(5);
+		$pdf->SetFont('Arial', NULL, 9);
+
+		// starting PDF_MC_Table
+		// set width for each column (5 columns)
+		$pdf->SetWidths([10, 60, 120]);
+
+		// // set alignment
+		$pdf->SetAligns(['C', 'L', 'L']);
+
+		// set line heights. This is the height of each lines, not rows.
+		$pdf->SetLineHeight(5);
+
+		$l = 1;
+		foreach($inspection->hasmanyinspapproved()->get() as $it) {
+
+			$pdf->Row([
+				// $it->order_item."\r\n".$it->item_additional_info,
+				$l++,
+				$it->belongtostaff->name,
+				$it->comments,
+			]);
+		}
+		$pdf->Ln(5);
+	}
 
 
 
@@ -573,9 +580,9 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 	// $pdf->Cell(63, 15, NULL, 0, 0, 'C');
 	// $pdf->Cell(0, 15, NULL, 0, 1, 'R');
 
-	$pdf->Cell(63, 5, 'Name: '.$inspection->belongtostaff->name, 0, 0, 'L');
-	$pdf->Cell(63, 5, 'Name:', 0, 0, 'L');
-	$pdf->Cell(0, 5, 'Name:', 0, 1, 'L');
+	$pdf->Cell(63, 5, $inspection->belongtostaff->name, 0, 0, 'L');
+	$pdf->Cell(63, 5, $inspection->hasmanyinspreviewed()->count()>0?$inspection->hasmanyinspreviewed()->first()->belongtostaff->name:NULL, 0, 0, 'L');
+	$pdf->Cell(0, 5, $inspection->hasmanyinspapproved()->count()>0?$inspection->hasmanyinspapproved()->first()->belongtostaff->name:NULL, 0, 1, 'L');
 
 
 

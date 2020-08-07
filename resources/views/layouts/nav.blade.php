@@ -1,6 +1,9 @@
 <?php
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+
+use App\Model\Inspection;
+
 ?>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top navbar-laravel" style="background-color: #e3f2fd;">
 	<div class="container">
@@ -23,7 +26,31 @@ use Carbon\CarbonPeriod;
 					<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
 				</li>
 			@else
+<?php
+if ( Auth::user()->staff_id == 3 || Auth::user()->staff_id == 6 || Auth::user()->staff_id == 7 ) {
+	$ins1 = Inspection::where('ready', 1)->whereNull('reviewed')->count();
+	$insrev = $ins1.'R';
+} else {
+	$insrev = NULL;
+}
 
+if ( Auth::user()->staff_id == 2 || Auth::user()->staff_id == 7 ) {
+	$ins2 = Inspection::where([['ready', 1], ['reviewed', 1]])->whereNull('approved')->count();
+	$insapp = $ins2.'A';
+} else {
+	$insapp = NULL;
+}
+
+if ( Auth::user()->staff_id != 2 || Auth::user()->staff_id != 7 ) {
+	$ins3 = Auth::user()->belongtostaff->hasmanyinspection()->whereNull('ready')->whereNull('reviewed')->whereNull('approved')->count();
+	$insready = $ins3.'Rd';
+} else {
+	$insready = NULL;
+}
+
+
+
+?>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('fault.index') }}">{{ __('Fault Report') }}</a>
 				</li>
@@ -35,9 +62,9 @@ use Carbon\CarbonPeriod;
 				</li>
 				<li class="nav-item dropdown">
 					<a id="navbarDropdown" class="btn btn-sm btn-info text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->belongtostaff->name }}
-<!-- 						<span class="badge badge-danger">{{ __('$allleaves') }}</span>
+						<span class="badge badge-danger">{{ ((Auth::user()->staff_id != 2)?$insready:NULL).' '.((Auth::user()->staff_id != 2)?$insrev:NULL).' '.$insapp }}</span>
 						<span class="caret"></span>
- -->					</a>
+					</a>
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="{{ route('staff.create') }}">{{ __('Create New Members') }}</a>

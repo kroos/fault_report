@@ -33,7 +33,9 @@
 						<td>{{ Carbon\Carbon::parse($ins->date)->format('D, j M Y') }}</td>
 						<td>{{ $ins->building }}</td>
 						<td>
+							@if(is_null($ins->ready))
 							<a href="{!! route('inspection.edit', $ins->id) !!}" title="Update "><i class="far fa-edit"></i></a>
+							@endif
 							<a href="{!! route('inspection.show', $ins->id) !!}" title="Show "><i class="far fa-eye"></i></a>
 							<a href="{!! route('inspection.showpdf', $ins->id) !!}" title="Download" target="_blank"><i class="far fa-file-pdf"></i></a>
 							<span class="text-danger delete" data-id="{!! $ins->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
@@ -55,7 +57,7 @@ $.fn.dataTable.moment( 'ddd, D MMM YYYY h:mm A' );
 $.fn.dataTable.moment( 'ddd, D MMM YYYY' );
 $("#orderitem1,#orderitem2").DataTable({
 	"lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-	"order": [[2, "desc" ]],	// sorting the 2nd column ascending
+	"order": [[0, "asc" ]],	// sorting the 2nd column ascending
 	// responsive: true
 });
 
