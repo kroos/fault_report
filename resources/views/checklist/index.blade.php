@@ -26,7 +26,7 @@
 			</thead>
 			<tbody>
 				@foreach(App\Model\Inspection::all() as $ins)
-					<tr>
+					<tr  {!! (($ins->ready==1 && $ins->reviewed==1)?'class="table-primary"':NULL) !!}>
 						<td>{{ $ins->id }}</td>
 						<td>{{ $ins->belongtosystem->system }}</td>
 						<td>{{ $ins->title }}</td>
