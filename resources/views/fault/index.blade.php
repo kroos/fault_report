@@ -49,7 +49,7 @@ function SwalDelete(productId){
 		cancelButtonColor: '#d33',
 		confirmButtonText: 'Yes, delete it!',
 		showLoaderOnConfirm: true,
-		allowOutsideClick: false
+		allowOutsideClick: false,
 
 		preConfirm: function() {
 			return new Promise(function(resolve) {
