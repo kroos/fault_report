@@ -42,7 +42,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div>
-						<img src="{{ asset('images/logo-149x103.png') }}" class="img-fluid rounded" width="10%" alt="logo">
+						<img src="{{ asset('images/logo.png') }}" class="img-fluid rounded" width="3%" alt="logo">
 						<small>
 							<span class="font-weight-bold">{{ config('app.name') }} - All Rights Reserved</span> <br>
 							<span>&copy; Copyright {{ \Carbon\Carbon::now()->format('Y') }}</span>

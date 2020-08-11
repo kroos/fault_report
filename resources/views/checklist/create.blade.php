@@ -11,7 +11,7 @@ $system = $template->belongtosystem->system;
 $j = 1;
 ?>
 <div class="card">
-	<div class="card-header"><h1 class="card-title">PPM {{ $system }} Checklist Inspection</h1></div>
+	<div class="card-header">PPM {{ $system }} Checklist Inspection</div>
 	<div class="card-body">
 		@include('layouts.info')
 		@include('layouts.errorform')

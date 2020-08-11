@@ -10,9 +10,7 @@ class FormHTML
 	public static function fselectyesno($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
+
 								<div class="form-group row">
 									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
@@ -44,9 +42,6 @@ class FormHTML
 										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
@@ -54,9 +49,6 @@ class FormHTML
 	public static function fselectpassfail($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
 								<div class="form-group row ">
 									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
@@ -88,9 +80,6 @@ class FormHTML
 										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
@@ -98,9 +87,6 @@ class FormHTML
 	public static function fselectgoodbad($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
 								<div class="form-group row ">
 									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
@@ -132,9 +118,6 @@ class FormHTML
 										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
@@ -142,9 +125,6 @@ class FormHTML
 	public static function fselectcompliantnoncompliant($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
 								<div class="form-group row ">
 									<label for="sta" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<input type="hidden" name="form['.$id.'][label]" value="'.$label.'" />
@@ -176,9 +156,6 @@ class FormHTML
 										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
@@ -186,9 +163,6 @@ class FormHTML
 	public static function ftext($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
 								<div class="form-group row ">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<div class="col-6">
@@ -203,9 +177,6 @@ class FormHTML
 										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
@@ -213,9 +184,6 @@ class FormHTML
 	public static function ftextarea($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
 								<div class="form-group row ">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<div class="col-6">
@@ -230,9 +198,6 @@ class FormHTML
 										<input name="form['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
@@ -240,9 +205,6 @@ class FormHTML
 	public static function fuploadimage($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
 								<div class="form-group row ">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<div class="col-6">
@@ -259,9 +221,6 @@ class FormHTML
 										<input name="image['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
@@ -269,9 +228,6 @@ class FormHTML
 	public static function fuploaddoc($id='', $label='', $input_type='')
 	{
 		$text = '
-					<div class="col-8 offset-2">
-						<div class="card">
-							<div class="card-body">
 								<div class="form-group row ">
 									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
 									<div class="col-6">
@@ -288,9 +244,6 @@ class FormHTML
 										<input name="doc['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
 		';
 		return $text;
 	}
