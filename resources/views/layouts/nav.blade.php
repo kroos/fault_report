@@ -7,8 +7,8 @@ use App\Model\Inspection;
 ?>
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top navbar-laravel" style="background-color: #e3f2fd;">
 	<div class="container">
-		<a class="navbar-brand" href="{{ url('/') }}">
-			<img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="img-fluid rounded" width="20%">
+		<a class="navbar-brand py-0" href="{{ url('/') }}">
+			<img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="img-fluid rounded" width="15%">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 			<span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@ use App\Model\Inspection;
 				<!-- Authentication Links -->
 			@guest
 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+					<a class="nav-link py-0" href="{{ route('login') }}">{{ __('Login') }}</a>
 				</li>
 			@else
 <?php
@@ -52,16 +52,16 @@ if ( Auth::user()->staff_id != 2 || Auth::user()->staff_id != 7 ) {
 
 ?>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('fault.index') }}">{{ __('Fault Report') }}</a>
+					<a class="nav-link py-0" href="{{ route('fault.index') }}">{{ __('Fault Report') }}</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('swAccess.index') }}">{{ __('Switches Access') }}</a>
+					<a class="nav-link py-0" href="{{ route('swAccess.index') }}">{{ __('Switches Access') }}</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('inspection.index') }}">{{ __('PPM Inspection Checklist') }}</a>
+					<a class="nav-link py-0" href="{{ route('inspection.index') }}">{{ __('PPM Inspection Checklist') }}</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a id="navbarDropdown" class="btn btn-sm btn-info text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->belongtostaff->name }}
+					<a id="navbarDropdown" class="btn btn-sm btn-info text-white nav-link dropdown-toggle py-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->belongtostaff->name }}
 						<span class="badge badge-danger">{{ ((Auth::user()->staff_id != 2)?$insready:NULL).' '.((Auth::user()->staff_id != 2)?$insrev:NULL).' '.$insapp }}</span>
 						<span class="caret"></span>
 					</a>
