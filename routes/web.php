@@ -143,13 +143,13 @@ Route::get('/template/{template}/edit', 'Checklist\TemplateController@edit')->na
 
 
 
-Use App\Model\Inspection;
-Use App\Notifications\InspectionUserNotification;
-Route::get('/', function () {
-	$user = App\Model\Login::find(1);
-	$user->notify(new InspectionUserNotification($inspection=Inspection::find(1), $status = 'test'));
-	return redirect(route('inspection.index'));;
-});
+// Use App\Model\Inspection;
+// Use App\Notifications\InspectionUserNotification;
+// Route::get('/', function () {
+// 	$user = App\Model\Login::find(1);
+// 	$user->notify(new InspectionUserNotification($inspection=Inspection::find(1), $status = 'test'));
+// 	return redirect(route('inspection.index'));;
+// });
 
 
 // Route::get('send', 'NotifyController@index');
