@@ -141,3 +141,21 @@ Route::get('/template/create', 'Checklist\TemplateController@create')->name('tem
 Route::post('/template/store', 'Checklist\TemplateController@store')->name('template.store')->middleware('auth');
 Route::get('/template/{template}/edit', 'Checklist\TemplateController@edit')->name('template.edit')->middleware('auth');
 
+
+
+Use App\Model\Inspection;
+Use App\Notifications\InspectionUserNotification;
+Route::get('/', function () {
+	$user = App\Model\Login::find(1);
+	$user->notify(new InspectionUserNotification($inspection=Inspection::find(1), $status = 'test'));
+	return redirect(route('inspection.index'));;
+});
+
+
+// Route::get('send', 'NotifyController@index');
+// Route::get('mail', function () {
+//     $order = App\Order::find(1);
+
+//     return (new App\Notifications\InspectionUserNotification($order))
+//                 ->toMail($order->user);
+// });

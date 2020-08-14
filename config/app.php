@@ -191,6 +191,9 @@ return [
         // custom helper provider
         App\Providers\Helper\HelperServiceProvider::class,
 
+        // ModelObserver for observe the change in specific column in database.
+        App\Providers\ModelObserver\InspectionModelServiceProvider::class,
+
     ],
 
     /*

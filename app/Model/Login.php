@@ -11,6 +11,8 @@ class Login extends Authenticatable
 	protected $table = 'logins';
 	use Notifiable;
 
+
+
 	protected $fillable = [
 		'staff_id', 'username', 'password', 'active'
 	];
@@ -25,6 +27,17 @@ class Login extends Authenticatable
 		return $this->belongsTo('App\Model\Staff', 'staff_id');
 	}
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// for email Notifiable
+// https://laravel.com/docs/7.x/notifications
+	public function routeNotificationForMail($notification)
+	{
+		// Return email address only...
+		// return $this->belongtostaff->email;
+
+		// Return name and email address...
+		return [$this->belongtostaff->email => $this->belongtostaff->name];
+	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // all acl will be done here
