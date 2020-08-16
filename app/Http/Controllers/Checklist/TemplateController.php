@@ -16,6 +16,8 @@ use App\Http\Requests\TemplateRequest;
 
 use \Carbon\Carbon;
 
+use Illuminate\Support\Arr;
+
 // load session
 use Session;
 
@@ -44,12 +46,13 @@ class TemplateController extends Controller
 	public function store(TemplateRequest $request)
 	{
 		// dd($request->all());
-		$template = \Auth::user()->belongtostaff->hasmanytemplate()->create($request->only(['title', 'system_id', 'description']));
+		$template = \Auth::user()->belongtostaff->hasmanytemplate()->create(Arr::add($request->only(['title', 'system_id', 'description']), 'active', 1));
 		if ($request->has('form')) {
 			foreach ($request->form as $k1 => $v1) {
 				$template->hasmanychecklist()->create([
 					'input_type' => $v1['input_type'],
-					'label' => $v1['label']
+					'label' => $v1['label'],
+					'active' => 1,
 				]);
 			}
 		}
@@ -74,6 +77,15 @@ class TemplateController extends Controller
 
 	public function destroy(Template $template)
 	{
-//
+		// cant delete the template
+		// Template::destroy($template->id);
+		// $template->hasmanychecklist()->delete();
+
+		$template->update(['active' => 0]);
+		$template->hasmanychecklist()->update(['active' => 0]);
+		return response()->json([
+			'message' => 'Data deleted',
+			'status' => 'success'
+		]);
 	}
 }

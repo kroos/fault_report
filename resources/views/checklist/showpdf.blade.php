@@ -436,7 +436,7 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 		$y = 1;
 		$x = 1;
 		foreach($inspection->hasmanyinspimage()->get() as $it) {
-			$pdf->Cell(95, 55, $y++%2!=0?($x++==$inspection->hasmanyinspimage()->count()?1:0):1, 0, $kl++%2==0?1:($k++==$inspection->hasmanyinspimage()->count()?1:0), 'C', $pdf->imageUniformToFill($it->input, $pdf->GetX(), $pdf->GetY(), 93, 53, 'C'));
+			$pdf->Cell(95, 55, /*$y++%2!=0?($x++==$inspection->hasmanyinspimage()->count()?1:0):1*/NULL, 0, $kl++%2==0?1:($k++==$inspection->hasmanyinspimage()->count()?1:0), 'C', $pdf->imageUniformToFill($it->input, $pdf->GetX(), $pdf->GetY(), 93, 53, 'C'));
 		}
 
 		if ($inspection->hasmanyinspimage()->count() % 2 != 0) {

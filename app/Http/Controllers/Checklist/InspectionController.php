@@ -24,6 +24,8 @@ use App\Http\Requests\InspectionApproveRequest;
 
 use \Carbon\Carbon;
 
+use Illuminate\Support\Arr;
+
 // load session
 use Session;
 
@@ -54,7 +56,7 @@ class InspectionController extends Controller
 		// dd($request->all());
 		// dd($request->image, $request->file('image.*.input'), $request->has('image.*.input'));
 
-		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create($request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']));
+		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create(Arr::add($request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']), 'active', 1));
 
 		if ($request->has('attd')) {
 			foreach($request->attd as $k => $v){
@@ -162,7 +164,7 @@ class InspectionController extends Controller
 					'input_type' => $v['input_type'],
 					'remarks' => $v['remarks'],
 				]);
-				// File::move(storage_path('app/'.$v['input']->store('public/images/inspection/images')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/images'));
+				File::move(storage_path('app/'.$v['input']->store('public/images/inspection/images')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/images'));
 			}
 		}
 
@@ -179,7 +181,7 @@ class InspectionController extends Controller
 					'input_type' => $v['input_type'],
 					'remarks' => $v['remarks'],
 				]);
-				// File::move(storage_path('app/'.$v['input']->store('public/images/inspection/documents')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/documents'));
+				File::move(storage_path('app/'.$v['input']->store('public/images/inspection/documents')), '/home/prpcdxws/public_html/'.$v['input']->store('public/images/inspection/documents'));
 			}
 		}
         Session::flash('flash_message', 'Data successfully inserted!');
@@ -227,9 +229,19 @@ class InspectionController extends Controller
 	{
 		$inspection->hasmanyinspattendees()->delete();
 		$inspection->hasmanyinspchecklist()->delete();
-
+		if($inspection->hasmanyinspimage()->count()){
+			foreach ($inspection->hasmanyinspimage()->get() as $k => $v) {
+				File::delete('/home/prpcdxws/public_html/'.$v['input']);
+				// echo '/home/prpcdxws/public_html/'.$v['input'];
+			}
+		}
 		$inspection->hasmanyinspimage()->delete();
-
+		if($inspection->hasmanyinspdoc()->count()){
+			foreach ($inspection->hasmanyinspdoc()->get() as $k => $v) {
+				File::delete('/home/prpcdxws/public_html/'.$v['input']);
+				// echo '/home/prpcdxws/public_html/'.$v['input'];
+			}
+		}
 		$inspection->hasmanyinspdoc()->delete();
 		Inspection::destroy($inspection->id);
 		return response()->json([

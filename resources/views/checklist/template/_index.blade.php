@@ -10,7 +10,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach(App\Model\Template::all() as $tem)
+		@foreach(App\Model\Template::where('active', 1)->get() as $tem)
 		<tr>
 			<td>{{ $tem->id }}</td>
 			<td>{{ $tem->belongtostaff->name }}</td>

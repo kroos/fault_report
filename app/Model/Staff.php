@@ -2,12 +2,16 @@
 
 namespace App\Model;
 
+use Illuminate\Notifications\Notifiable;
+
 // use Illuminate\Database\Eloquent\Model;
 class Staff extends Model
 {
 
 	protected $connection = 'mysql';
 	protected $table = 'staffs';
+
+	use Notifiable;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -53,7 +53,7 @@ function SwalDelete(productId){
 			return new Promise(function(resolve) {
 				$.ajax({
 					type: 'DELETE',
-					url: '{{ url('fault') }}' + '/' + productId,
+					url: '{{ url('template') }}' + '/' + productId,
 					data: {
 							_token : $('meta[name=csrf-token]').attr('content'),
 							id: productId,

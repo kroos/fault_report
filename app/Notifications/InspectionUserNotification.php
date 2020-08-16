@@ -45,7 +45,7 @@ class InspectionUserNotification extends Notification
         return (new MailMessage)
                     ->from('noreply@prpctelecommania.com', 'Please Do Not Reply')
                     ->subject($this->inspection->belongtosystem->system.' PPM Inspection PPMIC/'.$this->inspection->belongtosystem->system.'-'.sprintf("%06d", $this->inspection->id).' Need To Be '.$this->status)
-                    ->greeting('Hi '.$notifiable->belongtostaff->name.'.')
+                    ->greeting('Hi '.$notifiable->name.'.')
                     ->line('Please have a look at the PPM Inspection Report done by '.$this->inspection->belongtostaff->name.'.')
                     ->action('PPM Inspection Checklist Report : PPMIC/'.$this->inspection->belongtosystem->system.'-'.sprintf("%06d", $this->inspection->id), url('/inspection/'.$this->inspection->id.'/show'))
                     ->line('Thank you.');

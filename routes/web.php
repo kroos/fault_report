@@ -130,6 +130,7 @@ Route::patch('/inspection/{inspection}/updateapprove', 'Checklist\InspectionCont
 Route::get('/inspection/{inspection}/show', 'Checklist\InspectionController@show')->name('inspection.show')->middleware('auth');
 Route::get('/inspection/{inspection}/pdf', 'Checklist\InspectionController@showpdf')->name('inspection.showpdf')->middleware('auth');
 Route::get('/inspection/{inspection}/edit', 'Checklist\InspectionController@edit')->name('inspection.edit')->middleware('auth');
+Route::delete('/inspection/{inspection}', 'Checklist\InspectionController@destroy')->name('inspection.delete')->middleware('auth');
 
 Route::delete('/inspectionAttend/{inspectionAttend}', 'Checklist\InspectionAttendeesController@destroy')->name('inspectionAttend.destroy')->middleware('auth');
 Route::delete('/inspectionImage/{inspectionImage}', 'Checklist\InspectionImageController@destroy')->name('inspectionImage.destroy')->middleware('auth');
@@ -140,6 +141,7 @@ Route::get('/template', 'Checklist\TemplateController@index')->name('template.in
 Route::get('/template/create', 'Checklist\TemplateController@create')->name('template.create')->middleware('auth');
 Route::post('/template/store', 'Checklist\TemplateController@store')->name('template.store')->middleware('auth');
 Route::get('/template/{template}/edit', 'Checklist\TemplateController@edit')->name('template.edit')->middleware('auth');
+Route::delete('/template/{template}', 'Checklist\TemplateController@destroy')->name('template.delete')->middleware('auth');
 
 
 
