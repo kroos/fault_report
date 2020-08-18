@@ -20,7 +20,7 @@
 			</td>
 			<td>{{ $tem->description }}</td>
 			<td>
-				<a href="{!! route('template.edit', $tem->id) !!}" title="Update"><i class="far fa-edit"></i></a>
+				<!-- <a href="{!! route('template.edit', $tem->id) !!}" title="Update"><i class="far fa-edit"></i></a> -->
 				<span class="text-danger inactivate" data-id="{!! $tem->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 			</td>
 		</tr>

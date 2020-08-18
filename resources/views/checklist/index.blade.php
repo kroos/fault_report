@@ -21,6 +21,7 @@
 					<th>Title</th>
 					<th>Date</th>
 					<th>Building</th>
+					<th>Status</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -33,8 +34,21 @@
 						<td>{{ Carbon\Carbon::parse($ins->date)->format('D, j M Y') }}</td>
 						<td>{{ $ins->building }}</td>
 						<td>
+							@if($ins->ready == NULL && $ins->reviewed == NULL && $ins->approved == NULL)
+								{{ 'User Update' }}
+							@elseif($ins->ready == 1 && $ins->reviewed == NULL && $ins->approved == NULL)
+								{{ 'Review' }}
+							@elseif($ins->ready == 1 && $ins->reviewed == 1 && $ins->approved == NULL)
+								{{ 'Approval' }}
+							@elseif($ins->ready == 1 && $ins->reviewed == 1 && $ins->approved == 1)
+								{{ 'Closed' }}
+							@endif
+						</td>
+						<td>
+							@if(\Auth::user()->belongtostaff->id == $ins->staff_id)
 							@if(is_null($ins->ready))
 							<a href="{!! route('inspection.edit', $ins->id) !!}" title="Update "><i class="far fa-edit"></i></a>
+							@endif
 							@endif
 							<a href="{!! route('inspection.show', $ins->id) !!}" title="Show "><i class="far fa-eye"></i></a>
 							<a href="{!! route('inspection.showpdf', $ins->id) !!}" title="Download" target="_blank"><i class="far fa-file-pdf"></i></a>
