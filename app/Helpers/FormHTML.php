@@ -29,9 +29,9 @@ class FormHTML
 											</div>
 										</div>
 										<div class="pretty p-switch">
-											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available">
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Applicable">
 											<div class="state p-success">
-												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+												<label class="form-check-label" for="'.$id.'2">Not Applicable</label>
 											</div>
 										</div>
 									</div>
@@ -67,9 +67,9 @@ class FormHTML
 											</div>
 										</div>
 										<div class="pretty p-switch">
-											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available">
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Applicable">
 											<div class="state p-success">
-												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+												<label class="form-check-label" for="'.$id.'2">Not Applicable</label>
 											</div>
 										</div>
 									</div>
@@ -105,9 +105,9 @@ class FormHTML
 											</div>
 										</div>
 										<div class="pretty p-switch">
-											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available" >
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Applicable" >
 											<div class="state p-success">
-												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+												<label class="form-check-label" for="'.$id.'2">Not Applicable</label>
 											</div>
 										</div>
 									</div>
@@ -143,9 +143,9 @@ class FormHTML
 											</div>
 										</div>
 										<div class="pretty p-switch">
-											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Available">
+											<input class="form-check-input" id="'.$id.'2" name="form['.$id.'][input]" type="radio" value="Not Applicable">
 											<div class="state p-success">
-												<label class="form-check-label" for="'.$id.'2">Not Available</label>
+												<label class="form-check-label" for="'.$id.'2">Not Applicable</label>
 											</div>
 										</div>
 									</div>
