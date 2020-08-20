@@ -71,7 +71,9 @@
 		<div class="row">
 			@foreach($inspection->hasmanyinspimage()->get() as $im)
 			<div class="col-6">
+				@if(\Auth::user()->staff_id == $im->belongtoinspection->staff_id)
 					<span class="text-danger delete_image" title="Delete" data-id="{!! $im->id !!}"><i class="far fa-trash-alt"></i></span>
+				@endif
 					<span data-toggle="modal" data-target="#form-{!! $im->id !!}">
 						<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="" >
 					</span>
