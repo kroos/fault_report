@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : prpctelecommania.com
- Source Server Type    : MySQL
- Source Server Version : 100323
- Source Host           : 127.0.0.1:3306
- Source Schema         : prpcdxws_fault_report
+ Source Server         : localhost
+ Source Server Type    : MariaDB
+ Source Server Version : 100313
+ Source Host           : localhost:3306
+ Source Schema         : fault_report
 
- Target Server Type    : MySQL
- Target Server Version : 100323
+ Target Server Type    : MariaDB
+ Target Server Version : 100313
  File Encoding         : 65001
 
- Date: 12/08/2020 01:01:40
+ Date: 18/08/2020 13:58:10
 */
 
 SET NAMES utf8mb4;
@@ -244,7 +244,7 @@ CREATE TABLE `faults`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of faults
@@ -258,13 +258,13 @@ INSERT INTO `faults` VALUES (14, 1, '2019-08-02 09:30:00', 1, '2019-08-02', 9, '
 INSERT INTO `faults` VALUES (15, 1, '2019-08-02 15:30:00', 1, '2019-08-03', 10, 'workstation', 'Workstation infected with virus. Complaint coming in from PETICT.', 'Clean the virus with Malwarebytes.', 2, 1, NULL, '2019-08-03 07:33:03', '2019-08-03 07:33:03');
 INSERT INTO `faults` VALUES (16, 4, '2019-08-22 15:20:00', 2, '2019-08-23', 8, 'Dispatcher', 'PR was reported lost by the owner on 15 Aug 2019. M Naim B Khairul Anuar (OPERATIONS/PRPC) \r\nMobile  : 0175088428\r\nISSI        : 1010098\r\nS/N        : 123TTD0811\r\nTel          : 00016C1300932400\r\n                : MCB602-WTR-038\r\n 22 Aug 2019 the PR detected active on the network.\r\nI  did send a text and directly call but no reply from the user.', 'IF still no response from the user, the PR will disable from the network on 23 Aug 2019.', 1, 1, NULL, '2019-08-22 07:31:13', '2019-08-22 07:31:13');
 INSERT INTO `faults` VALUES (17, 4, '2019-08-21 15:38:00', 2, '2019-08-23', 8, 'KVL', 'Preparation for KVL implementation.\r\nAttendees:\r\n1. Norhisham Laham\r\n2. Taufiq Haris\r\n3. Remy (Motorola)\r\n4. Hj Zainal....\r\n\r\nRemy integrates the KVL handheld into the AUC server. Setting the ports for AuC and PrC into the AUC server.\r\nUploading the K Key successful via KVL palm.\r\n3 units KVL successfully synchronize with AUC server.\r\nWe did the KVL downloading to PR and it failed, the AUC server didn\'t recognize the PR. after checking we found the PR is not compatible to do the encryption , Firmware is required .\r\nOn BTS side still no syncho between sites and AUC server. Remy able to bring up the BTS into AUC server but required 5 days to do that.', 'Hj Zainal proposed to purchase the Firmware to upload on each PR to  AiE compatible and will request Remy to solve the BTS encryption issue to synchronize between BTS and MSO', 1, 1, NULL, '2019-08-22 07:52:41', '2019-08-26 06:35:14');
-INSERT INTO `faults` VALUES (18, 8, '2019-08-22 16:36:00', 2, '2019-09-30', 114, 'SUB151-FON-701 SYSTEM A CABINET FAR6850 SUB151', 'SUB151-FON701 FON SYSYEM CABINET SUB 6850 SUB151\r\n\r\nAP Wireless inside cabinet. ( need to properly install )\r\ncurrently it was place inside FON CABINET front panel)', 'Notification install at panel\r\n\r\nemail by PRPC UF TELECOM to all respective parties to install properly and remove AP wireless device and located properly outside FON Cabinet', 2, 1, NULL, '2019-08-22 08:56:23', '2020-08-05 10:14:21');
-INSERT INTO `faults` VALUES (19, 8, '2019-08-22 17:36:00', 2, '2019-09-30', 92, 'FAR121-FON701', 'FAR121-FON701-FON-701 FON SYSTEM CABINET 6750-FAR-121\r\nAP Wireless inside cabinet. ( need to properly install )\r\ncurrently it was place inside FON CABINET REAR )', 'Notification install at FON cabinet\r\n\r\nPRPC TELECOM UF email to all respective party', 2, 1, NULL, '2019-08-22 09:42:35', '2020-08-05 10:10:57');
-INSERT INTO `faults` VALUES (20, 8, '2019-08-21 17:50:00', 2, '2019-09-30', 103, 'OSB103-FON-701 FON SYSTEM CABINET', 'OSB103-FON-701 FON SYSTEM CABINET 6760-OSB-103\r\nWireless AP cable lay through panel door frame - FON panel can\'t properly close.', 'Notify respective parties  - install notification', 2, 1, NULL, '2019-08-22 10:00:57', '2020-08-05 10:11:45');
-INSERT INTO `faults` VALUES (21, 8, '2019-08-23 07:46:00', 2, '2019-09-30', 111, 'SUB 112 FON 701', 'SUB112-FON-701 FON SYSTEM CABINET 6850 SUB112\r\nAP Wireless inside cabinet. ( need to properly install )\r\ncurrently it was place inside FON CABINET front panel)', 'Notification notice install at the front and rear panel\r\n\r\nPRPC Telecom UF will send email for this notification.\r\n\r\nby 30th September 2019 all illegal patching will be remove.', 2, 1, NULL, '2019-08-22 23:51:16', '2020-08-05 10:11:25');
+INSERT INTO `faults` VALUES (18, 8, '2019-08-22 16:36:00', 2, '2019-09-30', 114, 'SUB151-FON-701 SYSTEM A CABINET FAR6850 SUB151', 'SUB151-FON701 FON SYSYEM CABINET SUB 6850 SUB151\r\n\r\nAP Wireless inside cabinet. ( need to properly install )\r\ncurrently it was place inside FON CABINET front panel)', 'Notification install at panel\r\n\r\nemail by PRPC UF TELECOM to all respective parties to install properly and remove AP wireless device and located properly outside FON Cabinet', 1, 1, NULL, '2019-08-22 08:56:23', '2019-08-22 09:47:54');
+INSERT INTO `faults` VALUES (19, 8, '2019-08-22 17:36:00', 2, '2019-09-30', 92, 'FAR121-FON701', 'FAR121-FON701-FON-701 FON SYSTEM CABINET 6750-FAR-121\r\nAP Wireless inside cabinet. ( need to properly install )\r\ncurrently it was place inside FON CABINET REAR )', 'Notification install at FON cabinet\r\n\r\nPRPC TELECOM UF email to all respective party', 1, 1, NULL, '2019-08-22 09:42:35', '2019-08-22 09:42:35');
+INSERT INTO `faults` VALUES (20, 8, '2019-08-21 17:50:00', 2, '2019-09-30', 103, 'OSB103-FON-701 FON SYSTEM CABINET', 'OSB103-FON-701 FON SYSTEM CABINET 6760-OSB-103\r\nWireless AP cable lay through panel door frame - FON panel can\'t properly close.', 'Notify respective parties  - install notification', 1, 1, NULL, '2019-08-22 10:00:57', '2019-08-22 10:00:57');
+INSERT INTO `faults` VALUES (21, 8, '2019-08-23 07:46:00', 2, '2019-09-30', 111, 'SUB 112 FON 701', 'SUB112-FON-701 FON SYSTEM CABINET 6850 SUB112\r\nAP Wireless inside cabinet. ( need to properly install )\r\ncurrently it was place inside FON CABINET front panel)', 'Notification notice install at the front and rear panel\r\n\r\nPRPC Telecom UF will send email for this notification.\r\n\r\nby 30th September 2019 all illegal patching will be remove.', 1, 1, NULL, '2019-08-22 23:51:16', '2019-08-22 23:51:16');
 INSERT INTO `faults` VALUES (22, 1, '2019-08-22 11:00:00', 1, '2019-08-22', 70, 'switch', 'one of the uplink at network module for PIN switch was blinking amber.', 'pull out the LC and plugged it back properly. then its blinking green again.', 2, 1, NULL, '2019-08-24 15:45:28', '2019-08-24 19:03:33');
-INSERT INTO `faults` VALUES (23, 8, '2019-08-22 09:35:00', 2, '2019-09-30', 35, '6810-SUB-401 FON 701', 'Temporary FO patchord laid in front of panel.', 'To Inform PIC Electrical UF to make good and replace temporary FO patchord \r\n\r\n#Mr Edwandy  - we need to inform Electrical Department and respective parties involved.\r\ntq', 2, 1, NULL, '2019-08-26 01:43:40', '2020-08-05 10:12:12');
-INSERT INTO `faults` VALUES (24, 8, '2019-08-22 09:55:00', 2, '2019-09-30', 39, 'EDG 4130-A FON 702', '4130 FPP 003 - modification FOPP not properly tidy up\r\n- Need to make good all the tagging\r\n-No FOPP tag number\r\n-port cover missing and not install', 'inspection for PL done previously - Need to inform respective parties who install new FOPP', 2, 1, NULL, '2019-08-26 02:25:28', '2020-08-05 10:12:38');
+INSERT INTO `faults` VALUES (23, 8, '2019-08-22 09:35:00', 2, '2019-09-30', 35, '6810-SUB-401 FON 701', 'Temporary FO patchord laid in front of panel.', 'To Inform PIC Electrical UF to make good and replace temporary FO patchord \r\n\r\n#Mr Edwandy  - we need to inform Electrical Department and respective parties involved.\r\ntq', 1, 1, NULL, '2019-08-26 01:43:40', '2019-08-26 01:43:40');
+INSERT INTO `faults` VALUES (24, 8, '2019-08-22 09:55:00', 2, '2019-09-30', 39, 'EDG 4130-A FON 702', '4130 FPP 003 - modification FOPP not properly tidy up\r\n- Need to make good all the tagging\r\n-No FOPP tag number\r\n-port cover missing and not install', 'inspection for PL done previously - Need to inform respective parties who install new FOPP', 1, 1, NULL, '2019-08-26 02:25:28', '2019-08-26 02:25:28');
 INSERT INTO `faults` VALUES (25, 5, '2019-08-22 15:54:00', 2, '2019-08-22', 37, 'CABLE', 'Relocation of CCTV\r\nwhen do site visit at this involved area, found out that Fiber Optic and Power cable outer shealh damage and cause exposed area rusty at Armoured.\r\nsuspected already damage by previous contractor due to the exposed area already rusty, and when we check with current contractor they said it already been there when they pull out the cable. they also given the picture as our reference.', 'a) To register at MC plus Punchlist\r\nb) Suggest project to pulling new cable', 1, 1, NULL, '2019-08-26 08:14:10', '2019-08-26 08:14:10');
 INSERT INTO `faults` VALUES (26, 5, '2019-08-23 16:20:00', 2, '2019-08-23', 44, 'TOWER MAST', 'a) Anti climb plate bolting not tighten properly\r\nb) Between difference metal materials must have a separator such as rubber of taflone to prevent corrosion.\r\nc) Cable tag shall have both at end to end cable.\r\n\"d) Equipment earthing such as cctv, radar, junction box must have another earth bar to attach earth end and\r\n not to structure.\"\r\ne) lighting rod must have a link cable minimum size 70mm directly to earth pit as per mention in PTS.', 'To register at MC plus Punchlist', 1, 1, NULL, '2019-08-26 08:36:41', '2019-08-26 08:41:37');
 INSERT INTO `faults` VALUES (27, 5, '2019-08-23 16:38:00', 2, '2019-08-23', 44, 'TOWER MAST', 'a) Anti climb plate bolting not tighten properly\r\nb) Between difference metal materials must have a separator such as rubber of taflone to prevent corrosion.\r\nc) Cable tag shall have both at end to end cable.\r\n\"d) Equipment earthing such as cctv, radar, junction box must have another earth bar to attach earth end and\r\n not to stucture.\"\r\ne) lighting rod must have a link cable minimum size 70mm directly to earth pit as per mention in PTS.', 'To register at MC plus Punchlist', 1, 1, NULL, '2019-08-26 08:41:01', '2019-08-26 08:41:01');
@@ -276,27 +276,24 @@ INSERT INTO `faults` VALUES (32, 5, '2019-08-23 17:18:00', 2, '2019-08-23', 184,
 INSERT INTO `faults` VALUES (33, 5, '2019-08-23 17:23:00', 2, '2019-08-23', 48, 'TOWER MAST', 'a) Between difference metal materials must have a separator such as rubber of taflone to prevent corrosion.\r\nb) Cable tag shall have both at end to end cable.\r\n\"c) Equipment earthing such as cctv, radar, junction box must have another earth bar to attach earth end and\r\n not to stucture.\"\r\nd) lighting rod must have a link cable minimum size 70mm directly to earth pit as per mention in PTS.\r\ne) Anti climb plate bolting not tighten properly\r\nf) All outside cable tie shall use Stainless Steal with insulater type of cable ties and not a plastic cable ties.', 'To register at MC plus Punchlist', 1, 1, NULL, '2019-08-26 09:25:20', '2019-08-26 09:25:20');
 INSERT INTO `faults` VALUES (34, 5, '2019-08-23 17:31:00', 2, '2019-08-23', 48, 'TOWER MAST', 'a) Between difference metal materials must have a separator such as rubber of taflone to prevent corrosion.\r\nb) Cable tag shall have both at end to end cable.\r\n\"c) Equipment earthing such as cctv, radar, junction box must have another earth bar to attach earth end and\r\n not to stucture.\"\r\nd) lighting rod must have a link cable minimum size 70mm directly to earth pit as per mention in PTS.\r\ne) No water at washer tank\r\nf) All outside cable tie shall use Stainless Steal with insulater type of cable ties and not a plastic cable ties.', 'To register at MC plus Punchlist', 1, 1, NULL, '2019-08-26 09:33:08', '2019-08-26 09:33:08');
 INSERT INTO `faults` VALUES (35, 5, '2019-08-23 17:36:00', 2, '2019-08-23', 48, 'TOWER MAST', 'a) Anti climb plate bolting not tighten properly\r\nb) Between difference metal materials must have a separator such as rubber of taflone to prevent corrosion.\r\nc) Cable tag shall have both at end to end cable.\r\n\"d) Equipment earthing such as cctv, radar, junction box must have another earth bar to attach earth end and\r\n not to stucture.\"\r\ne) lighting rod must have a link cable minimum size 70mm directly to earth pit as per mention in PTS.', 'To register at MC plus Punchlist', 1, 1, NULL, '2019-08-26 09:38:05', '2019-08-26 09:38:05');
-INSERT INTO `faults` VALUES (36, 8, '2019-08-22 14:13:00', 3, '2019-08-31', 32, '4120-SHL-401', 'Air Conditioning number 2 not working - Not Cool, just blown hot air.', 'Require to inform Electrical / HVAC team to perform , check and service indoor and outdoor A/C unit.\r\n\r\nIf possible need to service both air cond and re setting timer.', 2, 1, NULL, '2019-08-27 06:17:49', '2020-08-05 10:13:59');
+INSERT INTO `faults` VALUES (36, 8, '2019-08-22 14:13:00', 3, '2019-08-31', 32, '4120-SHL-401', 'Air Conditioning number 2 not working - Not Cool, just blown hot air.', 'Require to inform Electrical / HVAC team to perform , check and service indoor and outdoor A/C unit.\r\n\r\nIf possible need to service both air cond and re setting timer.', 1, 1, NULL, '2019-08-27 06:17:49', '2019-08-27 06:17:49');
 INSERT INTO `faults` VALUES (37, 4, '2019-08-24 18:10:00', 3, '2019-08-27', 32, 'BDA', 'Interference issue due to ROA( Random Access Opportunity ) increased to 91%  , PTT problem can\'t make a call and breaking voice quality.\r\n\r\nTroubleshooting method:\r\n1. Login on NMT password - A1b2C3d$\r\n1. checking on NMT ( Zone watch app)\r\n2. Login on MTS4 with BTS service SW IP:  \r\n10.128.1.1 twr 1\r\n10.128.2.1 twr 2\r\n10.128.3.1 twr 3\r\n10.128.4.1 twr 4\r\n\r\nSC: status bts\r\nSC: attrib\r\nSC: port\r\n\r\nclose \r\n\r\nChecking BR on IP  if tower 1\r\n10.128.1.1  :18011   - BR1\r\n10.128.1.1 :18012    - BR2\r\n10.128.1.1 :18013    - BR3\r\n10.128.1.1 :18014    - BR4\r\n\r\n\r\nBR) get info\r\nBR) get status\r\nBR) get pa_status\r\nBR) rssicnt \r\nBR) chanstat\r\nBR) get tx_freq\r\nBR) get rx_freq\r\nBR) get fp\r\nBR) get rp\r\nBR) get vswr \r\n\r\nWe found new installed BDA was power up without setting suitable RF power and notify PRPC UF', 'Immediately turned off the new installed BDA , after 5 minutes the zone watch showed no interference on RAO level.', 2, 1, NULL, '2019-08-27 06:44:03', '2019-08-27 06:44:03');
-INSERT INTO `faults` VALUES (38, 8, '2019-08-28 14:42:00', 2, '2019-09-30', 112, 'SUB 123 FON 701', 'Wireless AP install inside FON Cabinet.', 'Inform respective parties / owner to make good and properly install outside FON cabinet\r\nwith proper wiring LAN wire.', 2, 1, NULL, '2019-08-28 06:45:47', '2020-08-04 00:14:47');
+INSERT INTO `faults` VALUES (38, 8, '2019-08-28 14:42:00', 2, '2019-09-30', 112, 'SUB 123 FON 701', 'Wireless AP install inside FON Cabinet.', 'Inform respective parties / owner to make good and properly install outside FON cabinet\r\nwith proper wiring LAN wire.', 1, 1, NULL, '2019-08-28 06:45:47', '2019-08-28 06:45:47');
 INSERT INTO `faults` VALUES (39, 8, '2019-08-28 14:47:00', 3, '2019-09-07', 24, 'SHL 401 DTR 736', 'Air conditioning failure for AC number 2.\r\n\r\n#need to be check and service - cause tripping DTRS equipment due to high temperature\r\nA/C number 2 runs with only blows air which are hot .', 'Need to inform area owner , electrical , hvac team to resolve this matters.\r\n\r\nPIC Building Custodian: Farhana UF , Mobile number 012-7049371\r\n\r\nattended site visit on 4th October _ En Amirul from Alpine Utility , mobile no 017-7745688\r\n\r\nResolve by Alppine Utility on 7th October.\r\nDate : 07 / 10 / 2019\r\nDay : Tuesday\r\n\r\nClient : PRPC\r\nLocation : Pengerang\r\n\r\nTROUBLESHOOTING\r\n\r\n1) Unit : Split Unit\r\nmodel :\r\nSerial no. :\r\nUnit tag no : SHL401-ACP-002\r\nLocation : SHL 401\r\n\r\nJob description\r\n- Prepair equipment tooling \r\n- Off supply MCB unit\r\n- Charging nitrogen 150psi - 250psi\r\n- Check leaking at piping outdoor to indoor\r\n- Check leaking piping outdoor compressor\r\n- Check leaking piping condenser fin\r\n- Breazing piping leaking\r\n- Hold pressure nitrogen 250psi 30 minute\r\n- Throw pressure nitrogen \r\n- Vacum piping 15 minute\r\n- Charging gas refrigerant to 120psi \r\n- Check ampere\r\n- Set timer rotate 4hour\r\n- Unit now running auto\r\n- moniter unit\r\n\r\nFinding\r\nA) Found leaking at condenser fin \r\n\r\nPLANNED PREVENTIVE MAINTENANCE\r\n\r\n1) Unit : Split Unit\r\nmodel :\r\nSerial no. :\r\nUnit tag no : SHL401-ACP-001\r\n                      SHL401-ACP-002\r\nLocation : SHL 401\r\n\r\nJob description\r\n\r\n- Clean condensor fin\r\n- Clean condensor fan\r\n- Cleaning filter\r\n- Check running pressure\r\n- Clean indoor body\r\n- Check running load amp\r\n\r\n\r\nRemark\r\nA) Attend complain unit leak SHL 401 job done\r\n\r\nManpower\r\nA) Saifullah\r\nB) Hafizh \r\nC) Wan Mazuri\r\n\r\nVehicle\r\nJCT 555', 2, 1, NULL, '2019-08-28 06:56:37', '2019-10-10 01:30:39');
-INSERT INTO `faults` VALUES (40, 8, '2019-08-28 15:00:00', 2, '2019-09-30', 99, 'FAR 123 FON 702', 'Wireless AP install inside FON Cabinet.', 'Inform respective parties / owner to make good and properly install outside FON cabinet with proper wiring LAN wire.\r\n\r\nFON 701 - under PRPC ICT', 2, 1, NULL, '2019-08-28 07:02:38', '2020-08-04 00:13:52');
+INSERT INTO `faults` VALUES (40, 8, '2019-08-28 15:00:00', 2, '2019-09-30', 99, 'FAR 123 FON 702', 'Wireless AP install inside FON Cabinet.', 'Inform respective parties / owner to make good and properly install outside FON cabinet with proper wiring LAN wire.', 1, 1, NULL, '2019-08-28 07:02:38', '2019-08-28 07:02:38');
 INSERT INTO `faults` VALUES (41, 3, '2019-09-02 08:58:00', 2, '2019-09-17', 8, 'Migration Activities by PET ICT between DATA CENTER and DCR701', 'Telecom PRPC UF to provide temporary link/route A & B from DCR701 to BLD810.\r\n -Total Link/Route 16 pairs / 32 cores.\r\n -Permanent cores 2 pairs / 4 cores route A & B\r\n -Temporary cores 8 pairs / 16 cores route A\r\n\r\n23/9/2019 - PICT report core 7,8 and 75,76 problem', '1-Patching activities and cores tested completed.\r\n2-For temporary cores 8 pairs / 16 cores to use until end of this year 2019 (PET ICT to advise) \r\n3-Refer to attachment.\r\n\r\n2/10/2019\r\nTroubleshooting 4 cores link from DCR701 to BLD810 Route A\r\n1- Clean all connector patchcord and FFP.\r\n2- Cores 7,8 found 1 pair connector at MCB602 not connected properly. Check and test dB loss the link with fluke get result (4.99 dB, 5.48 dB). Result Test Pass.\r\n3- Cores 75,76 found 1 link from WMF  to TER at BLD 810 for core 75 problem. Result test for dB Loss (9.60 dB) Fail. For this connection change to cores 77,78. Tested OK', 1, 1, NULL, '2019-09-19 01:49:09', '2019-10-05 01:50:17');
 INSERT INTO `faults` VALUES (42, 4, '2019-09-20 10:23:00', 2, '2019-09-27', 3, 'BDA', 'BDA installation table attached.\r\n3 more BDA powering up activities on hold due to PTW no approve yet.', NULL, 1, 1, NULL, '2019-09-20 02:26:57', '2019-09-20 02:26:57');
 INSERT INTO `faults` VALUES (43, 4, '2019-09-20 10:27:00', 2, '2019-10-04', 8, 'STS/ATS power redundancy installation', 'JHA and MOS not yet approved\r\nInstallation drawing received on going review not approve yet\r\nATS not arrive yet , Protellus can\'t find it in the warehouse.\r\nItems like TB , circuit breaker and gland was found in the warehouse.\r\nNext week Protellus team will update the status .', NULL, 1, 1, NULL, '2019-09-20 02:35:27', '2019-09-20 02:35:27');
 INSERT INTO `faults` VALUES (44, 3, '2019-09-23 23:44:00', 3, '2019-09-30', 165, 'SMK SYSTEM (TM JPB)', 'There is a SMK to be installed at TOB in this week by TM. TM are required 2 cores FOC for each Route A and B from TM SDF, BLD810 to TOB, SPTS (a.k. SPJ).', 'Completed lay and terminated.\r\nTested by JPB and TM link working properly on 30.9.2019', 2, 1, NULL, '2019-09-26 15:57:49', '2019-10-01 01:53:28');
-INSERT INTO `faults` VALUES (45, 3, '2019-09-26 09:45:00', 3, '2019-09-30', 100, 'CABINET', 'OUI report one of the CCTV Cabinet (FAR142-CTV-731) on the off position and will effect 13 nos camera cannot view and monitor at the field.\r\n\r\nDuring the troubleshoot on the CCTV cabinet found:\r\n1- FAR142-CAM-001 -Power cable to field device have short to ground\r\n                                    -Cable blue to ground (0.2 ohm)\r\n                                    -Cable brown to ground (28.8 ohm)\r\n                                    -action: (Prefchem to rectify)\r\n2- 1430-CAM-004  - Camera unit at Field faulty\r\n                                - action: (Prefchem and vendor to rectify)', 'Telecom UF power up back the CCTV Cabinet (FAR142-CTV-731) with isolated 2 main circuit breaker for camera FAR142-CAM-001 and 1430-CAM-004. All 11 nos out of 13 nos camera working in a good condition.', 2, 1, NULL, '2019-09-30 02:10:20', '2020-08-04 00:11:30');
+INSERT INTO `faults` VALUES (45, 3, '2019-09-26 09:45:00', 3, '2019-09-30', 100, 'CABINET', 'OUI report one of the CCTV Cabinet (FAR142-CTV-731) on the off position and will effect 13 nos camera cannot view and monitor at the field.\r\n\r\nDuring the troubleshoot on the CCTV cabinet found:\r\n1- FAR142-CAM-001 -Power cable to field device have short to ground\r\n                                    -Cable blue to ground (0.2 ohm)\r\n                                    -Cable brown to ground (28.8 ohm)\r\n                                    -action: (Prefchem to rectify)\r\n2- 1430-CAM-004  - Camera unit at Field faulty\r\n                                - action: (Prefchem and vendor to rectify)', 'Telecom UF power up back the CCTV Cabinet (FAR142-CTV-731) with isolated 2 main circuit breaker for camera FAR142-CAM-001 and 1430-CAM-004. All 11 nos out of 13 nos camera working in a good condition.', 1, 1, NULL, '2019-09-30 02:10:20', '2019-09-30 02:10:20');
 INSERT INTO `faults` VALUES (46, 5, '2019-09-19 17:15:00', 2, '2019-10-03', 92, 'UPS Isolator Switch', 'on 19 september 2019 when we do commissioning for ACS we found out that 1 of our CCTV interface with ACS on off position.\r\nThen we check on panel site we found out that our CCTV panel inside FAR 121 was in off position.\r\nOur finding as below,\r\n\r\n1. Isolator switch inside CCTV panel on OFF position.\r\n2. Check UPS power, UPS no power.\r\n3. Check Internal CCTV panel, all in good condition.\r\n4. Move to incoming power at PDB 604 found MCB for CCTV panel in OFF position without LOTO.', 'CCTV Panel\r\na) Physical check > all in good condition\r\nb) Connection check > all in good condition\r\nc) Continuity test to ground and core to core \r\n> Finding camera SUB121-CAM-001 core to core (blue + earth) got continuity.\r\n> On morning 3/10/19 Vendor and P2 go to site to find the problem found core brown inside JB at field area disconnected and touch the other core, and this cause the cable shorted.\r\nd) Magger cable from PDB604 to CTV731 to ensure incoming cable in good position.\r\nd) after all in good condition on 3/10/19 at 5 pm power up back CCTV panel\r\ne) Check all the video all in good view', 2, 1, NULL, '2019-10-03 09:32:50', '2019-10-03 09:32:50');
 INSERT INTO `faults` VALUES (47, 8, '2019-10-05 09:20:00', 2, '2019-10-05', 101, 'FAR 151 PAG 722 , 724', 'Clear Punchlist for defect LTU.\r\nFAR 151\r\na.Loop 15B\r\nLTU 1753 - tukar LTU\r\nID FAR151-LSU-010\r\n\r\nb.Loop 16B\r\nLTU 1347 - tukar LTU \r\nID SUB 151 -LSU-002\r\n\r\nc.Loop 18B\r\nLTU 1463- tukar LTU\r\nID SUB 112 -LSU-002', 'Rites \r\nPIC : Aliff\r\na. Change LTU\r\nb. Setting and run healthiness \r\nc. Site test - paga alarm sound test, monitor at field.', 2, 1, NULL, '2019-10-06 01:28:02', '2019-10-06 02:17:22');
-INSERT INTO `faults` VALUES (48, 8, '2019-10-06 09:34:00', 2, '2019-10-12', 8, 'BLD810-CTV-731', 'Washer pipe detached from wiper hose.', 'PRPC Telecom need to inform construction - this issue alreary being brought up a few month back.\r\n\r\nStill no action taken.', 2, 1, NULL, '2019-10-06 02:12:21', '2020-08-04 00:18:03');
-INSERT INTO `faults` VALUES (49, 8, '2019-10-08 16:43:00', 2, '2019-10-31', 67, 'FON CABINET', 'OTDR Testing for cables GHB801-X-BLD810-001A from GHB801 to BLD810\r\n\r\nfindings  - 1 JB install due to cables shortages/cuts\r\n8 cores downstream test by MIE1300 found traces over acceptables limits\r\n\r\nAllowable limit \r\nsplice : o.3db\r\nconnector: 0.5db\r\na. Core 8 - 0.357db\r\nb. Core 13- 0.9db\r\nc. Core 12-1.32db\r\nd. Core23 - 1.0db\r\ne. Core 28- 0.5db\r\nf. Core 31 - 0.327db\r\ng. Core 37- 4.691db\r\nh. Core 38-0.653db\r\ni. Core 40 - 1.1db', 'Waiting for upstream OTDR test by SYS', 2, 1, NULL, '2019-10-08 08:55:32', '2020-08-04 00:11:01');
-INSERT INTO `faults` VALUES (50, 8, '2019-10-09 09:36:00', 3, '2019-10-31', 67, 'GHB801 FON 701', 'OTDR testing carried out upstream from GHB 801 to BLD \r\n\r\nResults: 1-30 cores above 0.1 db loss\r\n\r\nTest Carried out by : Inteqno \r\nTester : Syafiq HP 0193989150', 'Witness by Telecom PRPC UF,\r\n\r\nInform Mr. Asraf SYS 0194604925 regarding high loss above allowable limits.\r\n\r\nSYS Quality Assurance Team and Engineering to provide solution.\r\n\r\nLink Loss = [fiber length (km) x fiber attenuation per km] + [splice loss x # of splices] + [connector loss x # of connectors] + [safety margin]\r\n\r\nClosed : After rectification works by SYS Contractor.\r\nResults submit to Team project P36. Final documentation and result shall be submit to UF Telecom for review\r\n\r\n*Link Budget* \r\nFor example, Assume a ___km single mode link at 1310nm with 2 connector pairs and 1 splices.\r\n\r\n\r\nLink Loss = [__km x 0.4dB/km] + [0.1dB x 1] + [0.75dB x 2] + [3.0dB] = ____dB\r\n\r\nIn this example. an estimated ___dB of power would be required to transmit across this link. Of course, it is very important to measure and verify the actual link loss values one the link is established to identify any potential performance issues.', 2, 1, NULL, '2019-10-10 01:54:16', '2020-08-04 00:21:06');
-INSERT INTO `faults` VALUES (51, 8, '2019-10-12 16:08:00', 2, '2019-10-31', 100, 'FAR 142 PAG722/ FAR 142 PAG724', 'FAR 142 PAG722\r\nLoop 4A\r\nIsolated - link open 13,14,15 & 16\r\n\r\nFAR 142 PAG724\r\nLoop 11B\r\nTSA2, TB 41,42', 'FAR 142 \r\n\r\nPRPC UF need to clarify with Project Team, PL for this site.\r\n\r\nsuspect cable faulty due alarm will appear after a while resetting alarm.\r\n\r\n* To check who open the knife switch (loop being isolated)', 2, 1, NULL, '2019-10-12 08:31:55', '2020-08-04 00:10:35');
-INSERT INTO `faults` VALUES (52, 8, '2019-10-14 16:16:00', 2, '2019-10-31', 150, 'PAG721 - PAG723', '1. FAR 330 - PAG721 System A\r\na. AMP 1 - Line Fault/earth fault\r\nb. AMP 2 - Line Fault\r\nc. AMP 3 - Line Fault/earth fault\r\ne. AMP 5 - Line Fault\r\nf. AMP 10 -  Line Fault\r\ng. AMP 11 - Line Fault\r\n\r\n\r\n2. FAR 330 - PAG723 System B\r\na. AMP 2 - Line Fault\r\nb. AMP 10- Line Fault\r\nc. AMP 11 - Line Fault\r\nd. AMP 12 - Line Fault', 'This alarm appears after resetting alarm.\r\n\r\nsuspected, cable leakage to earth during raining / leaks to speaker terminations box\r\ncable gland or cable isulation damage.\r\n\r\nTelecom UF need to raise this issue to Rites, IU&I projects team and EPCC.\r\n(Equipments/Cables under EPCC)', 2, 1, NULL, '2019-10-14 08:28:02', '2020-07-29 01:29:01');
+INSERT INTO `faults` VALUES (48, 8, '2019-10-06 09:34:00', 2, '2019-10-12', 8, 'BLD810-CTV-731', 'Washer pipe detached from wiper hose.', 'PRPC Telecom need to inform construction - this issue alreary being brought up a few month back.\r\n\r\nStill no action taken.', 1, 1, NULL, '2019-10-06 02:12:21', '2019-10-06 02:12:21');
+INSERT INTO `faults` VALUES (49, 8, '2019-10-08 16:43:00', 2, '2019-10-31', 67, 'FON CABINET', 'OTDR Testing for cables GHB801-X-BLD810-001A from GHB801 to BLD810\r\n\r\nfindings  - 1 JB install due to cables shortages/cuts\r\n8 cores downstream test by MIE1300 found traces over acceptables limits\r\n\r\nAllowable limit \r\nsplice : o.3db\r\nconnector: 0.5db\r\na. Core 8 - 0.357db\r\nb. Core 13- 0.9db\r\nc. Core 12-1.32db\r\nd. Core23 - 1.0db\r\ne. Core 28- 0.5db\r\nf. Core 31 - 0.327db\r\ng. Core 37- 4.691db\r\nh. Core 38-0.653db\r\ni. Core 40 - 1.1db', 'Waiting for upstream OTDR test by SYS', 1, 1, NULL, '2019-10-08 08:55:32', '2019-10-08 08:55:32');
+INSERT INTO `faults` VALUES (50, 8, '2019-10-09 09:36:00', 3, '2019-10-31', 67, 'GHB801 FON 701', 'OTDR testing carried out upstream from GHB 801 to BLD \r\n\r\nResults: 1-30 cores above 0.1 db loss\r\n\r\nTest Carried out by : Inteqno \r\nTester : Syafiq HP 0193989150', 'Witness by Telecom PRPC UF,\r\n\r\nInform Mr. Asraf SYS 0194604925 regarding high loss above allowable limits.\r\n\r\nSYS Quality Assurance Team and Engineering to provide solution.\r\n\r\nLink Loss = [fiber length (km) x fiber attenuation per km] + [splice loss x # of splices] + [connector loss x # of connectors] + [safety margin]\r\n\r\n\r\n*Link Budget* \r\nFor example, Assume a ___km single mode link at 1310nm with 2 connector pairs and 1 splices.\r\n\r\n\r\nLink Loss = [__km x 0.4dB/km] + [0.1dB x 1] + [0.75dB x 2] + [3.0dB] = ____dB\r\n\r\nIn this example. an estimated ___dB of power would be required to transmit across this link. Of course, it is very important to measure and verify the actual link loss values one the link is established to identify any potential performance issues.', 1, 1, NULL, '2019-10-10 01:54:16', '2019-10-12 07:12:18');
+INSERT INTO `faults` VALUES (51, 8, '2019-10-12 16:08:00', 2, '2019-10-31', 100, 'FAR 142 PAG722/ FAR 142 PAG724', 'FAR 142 PAG722\r\nLoop 4A\r\nIsolated - link open 13,14,15 & 16\r\n\r\nFAR 142 PAG724\r\nLoop 11B\r\nTSA2, TB 41,42', 'FAR 142 \r\n\r\nPRPC UF need to clarify with Project Team, PL for this site.\r\n\r\nsuspect cable faulty due alarm will appear after a while resetting alarm.\r\n\r\n* To check who open the knife switch (loop being isolated)', 1, 1, NULL, '2019-10-12 08:31:55', '2019-10-12 08:31:55');
+INSERT INTO `faults` VALUES (52, 8, '2019-10-14 16:16:00', 2, '2019-10-31', 150, 'PAG721 - PAG723', '1. FAR 330 - PAG721 System A\r\na. AMP 1 - Line Fault/earth fault\r\nb. AMP 2 - Line Fault\r\nc. AMP 3 - Line Fault/earth fault\r\ne. AMP 5 - Line Fault\r\nf. AMP 10 -  Line Fault\r\ng. AMP 11 - Line Fault\r\n\r\n\r\n2. FAR 330 - PAG723 System B\r\na. AMP 2 - Line Fault\r\nb. AMP 10- Line Fault\r\nc. AMP 11 - Line Fault\r\nd. AMP 12 - Line Fault', 'This alarm appears after resetting alarm.\r\n\r\nsuspected, cable leakage to earth during raining / leaks to speaker terminations box\r\ncable gland or cable isulation damage.\r\n\r\nTelecom UF need to raise this issue to Rites, IU&I projects team and EPCC.\r\n(Equipments/Cables under EPCC)', 1, 1, NULL, '2019-10-14 08:28:02', '2019-10-14 08:28:02');
 INSERT INTO `faults` VALUES (53, 8, '2020-06-16 13:11:00', 2, '2020-06-18', 165, 'FON 701', 'Reported back bone high lost:\r\n\r\nComplainer: SPJ', '*Link Budget*\r\nLink Loss = [fiber length (km) x fiber attenuation per km] + [splice loss x # of splices] + [connector loss x # of connectors] + [safety margin]\r\n\r\nFor example, Assume a ___km single mode link at 1310nm with 2 connector pairs and 1 splices.\r\n\r\nLink Loss = [__km x 0.4dB/km] + [0.1dB x 1] + [0.75dB x 2] + [3.0dB] = ____dB\r\nIn this example. an estimated ___dB of power would be required to transmit across this link. Of course, it is very important to measure and verify the actual link loss values one the link is established to identify any potential performance issues.\r\n\r\nTesting OLTS from BLD 701 (SPJ) to BLD810 via MCB 602\r\nTotal Distance : 9.14km\r\nSplice : 4 nos\r\nConnector : 5\r\nSafety Margin: 3\r\n\r\nLink Loss = [__km x 0.4dB/km] + [0.1dB x 1] + [0.75dB x 2] + [3.0dB] = ____dB\r\nLink Loss = [9.14km x 0.4dm/km] +[0.1db x 4] + [0.75db x 5] + [0 db -not includedsafety margin]\r\n\r\nLink Loss:[ 3.656]+[0.4] + [3.75]+ [0 db -not includedsafety margin]\r\nLink Loss: 7.806db\r\n\r\nsince the testing result :-\r\ni. Leg A = 5.17db\r\nii. Leg B= 4.41db\r\n\r\nResults below expected link budget calculation', 2, 1, NULL, '2020-06-22 05:29:10', '2020-06-22 05:29:10');
-INSERT INTO `faults` VALUES (54, 5, '2020-08-03 15:01:00', 1, '2020-08-10', 100, 'Encoder', 'Ref Ticket ID:  A77-37Q-VX1Z\r\nSubject: 1420-CAM-005 : CCTV - Rectification For Faulty CCTV\r\n\r\n1. Junction Box Condition √\r\n2. Cable to field device √\r\n\r\nFindings :\r\nVideo Intermittent', 'Solution :\r\n1. Swap FO cable at FO card to the ok camera and monitor the video as good condition.\r\n2. Change FO card with spare and monitor the video again but still same.\r\n3. Change coax cable at encoder to the good condition camera finding ok. but the other camera which is good condition previously to the faulty port, finding the connection loss.\r\n5. Need to change encoder with spare encoder.', 1, 1, NULL, '2020-08-03 07:06:54', '2020-08-03 07:06:54');
-INSERT INTO `faults` VALUES (55, 5, '2020-08-03 15:09:00', 1, '2020-08-10', 99, 'Field Internal Junction Box', 'Ref Ticket ID: 9HZ-YPW-ZG8Z\r\nSubject: 1220-CAM-007 : CCTV - Rectification For Faulty CCTV\r\n\r\n\r\n1. Junction Box Condition √\r\n2. Cable to field device √\r\n3. Camera Condition ( Not sure due to Prefchem have no tools to check)\r\nFindings :\r\nVideo loss / no video', 'Solution :\r\n1. Swap FO cable at FO card to the ok camera and monitor but there was no video also.\r\n2. Change FO card with spare and monitor the video again but still same. and video present LED off.\r\n3. Need rectify more on field site since the data for video present faulty.(Prefchem)', 1, 1, NULL, '2020-08-03 07:13:22', '2020-08-03 07:13:22');
-INSERT INTO `faults` VALUES (56, 5, '2020-08-03 15:23:00', 2, '2020-08-10', 48, 'Outdoor Unit', 'Ref Ticket ID: H1B-HRN-P7V8\r\nSubject: SUB551: 8835-OTL-001 not functioning\r\n\r\n1. No dial tone.\r\n2. Beacon sounder trip.\r\n3. Signal cable connected to telephone, cause voltage drop looks like cable shorted.\r\n4. Power JB and signal JB got water ingress.\r\n5. Open beacon and sounder enclosure finding board already damage and water full inside.', '1. Change with new spare for all outdoor equipment.\r\n2. Once instal to ensure no more water ingress in future.', 1, 1, NULL, '2020-08-03 07:29:19', '2020-08-03 07:29:19');
 
 -- ----------------------------
 -- Table structure for faults_attendees
@@ -310,7 +307,7 @@ CREATE TABLE `faults_attendees`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 75 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of faults_attendees
@@ -387,12 +384,6 @@ INSERT INTO `faults_attendees` VALUES (71, 50, 8, NULL, '2019-10-10 01:54:16', '
 INSERT INTO `faults_attendees` VALUES (72, 51, 8, NULL, '2019-10-12 08:31:55', '2019-10-12 08:31:55');
 INSERT INTO `faults_attendees` VALUES (73, 52, 8, NULL, '2019-10-14 08:28:02', '2019-10-14 08:28:02');
 INSERT INTO `faults_attendees` VALUES (74, 53, 8, NULL, '2020-06-22 05:29:10', '2020-06-22 05:29:10');
-INSERT INTO `faults_attendees` VALUES (75, 54, 5, NULL, '2020-08-03 07:06:54', '2020-08-03 07:06:54');
-INSERT INTO `faults_attendees` VALUES (76, 54, 6, NULL, '2020-08-03 07:06:54', '2020-08-03 07:06:54');
-INSERT INTO `faults_attendees` VALUES (77, 55, 5, NULL, '2020-08-03 07:13:22', '2020-08-03 07:13:22');
-INSERT INTO `faults_attendees` VALUES (78, 55, 6, NULL, '2020-08-03 07:13:22', '2020-08-03 07:13:22');
-INSERT INTO `faults_attendees` VALUES (79, 56, 5, NULL, '2020-08-03 07:29:19', '2020-08-03 07:29:19');
-INSERT INTO `faults_attendees` VALUES (80, 56, 6, NULL, '2020-08-03 07:29:19', '2020-08-03 07:29:19');
 
 -- ----------------------------
 -- Table structure for faults_device_tags
@@ -406,7 +397,7 @@ CREATE TABLE `faults_device_tags`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 86 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of faults_device_tags
@@ -423,7 +414,7 @@ INSERT INTO `faults_device_tags` VALUES (28, 15, 'LCR485-OWS-001', NULL, '2019-0
 INSERT INTO `faults_device_tags` VALUES (29, 16, 'ISSI 1010098', NULL, '2019-08-22 07:31:13', '2019-08-22 07:31:13');
 INSERT INTO `faults_device_tags` VALUES (30, 17, 'AUC server', NULL, '2019-08-22 07:52:41', '2019-08-22 07:52:41');
 INSERT INTO `faults_device_tags` VALUES (31, 18, 'FON 701', NULL, '2019-08-22 08:56:23', '2019-08-22 08:56:23');
-INSERT INTO `faults_device_tags` VALUES (32, 19, 'FAR121-FON701', NULL, '2019-08-22 09:42:35', '2020-08-05 10:10:57');
+INSERT INTO `faults_device_tags` VALUES (32, 19, NULL, NULL, '2019-08-22 09:42:35', '2019-08-22 09:42:35');
 INSERT INTO `faults_device_tags` VALUES (33, 20, 'FON 701', NULL, '2019-08-22 10:00:57', '2019-08-22 10:00:57');
 INSERT INTO `faults_device_tags` VALUES (34, 21, 'FON 701 - 6850-SUB112', NULL, '2019-08-22 23:51:16', '2019-08-22 23:51:16');
 INSERT INTO `faults_device_tags` VALUES (35, 22, 'SUB101-GES-005', NULL, '2019-08-24 15:45:28', '2019-08-24 15:45:28');
@@ -440,9 +431,9 @@ INSERT INTO `faults_device_tags` VALUES (45, 32, '8850-TTS-007', NULL, '2019-08-
 INSERT INTO `faults_device_tags` VALUES (46, 33, '8850-TTS-008', NULL, '2019-08-26 09:25:20', '2019-08-26 09:25:20');
 INSERT INTO `faults_device_tags` VALUES (47, 34, '8850-TTS-009', NULL, '2019-08-26 09:33:08', '2019-08-26 09:33:08');
 INSERT INTO `faults_device_tags` VALUES (48, 35, '8850-TTS-010', NULL, '2019-08-26 09:38:05', '2019-08-26 09:38:05');
-INSERT INTO `faults_device_tags` VALUES (49, 36, '4120-SHL-401', NULL, '2019-08-27 06:17:49', '2020-08-05 10:13:59');
+INSERT INTO `faults_device_tags` VALUES (49, 36, NULL, NULL, '2019-08-27 06:17:49', '2019-08-27 06:17:49');
 INSERT INTO `faults_device_tags` VALUES (50, 37, NULL, NULL, '2019-08-27 06:44:03', '2019-08-27 06:44:03');
-INSERT INTO `faults_device_tags` VALUES (51, 38, 'FON 701', NULL, '2019-08-28 06:45:47', '2020-08-04 00:14:47');
+INSERT INTO `faults_device_tags` VALUES (51, 38, NULL, NULL, '2019-08-28 06:45:47', '2019-08-28 06:45:47');
 INSERT INTO `faults_device_tags` VALUES (52, 39, 'SHL 401 DTR 737', NULL, '2019-08-28 06:56:37', '2019-08-28 06:56:37');
 INSERT INTO `faults_device_tags` VALUES (53, 40, '6750 FON 702', NULL, '2019-08-28 07:02:38', '2019-08-28 07:02:38');
 INSERT INTO `faults_device_tags` VALUES (54, 41, 'DCR701-FON-701', NULL, '2019-09-19 01:49:09', '2019-09-19 01:49:09');
@@ -471,12 +462,9 @@ INSERT INTO `faults_device_tags` VALUES (76, 48, '8100-CAM-201', NULL, '2019-10-
 INSERT INTO `faults_device_tags` VALUES (77, 49, 'GHB801-X-BLD810-001A', NULL, '2019-10-08 08:55:32', '2019-10-08 08:55:32');
 INSERT INTO `faults_device_tags` VALUES (78, 50, 'GHB 801-X-BLD 810 - 001A', NULL, '2019-10-10 01:54:16', '2019-10-10 01:54:16');
 INSERT INTO `faults_device_tags` VALUES (79, 51, 'PAG 721/ PAG 723', NULL, '2019-10-12 08:31:55', '2019-10-12 08:31:55');
-INSERT INTO `faults_device_tags` VALUES (80, 52, '12323232', NULL, '2019-10-14 08:28:02', '2020-07-29 01:29:01');
+INSERT INTO `faults_device_tags` VALUES (80, 52, NULL, NULL, '2019-10-14 08:28:02', '2019-10-14 08:28:02');
 INSERT INTO `faults_device_tags` VALUES (81, 53, '7510 BLD 701 FON 705 Leg A', NULL, '2020-06-22 05:29:10', '2020-06-22 05:29:10');
 INSERT INTO `faults_device_tags` VALUES (82, 53, '7510 BLD 701 FON 705 Leg B', NULL, '2020-06-22 05:29:10', '2020-06-22 05:29:10');
-INSERT INTO `faults_device_tags` VALUES (83, 54, '1420-CAM-005', NULL, '2020-08-03 07:06:54', '2020-08-03 07:06:54');
-INSERT INTO `faults_device_tags` VALUES (84, 55, '1220-CAM-007', NULL, '2020-08-03 07:13:22', '2020-08-03 07:13:22');
-INSERT INTO `faults_device_tags` VALUES (85, 56, '8835-OTL-001', NULL, '2020-08-03 07:29:19', '2020-08-03 07:29:19');
 
 -- ----------------------------
 -- Table structure for faults_images
@@ -635,7 +623,7 @@ CREATE TABLE `faults_systems`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of faults_systems
@@ -694,9 +682,6 @@ INSERT INTO `faults_systems` VALUES (57, 50, 1, NULL, '2019-10-10 01:54:16', '20
 INSERT INTO `faults_systems` VALUES (58, 51, 2, NULL, '2019-10-12 08:31:55', '2019-10-12 08:31:55');
 INSERT INTO `faults_systems` VALUES (59, 52, 2, NULL, '2019-10-14 08:28:02', '2019-10-14 08:28:02');
 INSERT INTO `faults_systems` VALUES (60, 53, 1, NULL, '2020-06-22 05:29:10', '2020-06-22 05:29:10');
-INSERT INTO `faults_systems` VALUES (61, 54, 4, NULL, '2020-08-03 07:06:54', '2020-08-03 07:06:54');
-INSERT INTO `faults_systems` VALUES (62, 55, 4, NULL, '2020-08-03 07:13:22', '2020-08-03 07:13:22');
-INSERT INTO `faults_systems` VALUES (63, 56, 9, NULL, '2020-08-03 07:29:19', '2020-08-03 07:29:19');
 
 -- ----------------------------
 -- Table structure for inspection_approved
@@ -706,11 +691,19 @@ CREATE TABLE `inspection_approved`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `inspection_id` int(11) NULL DEFAULT NULL,
   `approved_id` int(11) NULL DEFAULT NULL,
-  `comments` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `comments` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of inspection_approved
+-- ----------------------------
+INSERT INTO `inspection_approved` VALUES (1, 1, 6, 'asdasdasudy fgoduy fgiudy fgoiudyf goiduf ygoiduf ygoidufy goidufy goiduyfg oidufy goiudfy giodu fygoiud fygiodufy goidu fygoiduyf goiud yfgouid yfgouid yfogiud yfoiugy doiufgy doiufgy dioufyg odiufyg odiufyg duoify godiufyg ouidf ygodiuf ygoiduf ygodiufyg odiufyg doifugy doiufgydoifuy gdioufy gdoifugy dasd', '2020-08-04 16:38:38', '2020-08-04 16:38:38');
+INSERT INTO `inspection_approved` VALUES (2, 1, 7, 'asdasdasdasd aosudhaoisudy aosidy aoisduy aoisyd oiausyd oaisuyd oiasyud oaiusyd oiaus ydoiausy doiay sdiouya siudy aisudy oaisy doiausyd oiausyd aiousdy oaiuyd oaisuyd oaiuys diaousy doiausy doaiusdy oaisd yaiosudy aoius ydoiausyd aoiusyd oaisudy oaisyd oaisudy oaiusyd aoiusyd aoiusdy aoisudya oisduy asoduiya sodiuya sodiuays doiuays doiuaysdiuoasyd oaiusyd aoiusdy aoiusdy aoisudy aoisudyaosiduy aiosduy aoiusdy aoisd yasdasd', '2020-08-04 16:39:42', '2020-08-04 16:39:42');
+INSERT INTO `inspection_approved` VALUES (3, 4, 2, 'not ok', '2020-08-13 03:25:39', '2020-08-13 03:25:39');
+INSERT INTO `inspection_approved` VALUES (4, 2, 7, 'ok', '2020-08-13 03:28:15', '2020-08-13 03:28:15');
 
 -- ----------------------------
 -- Table structure for inspection_attendees
@@ -723,26 +716,31 @@ CREATE TABLE `inspection_attendees`  (
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `inspection_id`(`inspection_id`) USING BTREE,
-  INDEX `attendees_id`(`attendees_id`) USING BTREE,
-  CONSTRAINT `inspection_attendees_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `inspection_attendees_ibfk_2` FOREIGN KEY (`attendees_id`) REFERENCES `staffs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of inspection_attendees
 -- ----------------------------
-INSERT INTO `inspection_attendees` VALUES (1, 1, 1, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_attendees` VALUES (2, 1, 9, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_attendees` VALUES (3, 1, 5, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_attendees` VALUES (4, 1, 3, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_attendees` VALUES (5, 2, 1, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_attendees` VALUES (6, 2, 3, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_attendees` VALUES (7, 2, 9, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_attendees` VALUES (8, 3, 1, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_attendees` VALUES (9, 3, 3, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_attendees` VALUES (10, 3, 9, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
+INSERT INTO `inspection_attendees` VALUES (1, 1, 1, NULL, '2020-07-25 06:54:45', '2020-07-25 06:54:45');
+INSERT INTO `inspection_attendees` VALUES (2, 1, 5, NULL, NULL, NULL);
+INSERT INTO `inspection_attendees` VALUES (4, 2, 1, NULL, '2020-08-04 03:32:45', '2020-08-04 03:32:45');
+INSERT INTO `inspection_attendees` VALUES (5, 2, 3, NULL, '2020-08-04 03:32:45', '2020-08-04 03:32:45');
+INSERT INTO `inspection_attendees` VALUES (6, 3, 1, NULL, '2020-08-05 00:55:17', '2020-08-05 00:55:17');
+INSERT INTO `inspection_attendees` VALUES (7, 3, 5, NULL, '2020-08-05 00:55:17', '2020-08-05 00:55:17');
+INSERT INTO `inspection_attendees` VALUES (8, 4, 1, NULL, '2020-08-05 01:18:58', '2020-08-05 01:18:58');
+INSERT INTO `inspection_attendees` VALUES (9, 4, 5, NULL, '2020-08-05 01:18:58', '2020-08-05 01:18:58');
+INSERT INTO `inspection_attendees` VALUES (10, 4, 4, NULL, '2020-08-07 07:41:10', '2020-08-07 07:41:10');
+INSERT INTO `inspection_attendees` VALUES (11, 4, 6, NULL, '2020-08-07 07:41:10', '2020-08-07 07:41:10');
+INSERT INTO `inspection_attendees` VALUES (12, 1, 3, NULL, '2020-08-07 07:46:33', '2020-08-07 07:46:33');
+INSERT INTO `inspection_attendees` VALUES (13, 2, 5, NULL, '2020-08-07 08:02:53', '2020-08-07 08:02:53');
+INSERT INTO `inspection_attendees` VALUES (14, 5, 1, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_attendees` VALUES (15, 5, 6, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_attendees` VALUES (16, 5, 4, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_attendees` VALUES (17, 6, 1, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_attendees` VALUES (18, 6, 5, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_attendees` VALUES (19, 7, 1, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_attendees` VALUES (20, 7, 5, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
 
 -- ----------------------------
 -- Table structure for inspection_checklists
@@ -757,53 +755,85 @@ CREATE TABLE `inspection_checklists`  (
   `remarks` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `inspection_id`(`inspection_id`) USING BTREE,
-  CONSTRAINT `inspection_checklists_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 104 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of inspection_checklists
 -- ----------------------------
-INSERT INTO `inspection_checklists` VALUES (1, 1, 'Link redundancy check on PIN switch', 'Pass', 2, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (2, 1, 'Link redundancy check on PSN switch', 'Pass', 2, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (3, 1, 'Power redundancy check on PIN switch', 'Pass', 2, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (4, 1, 'Power redundancy check on PSN switch', 'Pass', 2, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (5, 1, 'Fiber optic cable management condition', 'Good', 3, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (6, 1, 'CAT6 cable management condition', 'Good', 3, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (7, 1, 'UPS A voltage', '230.2V', 5, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (8, 1, 'UPS B voltage', '230.3V', 5, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (9, 1, 'NON UPS voltage', '230.6V', 5, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (10, 1, 'Earthing resistant Ohm', '0.1Ohm', 5, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (11, 1, 'Panel light checking', 'Pass', 2, 'Panel light switch was not terminated accordingly thus make the light on for 24hours regardless the panel door was closed', '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (12, 1, 'Fan filter dust free', 'Yes', 1, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (13, 1, 'Panel cleaned', 'Good', 3, NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_checklists` VALUES (14, 2, 'Link redundancy check on PIN switch', 'Pass', 2, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (15, 2, 'Link redundancy check on PSN switch', 'Not Available', 2, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (16, 2, 'Power redundancy check on PIN switch', 'Pass', 2, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (17, 2, 'Power redundancy check on PSN switch', 'Not Available', 2, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (18, 2, 'Fiber optic cable management condition', 'Good', 3, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (19, 2, 'CAT6 cable management condition', 'Good', 3, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (20, 2, 'UPS A voltage', '231.9V AC', 5, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (21, 2, 'UPS B voltage', '240.5V AC', 5, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (22, 2, 'NON UPS voltage', '240.5V AC', 5, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (23, 2, 'Earthing resistant Ohm', '0.1Ohm', 5, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (24, 2, 'Panel light checking', 'Pass', 2, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (25, 2, 'Fan filter dust free', 'Yes', 1, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (26, 2, 'Panel cleaned', 'Good', 3, NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_checklists` VALUES (27, 3, 'Link redundancy check on PIN switch', 'Not Available', 2, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (28, 3, 'Link redundancy check on PSN switch', 'Pass', 2, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (29, 3, 'Power redundancy check on PIN switch', 'Not Available', 2, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (30, 3, 'Power redundancy check on PSN switch', 'Pass', 2, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (31, 3, 'Fiber optic cable management condition', 'Good', 3, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (32, 3, 'CAT6 cable management condition', 'Not Available', 3, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (33, 3, 'UPS A voltage', '231.4V AC', 5, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (34, 3, 'UPS B voltage', '231.2V AC', 5, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (35, 3, 'NON UPS voltage', '241.1V AC', 5, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (36, 3, 'Earthing resistant Ohm', '0.1Ohm', 5, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (37, 3, 'Panel light checking', 'Pass', 2, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (38, 3, 'Fan filter dust free', 'Yes', 1, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
-INSERT INTO `inspection_checklists` VALUES (39, 3, 'Panel cleaned', 'Good', 3, NULL, '2020-08-11 08:38:37', '2020-08-11 08:38:37');
+INSERT INTO `inspection_checklists` VALUES (1, 1, 'Panel in good condition?', 'Yes', 1, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (2, 1, 'Panel light working properly?', 'Yes', 1, 'light been turn on for 24hours due to wrong termination at the terminal block', '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (3, 1, 'Cable CAT6 & FO management is proper?', 'Good', 3, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (4, 1, 'All fan panel is running?', 'Pass', 2, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (5, 1, 'Fan filter cleaned?', 'Yes', 1, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (6, 1, 'Patch panel ports is covered?', 'Yes', 1, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (7, 1, 'Earthing system?', 'Good', 3, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (8, 1, 'UPS A Volt', '230 V', 5, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (9, 1, 'UPS B Volt', '231 V', 5, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (10, 1, 'NON UPS Volt', '232 V', 5, NULL, '2020-07-25 06:54:45', '2020-08-07 07:46:33');
+INSERT INTO `inspection_checklists` VALUES (11, 2, 'Panel in good condition?', 'Yes', 1, NULL, '2020-08-04 03:32:45', '2020-08-04 03:32:45');
+INSERT INTO `inspection_checklists` VALUES (12, 2, 'Panel light working properly?', 'Yes', 1, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (13, 2, 'Cable CAT6 & FO management is proper?', 'Good', 3, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (14, 2, 'All fan panel is running?', 'Pass', 2, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (15, 2, 'Fan filter cleaned?', 'Yes', 1, NULL, '2020-08-04 03:32:45', '2020-08-04 03:32:45');
+INSERT INTO `inspection_checklists` VALUES (16, 2, 'Patch panel ports is covered?', 'Yes', 1, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (17, 2, 'Earthing system?', 'Good', 3, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (18, 2, 'UPS A Volt', '230V', 5, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (19, 2, 'UPS B Volt', '231V', 5, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (20, 2, 'NON UPS Volt', '233V', 5, NULL, '2020-08-04 03:32:45', '2020-08-07 08:02:53');
+INSERT INTO `inspection_checklists` VALUES (21, 3, 'Panel in good condition?', 'Yes', 1, NULL, '2020-08-05 00:55:17', '2020-08-05 00:55:17');
+INSERT INTO `inspection_checklists` VALUES (22, 3, 'Panel light working properly?', 'Yes', 1, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (23, 3, 'Cable CAT6 & FO management is proper?', 'Good', 3, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (24, 3, 'All fan panel is running?', 'Pass', 2, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (25, 3, 'Fan filter cleaned?', 'Yes', 1, NULL, '2020-08-05 00:55:17', '2020-08-05 00:55:17');
+INSERT INTO `inspection_checklists` VALUES (26, 3, 'Patch panel ports is covered?', 'Yes', 1, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (27, 3, 'Earthing system?', 'Good', 3, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (28, 3, 'UPS A Volt', '233V', 5, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (29, 3, 'UPS B Volt', '232V', 5, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (30, 3, 'NON UPS Volt', '231V', 5, NULL, '2020-08-05 00:55:17', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (31, 4, 'Panel in good condition?', 'Yes', 1, NULL, '2020-08-05 01:18:58', '2020-08-05 01:18:58');
+INSERT INTO `inspection_checklists` VALUES (32, 4, 'Panel light working properly?', 'Yes', 1, NULL, '2020-08-05 01:18:58', '2020-08-07 08:16:52');
+INSERT INTO `inspection_checklists` VALUES (33, 4, 'Cable CAT6 & FO management is proper?', 'Good', 3, NULL, '2020-08-05 01:18:58', '2020-08-07 08:16:52');
+INSERT INTO `inspection_checklists` VALUES (34, 4, 'All fan panel is running?', 'Pass', 2, NULL, '2020-08-05 01:18:58', '2020-08-07 08:16:52');
+INSERT INTO `inspection_checklists` VALUES (35, 4, 'Fan filter cleaned?', 'Yes', 1, NULL, '2020-08-05 01:18:58', '2020-08-05 01:18:58');
+INSERT INTO `inspection_checklists` VALUES (36, 4, 'Patch panel ports is covered?', 'Yes', 1, NULL, '2020-08-05 01:18:58', '2020-08-07 08:16:52');
+INSERT INTO `inspection_checklists` VALUES (37, 4, 'Earthing system?', 'Good', 3, NULL, '2020-08-05 01:18:58', '2020-08-07 08:16:52');
+INSERT INTO `inspection_checklists` VALUES (38, 4, 'UPS A Volt', '231 V', 5, NULL, '2020-08-05 01:18:58', '2020-08-07 07:47:41');
+INSERT INTO `inspection_checklists` VALUES (39, 4, 'UPS B Volt', '232 V', 5, NULL, '2020-08-05 01:18:58', '2020-08-07 07:47:41');
+INSERT INTO `inspection_checklists` VALUES (40, 4, 'NON UPS Volt', '233 V', 5, NULL, '2020-08-05 01:18:58', '2020-08-07 07:47:41');
+INSERT INTO `inspection_checklists` VALUES (41, 3, 'UPS A Volt', '233V', 5, NULL, '2020-08-07 07:32:21', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (42, 3, 'UPS B Volt', '231V', 5, NULL, '2020-08-07 07:32:21', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (43, 3, 'NON UPS Volt', '232V', 5, NULL, '2020-08-07 07:32:21', '2020-08-07 14:37:14');
+INSERT INTO `inspection_checklists` VALUES (44, 5, 'Panel in good condition?', 'Yes', 1, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (45, 5, 'Panel light working properly?', 'Yes', 1, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (46, 5, 'Cable CAT6 & FO management is proper?', 'Good', 3, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (47, 5, 'All fan panel is running?', 'Pass', 2, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (48, 5, 'Fan filter cleaned?', 'Yes', 1, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (49, 5, 'Patch panel ports is covered?', 'Yes', 1, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (50, 5, 'Earthing system?', 'Good', 3, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (51, 5, 'UPS A Volt', '231V', 5, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (52, 5, 'UPS B Volt', '233V', 5, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (53, 5, 'NON UPS Volt', '232V', 5, NULL, '2020-08-07 08:18:45', '2020-08-07 08:18:45');
+INSERT INTO `inspection_checklists` VALUES (54, 6, 'Panel in good condition?', 'Yes', 1, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (55, 6, 'Panel light working properly?', 'Yes', 1, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (56, 6, 'Cable CAT6 & FO management is proper?', 'Good', 3, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (57, 6, 'All fan panel is running?', 'Pass', 2, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (58, 6, 'Fan filter cleaned?', 'Yes', 1, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (59, 6, 'Patch panel ports is covered?', 'Yes', 1, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (60, 6, 'Earthing system?', 'Good', 3, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (61, 6, 'UPS A Volt', '231V', 5, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (62, 6, 'UPS B Volt', '233V', 5, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (63, 6, 'NON UPS Volt', '232', 5, NULL, '2020-08-07 08:56:41', '2020-08-07 08:56:41');
+INSERT INTO `inspection_checklists` VALUES (64, 7, 'Panel in good condition?', 'Yes', 1, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (65, 7, 'Panel light working properly?', 'Yes', 1, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (66, 7, 'Cable CAT6 & FO management is proper?', 'Good', 3, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (67, 7, 'All fan panel is running?', 'Pass', 2, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (68, 7, 'Fan filter cleaned?', 'Yes', 1, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (69, 7, 'Patch panel ports is covered?', 'Yes', 1, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (70, 7, 'Earthing system?', 'Good', 3, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (71, 7, 'UPS A Volt', '233V', 5, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (72, 7, 'UPS B Volt', '232V', 5, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
+INSERT INTO `inspection_checklists` VALUES (73, 7, 'NON UPS Volt', '230V', 5, NULL, '2020-08-07 09:04:40', '2020-08-07 09:04:40');
 
 -- ----------------------------
 -- Table structure for inspection_documents
@@ -816,13 +846,18 @@ CREATE TABLE `inspection_documents`  (
   `original_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `input` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `input_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `inspection_id`(`inspection_id`) USING BTREE,
-  CONSTRAINT `inspection_documents_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of inspection_documents
+-- ----------------------------
+INSERT INTO `inspection_documents` VALUES (1, 1, 'Document upload', 'resume noor dhiauddin 2020-3-4 - signed.pdf', 'public/images/inspection/documents/ZpvnsHnEg10zi6x5oh8ZZBCcTHRXQDqprZYaXf1y.pdf', '8', 'qweqweqwe', '2020-07-25 06:54:45', '2020-07-25 06:54:45');
+INSERT INTO `inspection_documents` VALUES (2, 7, 'Document 1', 'PPMIC_FON-000001(1).pdf', 'public/images/inspection/documents/O6RLR1zf7MpQmZUNl3cyIuMfjHuIEZly9WgxkCZc.pdf', '8', NULL, '2020-08-07 09:07:23', '2020-08-07 09:21:02');
+INSERT INTO `inspection_documents` VALUES (3, 3, 'Document 1', 'PPMIC_FON-000001(1).pdf', 'public/images/inspection/documents/RcmGyWOMUsfTKCaTCqqmFGiSwDgRNA8idwVTOvf6.pdf', '8', NULL, '2020-08-07 14:37:15', '2020-08-07 14:37:15');
 
 -- ----------------------------
 -- Table structure for inspection_images
@@ -835,26 +870,19 @@ CREATE TABLE `inspection_images`  (
   `original_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `input` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `input_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `inspection_id`(`inspection_id`) USING BTREE,
-  CONSTRAINT `inspection_images_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of inspection_images
 -- ----------------------------
-INSERT INTO `inspection_images` VALUES (1, 1, 'Front cabinet image', 'WhatsApp Image 2020-08-08 at 10.18.03 AM (1).jpeg', 'public/images/inspection/images/AVERNekmdM5LBtItNKiGGidceMpzTKDI4JX6J1Gd.jpeg', '7', NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_images` VALUES (2, 1, 'Rear cabinet image', 'WhatsApp Image 2020-08-08 at 10.18.06 AM.jpeg', 'public/images/inspection/images/bNvjqOcsPh8AlWx6UB78ZNTJo2cK6DqGvIYlYWXE.jpeg', '7', NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_images` VALUES (3, 1, 'Internal cabinet image', 'WhatsApp Image 2020-08-08 at 10.18.07 AM (1).jpeg', 'public/images/inspection/images/2L6YUFPcqDsPXaGQN0Bw2xIeAqKQLNa8CieMl2nh.jpeg', '7', NULL, '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspection_images` VALUES (4, 2, 'Front cabinet image', 'image.jpg', 'public/images/inspection/images/Q0sBQ5OolfE4G8dhllz3jHRzF4UsRZJxEXs6nolU.jpeg', '7', NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_images` VALUES (5, 2, 'Rear cabinet image', 'image.jpg', 'public/images/inspection/images/CxuQBSzH3ygiRDwHXxBJBuBPsB4K3Q1Pi5kgwmX1.jpeg', '7', NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_images` VALUES (6, 2, 'Internal cabinet image', 'image.jpg', 'public/images/inspection/images/hAneb2GqupoumktnUxtC8lHpUkds8n0dj7eMOD7Y.jpeg', '7', NULL, '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspection_images` VALUES (7, 3, 'Front cabinet image', 'image.jpg', 'public/images/inspection/images/MvGMpDukNqHtFe4MkZu8EkMZ4bbr44uKTJCCepJb.jpeg', '7', NULL, '2020-08-11 08:38:38', '2020-08-11 08:38:38');
-INSERT INTO `inspection_images` VALUES (8, 3, 'Rear cabinet image', 'image.jpg', 'public/images/inspection/images/CnWODXdsqhTU0lnHqleBKsN9BxxTvX3hq6WIQX03.jpeg', '7', NULL, '2020-08-11 08:38:38', '2020-08-11 08:38:38');
-INSERT INTO `inspection_images` VALUES (9, 3, 'Internal cabinet image', 'image.jpg', 'public/images/inspection/images/cKeEugc2vdhlAx5TPLeCIKo2a39Qxq6KU2fO2VLK.jpeg', '7', NULL, '2020-08-11 08:38:38', '2020-08-11 08:38:38');
+INSERT INTO `inspection_images` VALUES (9, 7, 'Image upload 1', 'PapermatePacer.jpg', 'public/images/inspection/images/tEKLlXxBop5tt5scLrWLTX5GTqTgZFyYwdgEQq7b.jpeg', '7', NULL, '2020-08-07 09:04:40', '2020-08-07 09:21:02');
+INSERT INTO `inspection_images` VALUES (11, 3, 'Image 1', 'PapermatePacer.jpg', 'public/images/inspection/images/jfpLd1jtVx687PeATlV1gdR4JFeXxwep8NX3f361.jpeg', '7', NULL, '2020-08-07 14:37:15', '2020-08-07 14:37:15');
+INSERT INTO `inspection_images` VALUES (13, 14, 'Image upload 1', 'Screenshot_2020-08-11 Prime Infrastructure - Network Summary - 10 39 109 240.png', 'public/images/inspection/images/mm1bk575DnK0N5aGZM3RiupNOXAeHyXxidgyniI0.png', '7', NULL, '2020-08-16 07:47:57', '2020-08-16 07:47:57');
+INSERT INTO `inspection_images` VALUES (14, 14, 'Image upload 2', 'Screenshot_2020-07-22 Prime Infrastructure - Network Summary - 10 39 109 240.png', 'public/images/inspection/images/YA2dTUBKvrQENepEiVkANZz9IIKCLPh6JSQrvRXd.png', '7', NULL, '2020-08-16 07:47:57', '2020-08-16 07:47:57');
 
 -- ----------------------------
 -- Table structure for inspection_reviewed
@@ -864,11 +892,18 @@ CREATE TABLE `inspection_reviewed`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `inspection_id` int(11) NULL DEFAULT NULL,
   `reviewed_id` int(11) NULL DEFAULT NULL,
-  `comments` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `comments` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of inspection_reviewed
+-- ----------------------------
+INSERT INTO `inspection_reviewed` VALUES (1, 1, 3, 'asdasdasdasdasdlhagsdahsdgak sjhgaskdj akhsgd kajshgd aksjhdga kjsdg kajshgd akjgdh akjsgdh akjshdg akjsdg akjsgd akhsgd kjasgdh akjshgd akshdga skjdg askjghd aksjdg akgdh asjdhg akjsdg akjshgdaksjgdh ', '2020-08-04 16:36:59', '2020-08-04 16:36:59');
+INSERT INTO `inspection_reviewed` VALUES (2, 2, 7, 'test review', '2020-08-13 03:27:46', '2020-08-13 03:27:46');
+INSERT INTO `inspection_reviewed` VALUES (3, 3, 7, 'no ok', '2020-08-13 03:29:18', '2020-08-13 03:29:18');
 
 -- ----------------------------
 -- Table structure for inspections
@@ -879,28 +914,29 @@ CREATE TABLE `inspections`  (
   `staff_id` int(11) NULL DEFAULT NULL,
   `system_id` int(11) NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `date` datetime(0) NULL DEFAULT NULL,
+  `date` date NULL DEFAULT NULL,
   `building` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `tag` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ready` tinyint(1) NULL DEFAULT NULL,
+  `ready` int(255) NULL DEFAULT NULL,
   `reviewed` tinyint(1) NULL DEFAULT NULL,
   `approved` tinyint(1) NULL DEFAULT NULL,
-  `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `active` int(11) NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `staff_id`(`staff_id`) USING BTREE,
-  INDEX `system_id`(`system_id`) USING BTREE,
-  CONSTRAINT `inspections_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `inspections_ibfk_2` FOREIGN KEY (`system_id`) REFERENCES `systems` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of inspections
 -- ----------------------------
-INSERT INTO `inspections` VALUES (1, 1, 1, 'PPM Cabinet Inspection Checklist', '2020-08-06 00:00:00', 'SUB301', 'FON701', 1, NULL, NULL, 'Panel light switch was terminated correctly according to the drawings', '2020-08-08 02:22:33', '2020-08-08 02:22:33');
-INSERT INTO `inspections` VALUES (2, 1, 1, 'PPM Cabinet Inspection Checklist', '2020-08-11 00:00:00', 'FAR511', 'FON701', 1, NULL, NULL, 'OTL not terminated at Krohne block', '2020-08-11 08:30:02', '2020-08-11 08:30:02');
-INSERT INTO `inspections` VALUES (3, 1, 1, 'PPM Cabinet inspection Checklist', '2020-08-11 00:00:00', 'FAR511', 'FON702', NULL, NULL, NULL, 'All in good condition', '2020-08-11 08:38:37', '2020-08-11 08:38:37');
+INSERT INTO `inspections` VALUES (1, 1, 1, 'SUB-301 PPM FON Cabinet', '2020-07-25', 'SUB301', 'FON-701', 1, NULL, NULL, 'manage to correct the light switch at the terminal block', 1, '2020-07-25 06:54:45', '2020-08-14 02:31:46');
+INSERT INTO `inspections` VALUES (2, 1, 1, 'MCB601 FON PPM Cabinet Inspection', '2020-08-04', 'MCB601', 'FON-708', 1, NULL, NULL, 'all in good condition', 1, '2020-08-04 03:32:45', '2020-08-14 02:32:39');
+INSERT INTO `inspections` VALUES (3, 1, 1, 'PPM Cabinet Inspection', '2020-08-05', 'SUB-551', 'FON-701', 1, NULL, NULL, 'All in good condition\r\n\r\nyolo', 1, '2020-08-05 00:55:17', '2020-08-14 02:17:05');
+INSERT INTO `inspections` VALUES (4, 1, 1, 'PPM MCB601 FON CABINET', '2020-08-05', 'MCB-701', 'FON-701', NULL, NULL, NULL, 'got faulty on light. change the common cable accordingly to the drawings and the light is working fine.', 1, '2020-08-05 01:18:58', '2020-08-13 10:21:10');
+INSERT INTO `inspections` VALUES (5, 1, 1, 'MCB602 FON PPM Cabinet Inspection', '2020-08-07', 'MCB602', 'FON-705', NULL, NULL, NULL, 'all in good condition', 1, '2020-08-07 08:18:45', '2020-08-13 06:43:17');
+INSERT INTO `inspections` VALUES (6, 1, 1, 'FAR420 FON PPM Cabinet Inspection', '2020-08-07', 'FAR420', 'FON701', NULL, NULL, NULL, 'All in good condition', 1, '2020-08-07 08:56:41', '2020-08-13 06:44:19');
+INSERT INTO `inspections` VALUES (7, 1, 1, 'PPM Cabinet Inspection', '2020-08-07', 'FAR480', 'FON701', NULL, NULL, NULL, 'All in good condition. after edit. after 2nd edit', 1, '2020-08-07 09:04:40', '2020-08-07 09:21:02');
 
 -- ----------------------------
 -- Table structure for labels
@@ -939,20 +975,19 @@ CREATE TABLE `logins`  (
   INDEX `staff_id`(`staff_id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE,
   CONSTRAINT `logins_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of logins
 -- ----------------------------
-INSERT INTO `logins` VALUES (1, 1, 'PRO0007', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'XcggBbubrXT3flhUJb11v9QA6tV6q3Nli0Cfgpm4j2UP7bz9LSBwEtcNYZsG', 1, '2019-06-13 16:58:12', '2019-06-30 07:09:45');
-INSERT INTO `logins` VALUES (2, 2, 'PET01580', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'TduxVwKPH1cWGSQBAAh0tfVuHOaN4fG0FcGqGjkSHacoXry0KLzJxQG9rGKV', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
-INSERT INTO `logins` VALUES (3, 3, 'PET03869', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'ONYAfnYZMzgeoFNcwRDOMBH7bMvTVj9t3ummvLSbJY77xdzNUa3pdW3URQco', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
+INSERT INTO `logins` VALUES (1, 1, 'PRO0007', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'xLemb6MeQ9uwoWUrm23SMWNzkMB7C7icjRHEbHtVcIiZpZnltIbCV9A7AY7T', 1, '2019-06-13 16:58:12', '2019-06-30 07:09:45');
+INSERT INTO `logins` VALUES (2, 2, 'PET01580', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'qDO8NdKVfp82xXCxzCQhMxigv1KW37K58PResGZASaspygtouCg8zpmc2lK2', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
+INSERT INTO `logins` VALUES (3, 3, 'PET03869', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', '4CiPtzKjcHarzY8cy24B7K3zjxyOatTmjYWuwQ996L0qMaJXTyg7rkUM6SSP', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
 INSERT INTO `logins` VALUES (4, 4, 'OUI34912', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'A7Q4KO1ky6ng1IUB7CbIyxwY2Q710FU31Ynhjym6FEng6caQpf4yxYleZMmV', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
-INSERT INTO `logins` VALUES (5, 5, 'OUI47180', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'tRPL2BOsm0QgXtO28NFQFJIbnYHAjEVURfsouJyVnYBPRnnrQ0xKN6huQstZ', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
+INSERT INTO `logins` VALUES (5, 5, 'OUI47180', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'I6RC6nsK3fQgSIB3dPgfV6qQmiJ9xNmSeAavQCGgwzb9pqhIKk2vLFf4Rx0k', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
 INSERT INTO `logins` VALUES (6, 6, 'PET04369', '$2y$10$DBZ6PlRqn2GbFj4DGSINUOaJntNGYYHpOTliorBIFe0D.gTVJpX.u', NULL, 1, '2019-07-02 01:42:13', '2019-07-02 01:42:13');
 INSERT INTO `logins` VALUES (7, 7, 'PET03059', '$2y$10$aiNAp.k7tZqvGNw/OzQJXeHRrAwTAoiIpuG7hm.hKIaC4.uXRWR96', NULL, 1, '2019-07-06 07:46:25', '2019-07-06 07:46:25');
 INSERT INTO `logins` VALUES (8, 8, 'OUI47179', '$2y$10$i.QE2kmffk.Ln4p3gZCfNOe6R1CN32gn0oR/71zahYUh1ZWNVKArS', 'ELbXSBTkRODt04kXjh0bfteoZMvyVnYWMbaa26nwk74wYR6U9idDyL0PH699', 1, '2019-07-09 00:16:49', '2019-07-09 00:16:49');
-INSERT INTO `logins` VALUES (9, 9, 'ATR00019', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', NULL, 1, '2020-08-03 09:26:46', '2020-08-03 09:33:19');
 
 -- ----------------------------
 -- Table structure for password_resets
@@ -975,8 +1010,6 @@ INSERT INTO `password_resets` VALUES ('dhiauddin@protellus.com.my', 'qbarE745MYz
 INSERT INTO `password_resets` VALUES ('dhiauddin@protellus.com.my', 'HhS0sBUMDjz8pJDH4SfcvRKNQSRLHXxV', '2019-06-19 16:45:34', '2019-06-19 16:45:34');
 INSERT INTO `password_resets` VALUES ('dhiauddin@protellus.com.my', '0XywOsoOg5NgaIAKO5gR8bbLc5TJlrcB', '2019-07-02 01:43:15', '2019-07-02 01:43:15');
 INSERT INTO `password_resets` VALUES ('edwandy.afand@petronas.com.my', 'Mj3xa3enf0fypJMjDqSJ2TGtRHBqUGsR', '2020-05-03 06:39:55', '2020-05-03 06:39:55');
-INSERT INTO `password_resets` VALUES ('khairul@mychronosys.com', 'jYVi5GS1MW9aaNCbcewYN8eV2rKIFJv1', '2020-08-09 14:16:06', '2020-08-09 14:16:06');
-INSERT INTO `password_resets` VALUES ('khairul@mychronosys.com', 'htkvuEGs43BnqsLBrmzVEM4r7S3IbKwA', '2020-08-09 14:16:45', '2020-08-09 14:16:45');
 
 -- ----------------------------
 -- Table structure for priorities
@@ -1013,7 +1046,7 @@ CREATE TABLE `staffs`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of staffs
@@ -1026,7 +1059,6 @@ INSERT INTO `staffs` VALUES (5, NULL, 'Stavehogans John Little', 'stave@protellu
 INSERT INTO `staffs` VALUES (6, NULL, 'M Faisal Abd Malik', 'mfaisal.abdmali@petronas.com', '0125925859', 1, NULL, '2019-07-02 01:42:13', '2019-07-02 01:42:13');
 INSERT INTO `staffs` VALUES (7, NULL, 'Edwandy', 'edwandy.afand@petronas.com.my', '0143177375', 1, NULL, '2019-07-06 07:46:25', '2019-07-06 07:46:25');
 INSERT INTO `staffs` VALUES (8, NULL, 'Yaacob Abdul Hamid', 'yaacob.abdulhamid@gmail.com', '01133339928', 1, NULL, '2019-07-09 00:16:49', '2019-07-09 00:16:49');
-INSERT INTO `staffs` VALUES (9, NULL, 'Khairul', 'khairul@mychronosys.com', '0137965724', 1, NULL, '2020-08-03 09:26:46', '2020-08-03 09:26:46');
 
 -- ----------------------------
 -- Table structure for status
@@ -1207,25 +1239,25 @@ INSERT INTO `swaccess_switch` VALUES (73, 13, 357, 482, NULL, '2019-10-15 07:06:
 INSERT INTO `swaccess_switch` VALUES (74, 14, 351, 474, NULL, '2019-10-18 01:21:55', '2019-10-29 07:08:48');
 INSERT INTO `swaccess_switch` VALUES (75, 14, 352, 476, NULL, '2019-10-18 01:21:55', '2019-10-29 07:08:48');
 INSERT INTO `swaccess_switch` VALUES (77, 16, 396, 1063, NULL, '2019-10-22 06:44:21', '2019-10-29 07:14:24');
-INSERT INTO `swaccess_switch` VALUES (78, 17, 150, 193, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (79, 17, 150, 194, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (80, 17, 150, 195, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (81, 17, 150, 196, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (82, 17, 151, 197, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (83, 17, 151, 198, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (84, 17, 152, 199, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (85, 17, 152, 200, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (86, 17, 153, 201, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (87, 17, 153, 202, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (88, 17, 153, 203, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (89, 17, 154, 204, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (90, 17, 169, 221, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (91, 17, 170, 222, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (92, 17, 160, 211, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (93, 17, 164, 215, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (94, 17, 166, 218, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (95, 17, 167, 219, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
-INSERT INTO `swaccess_switch` VALUES (96, 17, 162, 213, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
+INSERT INTO `swaccess_switch` VALUES (78, 17, 150, 196, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (79, 17, 150, 196, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (80, 17, 150, 196, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (81, 17, 150, 196, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (82, 17, 151, 198, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (83, 17, 151, 198, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (84, 17, 152, 200, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (85, 17, 152, 200, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (86, 17, 153, 203, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (87, 17, 153, 203, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (88, 17, 153, 203, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (89, 17, 154, 204, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (90, 17, 169, 221, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (91, 17, 170, 222, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (92, 17, 160, 211, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (93, 17, 164, 215, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (94, 17, 166, 218, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (95, 17, 167, 219, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
+INSERT INTO `swaccess_switch` VALUES (96, 17, 162, 213, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
 INSERT INTO `swaccess_switch` VALUES (97, 18, 76, 97, NULL, '2019-11-05 06:37:39', '2019-11-16 06:57:08');
 INSERT INTO `swaccess_switch` VALUES (98, 18, 76, 97, NULL, '2019-11-05 06:37:39', '2019-11-16 06:57:08');
 INSERT INTO `swaccess_switch` VALUES (99, 18, 77, 98, NULL, '2019-11-05 06:37:39', '2019-11-16 06:57:08');
@@ -1239,12 +1271,12 @@ INSERT INTO `swaccess_switch` VALUES (106, 18, 88, 114, NULL, '2019-11-05 07:25:
 INSERT INTO `swaccess_switch` VALUES (107, 18, 81, 104, NULL, '2019-11-05 07:32:43', '2019-11-16 06:57:09');
 INSERT INTO `swaccess_switch` VALUES (108, 19, 396, 1063, NULL, '2019-11-05 07:41:07', '2019-11-16 06:59:15');
 INSERT INTO `swaccess_switch` VALUES (109, 19, 398, 1067, NULL, '2019-11-05 07:41:07', '2019-11-16 06:59:15');
-INSERT INTO `swaccess_switch` VALUES (110, 20, 138, 177, NULL, '2019-11-05 07:50:44', '2019-11-05 07:50:44');
-INSERT INTO `swaccess_switch` VALUES (111, 20, 138, 178, NULL, '2019-11-05 07:50:44', '2019-11-05 07:50:44');
-INSERT INTO `swaccess_switch` VALUES (112, 20, 142, 184, NULL, '2019-11-05 07:50:44', '2019-11-05 07:50:44');
-INSERT INTO `swaccess_switch` VALUES (113, 20, 148, 190, NULL, '2019-11-05 07:50:44', '2019-11-05 07:50:44');
-INSERT INTO `swaccess_switch` VALUES (114, 20, 148, 191, NULL, '2019-11-05 07:50:44', '2019-11-05 07:50:44');
-INSERT INTO `swaccess_switch` VALUES (115, 20, 144, 186, NULL, '2019-11-05 07:50:44', '2019-11-05 07:50:44');
+INSERT INTO `swaccess_switch` VALUES (110, 20, 138, 178, NULL, '2019-11-05 07:50:44', '2020-07-07 05:23:49');
+INSERT INTO `swaccess_switch` VALUES (111, 20, 138, 178, NULL, '2019-11-05 07:50:44', '2020-07-07 05:23:49');
+INSERT INTO `swaccess_switch` VALUES (112, 20, 142, 184, NULL, '2019-11-05 07:50:44', '2020-07-07 05:23:49');
+INSERT INTO `swaccess_switch` VALUES (113, 20, 148, 191, NULL, '2019-11-05 07:50:44', '2020-07-07 05:23:49');
+INSERT INTO `swaccess_switch` VALUES (114, 20, 148, 191, NULL, '2019-11-05 07:50:44', '2020-07-07 05:23:49');
+INSERT INTO `swaccess_switch` VALUES (115, 20, 144, 186, NULL, '2019-11-05 07:50:44', '2020-07-07 05:23:49');
 INSERT INTO `swaccess_switch` VALUES (116, 21, 125, 161, NULL, '2019-11-12 04:03:56', '2019-11-16 07:03:40');
 INSERT INTO `swaccess_switch` VALUES (117, 21, 136, 175, NULL, '2019-11-12 04:03:56', '2019-11-16 07:03:40');
 INSERT INTO `swaccess_switch` VALUES (118, 21, 92, 118, NULL, '2019-11-13 01:58:44', '2019-11-16 07:03:40');
@@ -1911,10 +1943,10 @@ INSERT INTO `switchaccess` VALUES (12, 1, '2019-10-14', 'SPJ', 'Temporary Passwo
 INSERT INTO `switchaccess` VALUES (13, 1, '2019-10-15', 'EXT/PET-ICT', 'Package 16A (ETP) :Request an access to Switch for troubleshoot AP', '2019-10-16', '2019-10-22', '2019-10-16', '2019-10-29', 2, NULL, '2019-10-15 07:06:08', '2019-10-29 07:11:09');
 INSERT INTO `switchaccess` VALUES (14, 1, '2019-10-17', 'EXT/PET-ICT', 'Package 16A (ETP) :Request access to Core Switch MCB601 and Switch FAR 630', '2019-10-18', '2019-10-22', '2019-10-18', '2019-10-29', 2, NULL, '2019-10-18 01:21:55', '2019-10-29 07:08:48');
 INSERT INTO `switchaccess` VALUES (16, 1, '2019-10-22', 'PET-ICT', 'No Subject', '2019-10-22', '2019-10-24', '2019-10-22', '2019-10-29', 2, NULL, '2019-10-22 06:44:21', '2019-10-29 07:14:24');
-INSERT INTO `switchaccess` VALUES (17, 1, '2019-10-22', 'SPJ', 'RAPID P12B Telecommunication and Instrumentation Meeting 25th October 2017 Minutes of Meeting', '2019-10-22', '2019-10-28', '2019-10-23', NULL, 1, NULL, '2019-10-23 06:47:37', '2019-10-23 06:47:37');
+INSERT INTO `switchaccess` VALUES (17, 1, '2019-10-22', 'SPJ', 'RAPID P12B Telecommunication and Instrumentation Meeting 25th October 2017 Minutes of Meeting', '2019-10-22', '2019-10-28', '2019-10-23', NULL, 2, NULL, '2019-10-23 06:47:37', '2020-07-07 05:23:42');
 INSERT INTO `switchaccess` VALUES (18, 1, '2019-11-05', 'INF-IINF/PET-ICT', 'Package 5 switch access request', '2019-11-05', '2019-11-15', '2019-11-05', '2019-11-16', 2, NULL, '2019-11-05 06:37:39', '2019-11-16 06:57:08');
 INSERT INTO `switchaccess` VALUES (19, 1, '2019-11-05', 'INF-IINF/PET-ICT', 'Package 5 switch access request.', '2019-11-05', '2019-11-11', '2019-11-05', '2019-11-16', 2, NULL, '2019-11-05 07:41:07', '2019-11-16 06:59:15');
-INSERT INTO `switchaccess` VALUES (20, 1, '2019-11-05', 'INF-IINF/PET-ICT', 'P12A access switch', '2019-11-05', '2019-11-15', NULL, NULL, 1, NULL, '2019-11-05 07:50:44', '2019-11-05 07:50:44');
+INSERT INTO `switchaccess` VALUES (20, 1, '2019-11-05', 'INF-IINF/PET-ICT', 'P12A access switch', '2019-11-05', '2019-11-15', NULL, NULL, 2, NULL, '2019-11-05 07:50:44', '2020-07-07 05:23:49');
 INSERT INTO `switchaccess` VALUES (21, 1, '2019-11-11', 'INF-IINF/PET-ICT', 'AP Down P11 & P14', '2019-11-08', '2019-11-14', '2019-11-11', '2019-11-16', 2, NULL, '2019-11-12 04:03:56', '2019-11-16 07:03:40');
 
 -- ----------------------------
@@ -2369,43 +2401,31 @@ CREATE TABLE `template_checklists`  (
   `template_id` int(11) NULL DEFAULT NULL,
   `input_type` int(11) NULL DEFAULT NULL,
   `label` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `active` int(11) NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `template_id`(`template_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of template_checklists
 -- ----------------------------
-INSERT INTO `template_checklists` VALUES (1, 1, 2, 'Link redundancy check on PIN switch', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (2, 1, 2, 'Link redundancy check on PSN switch', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (3, 1, 2, 'Power redundancy check on PIN switch', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (4, 1, 2, 'Power redundancy check on PSN switch', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (5, 1, 3, 'Fiber optic cable management condition', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (6, 1, 3, 'CAT6 cable management condition', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (7, 1, 5, 'UPS A voltage', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (8, 1, 5, 'UPS B voltage', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (9, 1, 5, 'NON UPS voltage', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (10, 1, 5, 'Earthing resistant Ohm', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (11, 1, 2, 'Panel light checking', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (12, 1, 1, 'Fan filter dust free', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (13, 1, 3, 'Panel cleaned', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (14, 1, 7, 'Front cabinet image', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (15, 1, 7, 'Rear cabinet image', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (16, 1, 7, 'Internal cabinet image', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `template_checklists` VALUES (17, 2, 5, 'Workstation OS in detail', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (18, 2, 3, 'Monitor condition?', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (19, 2, 3, 'PC condition?', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (20, 2, 3, 'Mouse condition?', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (21, 2, 3, 'Keyboard condition?', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (22, 2, 3, 'Speaker condition?', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (23, 2, 2, 'Windows updated?', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (24, 2, 2, 'Anti virus updated?', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (25, 2, 2, 'Ping gateway (for network testing purpose)', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (26, 2, 3, 'Workstation cable management status', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (27, 2, 7, 'Image 1', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
-INSERT INTO `template_checklists` VALUES (28, 2, 7, 'Image 2', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
+INSERT INTO `template_checklists` VALUES (21, 9, 1, 'Panel in good condition?', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (22, 9, 1, 'Panel light working properly?', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (23, 9, 3, 'Cable CAT6 & FO management is proper?', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (24, 9, 2, 'All fan panel is running?', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (25, 9, 1, 'Fan filter cleaned?', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (26, 9, 1, 'Patch panel ports is covered?', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (27, 9, 3, 'Earthing system?', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (28, 9, 5, 'UPS A Volt', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (29, 9, 5, 'UPS B Volt', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (30, 9, 5, 'NON UPS Volt', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (31, 9, 7, 'Image upload 1', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (32, 9, 7, 'Image upload 2', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (34, 9, 8, 'Document upload', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `template_checklists` VALUES (43, 13, 1, 'test yes', 0, '2020-08-16 07:05:12', '2020-08-16 07:05:30');
+INSERT INTO `template_checklists` VALUES (44, 13, 2, 'test pass', 0, '2020-08-16 07:05:12', '2020-08-16 07:05:30');
+INSERT INTO `template_checklists` VALUES (45, 13, 3, 'test good', 0, '2020-08-16 07:05:12', '2020-08-16 07:05:30');
 
 -- ----------------------------
 -- Table structure for templates
@@ -2416,20 +2436,17 @@ CREATE TABLE `templates`  (
   `staff_id` int(11) NULL DEFAULT NULL,
   `system_id` int(11) NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `active` int(11) NULL DEFAULT NULL,
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `staff_id`(`staff_id`) USING BTREE,
-  INDEX `system_id`(`system_id`) USING BTREE,
-  CONSTRAINT `templates_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `templates_ibfk_2` FOREIGN KEY (`system_id`) REFERENCES `systems` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of templates
 -- ----------------------------
-INSERT INTO `templates` VALUES (1, 1, 1, 'PPM Cabinet Checklist', 'PPM cabinet inspection Rev.1', '2020-08-08 02:13:06', '2020-08-08 02:13:06');
-INSERT INTO `templates` VALUES (2, 1, 1, 'PPM Workstation Inspection Checklist Rev 1', 'PPM FON Workstation Inspection Checklist Rev. 1', '2020-08-10 03:03:19', '2020-08-10 03:03:19');
+INSERT INTO `templates` VALUES (9, 1, 1, 'FON Panel PPM Inspection Checklist', 'FON PPM Inspection Checklist Template Rev.2', 1, '2020-07-19 14:00:01', '2020-07-19 14:00:01');
+INSERT INTO `templates` VALUES (13, 1, 1, 'test template', 'rev 1', 0, '2020-08-16 07:05:12', '2020-08-16 07:05:30');
 
 SET FOREIGN_KEY_CHECKS = 1;

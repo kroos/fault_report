@@ -25,7 +25,7 @@ $j = 1;
 		<div class="form-group row {{ $errors->has('title') ? 'has-error' : NULL }}">
 			{{ Form::label( 'titlel', 'Title : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 			<div class="col-6">
-				{{ Form::text('title', @$value, ['class' => 'form-control form-control-sm', 'id' => 'titlel', 'placeholder' => 'Title', 'autocomplete' => 'off']) }}
+				{{ Form::text('title', $template->title, ['class' => 'form-control form-control-sm', 'id' => 'titlel', 'placeholder' => 'Title', 'autocomplete' => 'off']) }}
 				@if ($errors->has('title'))
 				<span class="invalid-feedback" role="alert">
 					<strong>{{ $errors->first('title') }}</strong>

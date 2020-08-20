@@ -52,7 +52,11 @@
 							@endif
 							<a href="{!! route('inspection.show', $ins->id) !!}" title="Show "><i class="far fa-eye"></i></a>
 							<a href="{!! route('inspection.showpdf', $ins->id) !!}" title="Download" target="_blank"><i class="far fa-file-pdf"></i></a>
+							@if(\Auth::user()->belongtostaff->id == $ins->staff_id)
+							@if(\Auth::user()->belongtostaff->id == 2)
 							<span class="text-danger delete" data-id="{!! $ins->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
+							@endif
+							@endif
 						</td>
 					</tr>
 				@endforeach
