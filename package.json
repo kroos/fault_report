@@ -13,7 +13,7 @@
         "@claviska/jquery-minicolors": "^2.3.5",
         "@fortawesome/fontawesome-free": "^5.14.0",
         "@mdi/font": "^3.9.97",
-        "ajv": "^6.12.3",
+        "ajv": "^6.12.4",
         "animate.css": "^3.7.1",
         "axios": "^0.18.0",
         "bootstrap": "^4.5.2",
@@ -27,7 +27,7 @@
         "datatables.net-responsive-bs4": "^2.2.5",
         "fullcalendar": "^3.10.2",
         "imagemin": "^6.1.0",
-        "jarallax": "^1.12.1",
+        "jarallax": "^1.12.2",
         "jquery": "^3.5.1",
         "jquery-chained": "1.0.1",
         "jquery-touchswipe": "^1.6.19",
@@ -35,7 +35,7 @@
         "jquery-viewport-checker": "^1.8.8",
         "jquery.cookie": "^1.4.1",
         "laravel-mix": "^4.1.4",
-        "lodash": "^4.17.19",
+        "lodash": "^4.17.20",
         "moment": "2.24.0",
         "moment-range": "^4.0.2",
         "pc-bootstrap4-datetimepicker": "^4.17.51",
@@ -48,8 +48,8 @@
         "select2-bootstrap4-theme": "^1.0.0",
         "sweetalert2": "^8.19.0",
         "tether": "^1.4.7",
-        "vue": "^2.6.11",
-        "vue-template-compiler": "^2.6.11",
+        "vue": "^2.6.12",
+        "vue-template-compiler": "^2.6.12",
         "webpack-dev-server": "^3.11.0"
     }
 }
