@@ -46,6 +46,18 @@ $j = 1;
 			</div>
 		</div>
 
+		<div class="form-group row {{ $errors->has('ticket_tracking_id') ? 'has-error' : NULL }}">
+			{{ Form::label( 'ticket_tracking_id', 'Ticket Tracking ID : ', ['class' => 'col-4 col-form-label text-right'] ) }}
+			<div class="col-6">
+				{{ Form::text('ticket_tracking_id', @$value, ['class' => 'form-control form-control-sm', 'id' => 'ticket_tracking_id', 'placeholder' => 'Ticket Tracking ID', 'autocomplete' => 'off']) }}
+				@if ($errors->has('ticket_tracking_id'))
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $errors->first('ticket_tracking_id') }}</strong>
+				</span>
+				@endif
+			</div>
+		</div>
+
 		<div class="form-group row {{ $errors->has('building') ? 'has-error' : NULL }}">
 			{{ Form::label( 'building', 'Area / Building : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 			<div class="col-6">

@@ -115,7 +115,7 @@ $(wrappers).on("click",".remove_system", function(e){
 // add attendees : add and remove row
 var maxattd	= 10; //maximum input boxes allowed
 var addattd	= $(".add_attd");
-var wrapaatd	= $(".attd_wrap");
+var wrapaatd = $(".attd_wrap");
 
 var xa = 1;
 $(addattd).click(function(){

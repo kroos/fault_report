@@ -309,7 +309,7 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 	// $pdf->SetX(10);
 	$pdf->SetFont('Arial', 'BU', 9);
 	$pdf->SetTextColor(25, 25, 255);
-	$pdf->Cell(190, 5, $inspection->belongtosystem->system.' : '.ucwords(strtolower($inspection->title)), 0, 1, 'C');
+	$pdf->Cell(190, 5, $inspection->belongtosystem->system.' : '.$inspection->title, 0, 1, 'C');
 	$pdf->SetTextColor(0, 0, 0);
 
 	// gap between 1st and 2nd row
@@ -317,9 +317,14 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 
 	// $pdf->SetX(115);
 	$pdf->SetFont('Arial', NULL, 9);
+	$pdf->Cell(30, 5, 'Ticket Tracking ID :', 0, 0, 'L');
+	$pdf->SetFont('Arial', 'B', 9);
+	$pdf->Cell(65, 5, $inspection->ticket_tracking_id, 0, 0, 'L');
+
+	$pdf->SetFont('Arial', NULL, 9);
 	$pdf->Cell(30, 5, 'Building/Area :', 0, 0, 'L');
 	$pdf->SetFont('Arial', 'B', 9);
-	$pdf->Cell(65, 5, $inspection->building, 0, 0, 'L');
+	$pdf->Cell(65, 5, $inspection->building, 0, 1, 'L');
 	$pdf->SetFont('Arial', NULL, 9);
 	$pdf->Cell(30, 5, 'Tag :', 0, 0, 'L');
 	$pdf->SetFont('Arial', 'B', 9);

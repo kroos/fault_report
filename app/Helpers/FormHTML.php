@@ -205,8 +205,9 @@ class FormHTML
 	public static function fuploadimage($id='', $label='', $input_type='')
 	{
 		$text = '
-								<div class="form-group row ">
-									<label for="'.$id.'" class="col-4 col-form-label text-right">'.$label.' : </label>
+								<div class="delete_input">
+								<div class="form-group row remove_form">
+									<label for="'.$id.'" class="col-4 col-form-label text-right"><span class="text-danger"><i class="fas fa-trash remove_attd" aria-hidden="true" ></i></span> '.$label.' : </label>
 									<div class="col-6">
 										<input type="file" name="image['.$id.'][input]" class="custom-file-input form-input-sm" id="'.$id.'" >
 										<label class="custom-file-label" for="'.$id.'">Upload</label>
@@ -221,6 +222,21 @@ class FormHTML
 										<input name="image['.$id.'][remarks]" class="form-control form-control-sm" id="'.$id.'" placeholder="Remarks" autocomplete="off" type="text">
 									</div>
 								</div>
+								</div>
+								<script type="text/javascript">
+									jQuery.noConflict ();
+									(function($){
+										$(document).ready(function(){
+											$(".remove_form").on("click",".remove_attd", function(e){
+												e.preventDefault();
+												var $row = $(this).parent().parent().parent().parent();
+												// $row.css({"background":"red"});
+												$row.remove();
+												console.log(1);
+											})
+										});
+									})(jQuery);
+								</script>
 		';
 		return $text;
 	}

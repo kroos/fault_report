@@ -7,38 +7,46 @@
 		<h1>{!! $inspection->belongtosystem->system !!} : {{ $inspection->title }}</h1>
 	</div>
 	<div class="card-body">
-		<table class="table">
-			<tbody>
-				<tr>
-					<th scope="row"><span class="float-right">Date : </span></th>
-					<td>{{ Carbon\Carbon::parse($inspection->date)->format('D, j M Y') }}</td>
-				</tr>
-				<tr>
-					<th scope="row"><span class="float-right">Building : </span></th>
-					<td>{{ $inspection->building }}</td>
-				</tr>
-				<tr>
-					<th scope="row"><span class="float-right">Tag : </span></th>
-					<td>{{ $inspection->tag }}</td>
-				</tr>
-				<tr>
-					<th scope="row"><span class="float-right">Attendees : </span></th>
-					<td>
-						@foreach($inspection->hasmanyinspattendees()->get() as $attd)
-							{{ $attd->belongtostaff->name }}<br />
-						@endforeach
-					</td>
-				</tr>
-				<tr>
-					<th scope="row"><span class="float-right">Remarks : </span></th>
-					<td>{{ $inspection->remarks }}</td>
-				</tr>
-			</tbody>
-		</table>
-
 
 		<div class="col-6 offset-3">
-			<table class="table">
+			<table >
+				<tbody>
+					<tr>
+						<th scope="row"><span class="float-right">Date : </span></th>
+						<td>{{ Carbon\Carbon::parse($inspection->date)->format('D, j M Y') }}</td>
+					</tr>
+					<tr>
+						<th scope="row"><span class="float-right">Ticket Tracking ID : </span></th>
+						<td>{{ $inspection->ticket_tracking_id }}</td>
+					</tr>
+					<tr>
+						<th scope="row"><span class="float-right">Building : </span></th>
+						<td>{{ $inspection->building }}</td>
+					</tr>
+					<tr>
+						<th scope="row"><span class="float-right">Tag : </span></th>
+						<td>{{ $inspection->tag }}</td>
+					</tr>
+					<tr>
+						<th scope="row"><span class="float-right">Attendees : </span></th>
+						<td>
+							@foreach($inspection->hasmanyinspattendees()->get() as $attd)
+								{{ $attd->belongtostaff->name }}<br />
+							@endforeach
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><span class="float-right">Remarks : </span></th>
+						<td>{{ $inspection->remarks }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<p>&nbsp;</p>
+
+		<div class="col-6 offset-3">
+			<table >
 				<thead>
 					<tr>
 						<th colspan="2"><h4 class="text-center">Inspection Checklist</h4></th>
@@ -50,9 +58,12 @@
 						<th scope="row"><span class="float-right">{{ $chec->label }} : </span></th>
 						<td>{{ $chec->input }}</td>
 					</tr>
+					@if(!is_null($chec->remarks))
 					<tr>
-						<td colspan="2"><p class="text-center"><strong>Remarks : </strong>{{ $chec->remarks }}</p></td>
+						<th scope="row"><span class="float-right">Remarks : </span></th>
+						<td>{{ $chec->remarks }}</td>
 					</tr>
+					@endif
 					@endforeach
 					@foreach($inspection->hasmanyinspdoc()->get() as $doc)
 					<tr>

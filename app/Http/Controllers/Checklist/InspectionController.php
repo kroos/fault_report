@@ -56,7 +56,7 @@ class InspectionController extends Controller
 		// dd($request->all());
 		// dd($request->image, $request->file('image.*.input'), $request->has('image.*.input'));
 
-		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create(Arr::add($request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']), 'active', 1));
+		$insp = \Auth::user()->belongtostaff->hasmanyinspection()->create(Arr::add($request->only(['ticket_tracking_id', 'title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']), 'active', 1));
 
 		if ($request->has('attd')) {
 			foreach($request->attd as $k => $v){
@@ -124,7 +124,7 @@ class InspectionController extends Controller
 	public function update(InspectionRequest $request, Inspection $inspection)
 	{
 		// dd($request->all());
-		$inspection->update( $request->only(['title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']) );
+		$inspection->update( $request->only(['ticket_tracking_id', 'title', 'tag', 'date', 'building', 'system_id', 'remarks', 'ready']) );
 
 		if ($request->has('attd')) {
 			foreach($request->attd as $k => $v){

@@ -14,6 +14,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
+	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -56,7 +57,6 @@
 
 
 	<!-- Scripts -->
-	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
 	<script src="{{ asset('js/ckeditor/adapters/jquery.js') }}"></script>
 
