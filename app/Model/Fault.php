@@ -22,6 +22,11 @@ class Fault extends Model
 		return $this->hasMany('App\Model\FaultImage', 'fault_id');
 	}
 
+	public function hasmanyfaultdoc()
+	{
+		return $this->hasMany('App\Model\FaultDocument', 'fault_id');
+	}
+
 	public function hasmanydevicetag()
 	{
 		return $this->hasMany('App\Model\FaultDeviceTag', 'fault_id');

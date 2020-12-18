@@ -415,6 +415,20 @@ $('#form').bootstrapValidator({
 				},
 			}
 		},
+		title: {
+			validators: {
+				notEmpty: {
+					message: 'Please insert title'
+				}
+			},
+		},
+		ticket_id: {
+			validators: {
+				notEmpty: {
+					message: 'Please insert ticket ID'
+				}
+			},
+		},
 		dateline: {
 				validators: {
 					date: {

@@ -49,8 +49,18 @@ class FaultController extends Controller
 		print_r($request->all());
 		$dl = Carbon::parse($request->date)->format('Y-m-d H:i:s');
 		echo '<br/>'.$dl;
-		$fault = \Auth::user()->belongtostaff->hasmanyfault()->create(\Arr::add(\Arr::add($request->only(['dateline', 'building_id', 'priority_id', 'status_id', 'subsystem', 'issue', 'solution']), 'active', 1), 'date', $dl));
+		$fault = \Auth::user()->belongtostaff->hasmanyfault()->create(\Arr::add(\Arr::add($request->only(['title', 'ticket_id', 'dateline', 'building_id', 'priority_id', 'status_id', 'subsystem', 'issue', 'solution']), 'active', 1), 'date', $dl));
 // die();
+
+		if ($request->file('doc')) {
+			foreach($request->file('doc') as $k){
+				$fault->hasmanyfaultdoc()->create([
+					'doc' => $k->store('public/images/fault/documents'),
+					'original_name' => $k->getClientOriginalName(),
+				]);
+				File::move(storage_path('app/'.$k->store('public/images/fault/documents')), '/home/prpcdxws/public_html/'.$k->store('public/images/fault/documents'));
+			}
+		}
 		if ($request->has('syst')) {
 			foreach ($request->syst as $k1 => $v1) {
 				$fault->belongtomanysystem()->attach($v1['system_id']);
@@ -109,7 +119,7 @@ class FaultController extends Controller
 
 	public function show(Fault $fault)
 	{
-	//
+		return view('fault.show', compact(['fault']));
 	}
 
 	public function edit(Fault $fault)
@@ -123,7 +133,7 @@ class FaultController extends Controller
 		// $user->roles()->updateExistingPivot($roleId, $attributes);
 		$dl = Carbon::parse($request->date)->format('Y-m-d H:i:s');
 		// echo '<br/>'.$dl;
-		$fault->update( \Arr::add($request->only(['dateline', 'building_id', 'subsystem', 'issue', 'solution', 'status_id']), 'date', $dl) );
+		$fault->update( \Arr::add($request->only(['title', 'ticket_id', 'dateline', 'building_id', 'subsystem', 'issue', 'solution', 'status_id']), 'date', 'title', 'ticket_id', $dl) );
 		$syst = [];
 		if ($request->has('syst')) {
 			foreach($request->syst as $k5 => $v5) {
@@ -131,6 +141,16 @@ class FaultController extends Controller
 			}
 			$fault->belongtomanysystem()->sync( $syst );
 		};
+
+		if ($request->file('doc')) {
+			foreach($request->file('doc') as $k => $v){
+				$fault->hasmanyfaultdoc()->create([
+					'doc' => $v['doc']->store('public/images/fault/documents'),
+					'original_name' => $v['doc']->getClientOriginalName(),
+				]);
+				File::move(storage_path('app/'.$v['doc']->store('public/images/fault/documents')), '/home/prpcdxws/public_html/'.$v['doc']->store('public/images/fault/documents'));
+			}
+		}
 
 		if ($request->has('image')) {
 			foreach($request->file('image') as $k6){

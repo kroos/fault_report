@@ -1,7 +1,28 @@
+<div class="form-group row {{ $errors->has('doc') ? ' has-error' : NULL }}">
+	<label for="doc" class="col-4 col-form-label text-right">Upload Documents : </label>
+	<div class="col-auto">
+		<input type="file" name="doc[]" class="form-control form-control-sm form-control-file" id="doc"  multiple="multiple">
+	</div>
+</div>
+
 <div class="form-group row {{ $errors->has('image') ? ' has-error' : '' }}">
 	{{ Form::label( 'image', 'Upload Image : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 	<div class="col-auto">
 		{{ Form::file( 'image[]', ['class' => 'form-control form-control-sm form-control-file', 'id' => 'image', 'placeholder' => 'Staff Image', 'multiple' => 'multiple']) }}
+	</div>
+</div>
+
+<div class="form-group row {{ $errors->has('title') ? 'has-error' : '' }}">
+	{{ Form::label( 'title', 'Title : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+	<div class="col-md-6">
+		{{ Form::text('title', @$value, ['class' => 'form-control form-control-sm', 'id' => 'title', 'placeholder' => 'Title', 'autocomplete' => 'off']) }}
+	</div>
+</div>
+
+<div class="form-group row {{ $errors->has('ticket_id') ? 'has-error' : '' }}">
+	{{ Form::label( 'ticket_id', 'Ticket ID : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+	<div class="col-md-6">
+		{{ Form::text('ticket_id', @$value, ['class' => 'form-control form-control-sm', 'id' => 'ticket_id', 'placeholder' => 'Ticket ID', 'autocomplete' => 'off']) }}
 	</div>
 </div>
 

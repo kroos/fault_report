@@ -19,7 +19,6 @@
         "bootstrap": "^4.5.2",
         "bootstrap-carousel-swipe": "0.0.6",
         "chart.js": "^2.9.3",
-        "colresizable": "^1.6.0",
         "cross-env": "^5.2.1",
         "datatables.net": "^1.10.21",
         "datatables.net-bs4": "^1.10.21",
@@ -34,14 +33,14 @@
         "jquery-ui": "^1.12.1",
         "jquery-viewport-checker": "^1.8.8",
         "jquery.cookie": "^1.4.1",
-        "laravel-mix": "^4.1.4",
+        "laravel-mix": "^5.0.9",
         "lodash": "^4.17.20",
         "moment": "2.24.0",
         "moment-range": "^4.0.2",
         "pc-bootstrap4-datetimepicker": "^4.17.51",
         "popper.js": "^1.16.1",
         "pretty-checkbox": "^3.0.3",
-        "resolve-url-loader": "^2.3.1",
+        "resolve-url-loader": "^3.1.2",
         "sass": "^1.26.10",
         "sass-loader": "^7.3.1",
         "select2": "^4.0.13",
@@ -51,5 +50,6 @@
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12",
         "webpack-dev-server": "^3.11.0"
-    }
+    },
+    "name": "fault_report"
 }

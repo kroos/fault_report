@@ -14,8 +14,11 @@ class FaultRequest extends FormRequest
 	public function rules()
 	{
 		return [
+			'doc.*' => 'mimes:doc,xls,ppt,docx,xlsx,pptx,txt,csv,pdf',
 			'image.*' => 'image|max:5000',
 			'date' => 'required|date',
+			'title' => 'required',
+			'ticket_id' => 'required',
 			'building_id' => 'required',
 			'subsystem' => 'required',
 			'issue' => 'required',
@@ -29,6 +32,10 @@ class FaultRequest extends FormRequest
 	public function messages()
 	{
 		return [
+			'ticket_id.required' => 'The ticket ID field is required. ',
+			'image.image' => 'Image uploaded must be jpeg, png, bmp, gif, svg, or webp',
+			'doc.mimes' => 'Documents uploaded must be excel, word, power point, text, csv or pdf',
+			'title.required' => 'The title field is required. ',
 			'date.required' => 'The date field is required. ',
 			'building_id.required' => 'The building is required. ',
 			'subsystem.required' => 'The Subsystem is required. ',
