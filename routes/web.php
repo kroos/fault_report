@@ -88,6 +88,7 @@ Route::patch('/update/{staff}', [
 Route::resources([
 	'fault' => 'Fault\FaultController',
 	'faultImage' => 'Fault\FaultImageController',
+	'faultDoc' => 'Fault\FaultDocumentController',
 	'building' => 'BuildingController',
 	'staff' => 'StaffController',
 ]);
