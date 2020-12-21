@@ -18,7 +18,7 @@ class FaultRequest extends FormRequest
 			'image.*' => 'image|max:5000',
 			'date' => 'required|date',
 			'title' => 'required',
-			'ticket_id' => 'required',
+			'ticket_id' => 'nullable',
 			'building_id' => 'required',
 			'subsystem' => 'required',
 			'issue' => 'required',

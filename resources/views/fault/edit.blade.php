@@ -422,13 +422,13 @@ $('#form').bootstrapValidator({
 				}
 			},
 		},
-		ticket_id: {
-			validators: {
-				notEmpty: {
-					message: 'Please insert ticket ID'
-				}
-			},
-		},
+		// ticket_id: {
+		// 	validators: {
+		// 		notEmpty: {
+		// 			message: 'Please insert ticket ID'
+		// 		}
+		// 	},
+		// },
 		dateline: {
 				validators: {
 					date: {
