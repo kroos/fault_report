@@ -8,111 +8,149 @@
 	</div>
 	<div class="card-body">
 
-		<div class="col-6 offset-3">
-			<table >
-				<tbody>
-					<tr>
-						<th scope="row"><span class="float-right">Date : </span></th>
-						<td>{{ Carbon\Carbon::parse($inspection->date)->format('D, j M Y') }}</td>
-					</tr>
-					<tr>
-						<th scope="row"><span class="float-right">Ticket Tracking ID : </span></th>
-						<td>{{ $inspection->ticket_tracking_id }}</td>
-					</tr>
-					<tr>
-						<th scope="row"><span class="float-right">Building : </span></th>
-						<td>{{ $inspection->building }}</td>
-					</tr>
-					<tr>
-						<th scope="row"><span class="float-right">Tag : </span></th>
-						<td>{{ $inspection->tag }}</td>
-					</tr>
-					<tr>
-						<th scope="row"><span class="float-right">Attendees : </span></th>
-						<td>
-							@foreach($inspection->hasmanyinspattendees()->get() as $attd)
-								{{ $attd->belongtostaff->name }}<br />
+		<div class="row justify-content-center">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+
+						<div class="row justify-content-center">
+							<div class="col-4">Date : </div>
+							<div class="col-8">{{ Carbon\Carbon::parse($inspection->date)->format('D, j M Y') }}</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-4">Ticket Tracking ID : </div>
+							<div class="col-8">{{ $inspection->ticket_tracking_id }}</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-4">Building/Area : </div>
+							<div class="col-8">{{ $inspection->building }}</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-4">Tag : </div>
+							<div class="col-8">{{ $inspection->tag }}</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-4">Attendees : </div>
+							<div class="col-8">
+								@if ($inspection->hasmanyinspattendees()->get()->count())
+									@foreach($inspection->hasmanyinspattendees()->get() as $attd)
+										{{ $attd->belongtostaff->name }}<br />
+									@endforeach
+								@endif
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-4">Remarks : </div>
+							<div class="col-8">{{ $inspection->remarks }}</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-header">Inspection Checklist</div>
+					<div class="card-body">
+
+						@if($inspection->hasmanyinspchecklist()->get())
+							@foreach($inspection->hasmanyinspchecklist()->get() as $chec)
+								<div class="row justify-content-center">
+									<div class="col-8">{{ $chec->label }} : </div>
+									<div class="col-4">{{ $chec->input }}</div>
+								</div>
+								@if(!is_null($chec->remarks))
+									<div class="row justify-content-center">
+										<div class="col-8">Remarks : </div>
+										<div class="col-4">{{ $chec->remarks }}</div>
+									</div>
+								@endif
 							@endforeach
-						</td>
-					</tr>
-					<tr>
-						<th scope="row"><span class="float-right">Remarks : </span></th>
-						<td>{{ $inspection->remarks }}</td>
-					</tr>
-				</tbody>
-			</table>
+						@endif
+
+					</div>
+				</div>
+			</div>
 		</div>
+		<p>&nbsp;</p>
+
+		@if(!is_null($inspection->remarks))
+		<div class="row justify-content-center">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">Remarks</div>
+					<div class="card-body">
+						{{ nl2br($inspection->remarks) }}
+					</div>
+				</div>
+			</div>
+		</div>
+		@endif
 
 		<p>&nbsp;</p>
 
-		<div class="col-6 offset-3">
-			<table >
-				<thead>
-					<tr>
-						<th colspan="2"><h4 class="text-center">Inspection Checklist</h4></th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($inspection->hasmanyinspchecklist()->get() as $chec)
-					<tr>
-						<th scope="row"><span class="float-right">{{ $chec->label }} : </span></th>
-						<td>{{ $chec->input }}</td>
-					</tr>
-					@if(!is_null($chec->remarks))
-					<tr>
-						<th scope="row"><span class="float-right">Remarks : </span></th>
-						<td>{{ $chec->remarks }}</td>
-					</tr>
-					@endif
-					@endforeach
-					@foreach($inspection->hasmanyinspdoc()->get() as $doc)
-					<tr>
-						<th scope="row"><span class="float-right">{{ $doc->label }} : </span></th>
-						<td>
-							<a href="{{ asset($doc->input) }}" target="_blank">{{ $doc->original_name }}</a>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2"><p class="text-center"><strong>Remarks : </strong>{{ $doc->remarks }}</p></td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
-		</div>
-		<div class="row">
-			@foreach($inspection->hasmanyinspimage()->get() as $im)
-			<div class="col-6">
-				@if(\Auth::user()->staff_id == $im->belongtoinspection->staff_id)
-					<span class="text-danger delete_image" title="Delete" data-id="{!! $im->id !!}"><i class="far fa-trash-alt"></i></span>
-				@endif
-					<span data-toggle="modal" data-target="#form-{!! $im->id !!}">
-						<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="" >
-					</span>
-
-				<!-- Modal -->
-				<div class="modal fade" id="form-{!! $im->id !!}" tabindex="-1" role="dialog" aria-labelledby="Image-{!! $im->id !!}" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered ">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="Image-{!! $im->id !!}">Image</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="{{ $im->remarks }}">
-							</div>
-							<div class="modal-footer">
-								{!! Form::button('Close', ['type' => 'button', 'class' => 'btn btn-primary', 'data-dismiss' => 'modal']) !!}
-							</div>
+		<div class="row justify-content-center">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-header">Documents</div>
+					<div class="card-body">
+					@if($inspection->hasmanyinspdoc()->get()->count())
+						@foreach($inspection->hasmanyinspdoc()->get() as $doc)
+						<div class="row justify-content-center">
+							<div class="col-4">{{ $doc->label }} : </div>
+							<div class="col-8"><a href="{{ asset($doc->input) }}" target="_blank">{{ $doc->original_name }}</a></div>
 						</div>
+						@endforeach
+					@endif
 					</div>
 				</div>
-				<!-- modal end -->
 			</div>
-			@endforeach
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-header">Images</div>
+					<div class="card-body">
+					@if($inspection->hasmanyinspimage()->get()->count())
+						@foreach($inspection->hasmanyinspimage()->get() as $im)
+						<div class="row justify-content-center">
+							<div class="col-1">
+								@if(\Auth::user()->staff_id == $im->belongtoinspection->staff_id)
+									<span class="text-danger delete_image" title="Delete" data-id="{!! $im->id !!}"><i class="far fa-trash-alt"></i></span>
+								@endif
+							</div>
+							<div class="col-11">
+								<span data-toggle="modal" data-target="#form-{!! $im->id !!}">
+									<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="" >
+								</span>
+
+								<!-- Modal -->
+								<div class="modal fade" id="form-{!! $im->id !!}" tabindex="-1" role="dialog" aria-labelledby="Image-{!! $im->id !!}" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered ">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="Image-{!! $im->id !!}">Image</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<img src="{{ asset($im->input) }}" class="rounded d-block img-fluid img-thumbnail" alt="{{ $im->remarks }}">
+											</div>
+											<div class="modal-footer">
+												{!! Form::button('Close', ['type' => 'button', 'class' => 'btn btn-primary', 'data-dismiss' => 'modal']) !!}
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- modal end -->
+							</div>
+						</div>
+						@endforeach
+					@endif
+					</div>
+				</div>
+			</div>
 		</div>
-<p>&nbsp;</p>
+
+		<p>&nbsp;</p>
 
 		<div class="row">
 			<div class="col-6">
