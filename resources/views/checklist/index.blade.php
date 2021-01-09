@@ -21,6 +21,7 @@
 					<th>Title</th>
 					<th>Date</th>
 					<th>Building</th>
+					<th>Device Tag</th>
 					<th>Status</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -33,6 +34,7 @@
 						<td>{{ $ins->title }}</td>
 						<td>{{ Carbon\Carbon::parse($ins->date)->format('D, j M Y') }}</td>
 						<td>{{ $ins->building }}</td>
+						<td>{{ $ins->tag }}</td>
 						<td>
 							@if($ins->ready == NULL && $ins->reviewed == NULL && $ins->approved == NULL)
 								{{ 'User Update' }}

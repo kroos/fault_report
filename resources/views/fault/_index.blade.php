@@ -16,6 +16,7 @@ use Carbon\CarbonPeriod;
 				<tr>
 					<th>ID</th>
 					<th>Title</th>
+					<th>Device Tag</th>
 					<th>Date</th>
 					<th>Building</th>
 					<th>System</th>
@@ -30,6 +31,13 @@ use Carbon\CarbonPeriod;
 						<span class="text-danger inactivate" data-id="{!! $fa->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 					</td>
 					<td>{{ $fa->title }}</td>
+					<td>
+						@if($fa->hasmanydevicetag()->get()->count())
+							@foreach($fa->hasmanydevicetag()->get() as $fau)
+								{!! $fau->device_tag !!}<br />
+							@endforeach
+						@endif
+					</td>
 					<td>{{ Carbon::parse($fa->date)->format('D, j M Y g:i A') }}</td>
 					<td>{{ $fa->belongtobuilding->building }}</td>
 					<td>
@@ -62,6 +70,7 @@ use Carbon\CarbonPeriod;
 				<tr>
 					<th>ID</th>
 					<th>Title</th>
+					<th>Device Tag</th>
 					<th>Date</th>
 					<th>Building</th>
 					<th>System</th>
@@ -76,6 +85,13 @@ use Carbon\CarbonPeriod;
 						<span class="text-danger inactivate" data-id="{!! $fa->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 					</td>
 					<td>{{ $fa->title }}</td>
+					<td>
+						@if($fa->hasmanydevicetag()->get()->count())
+							@foreach($fa->hasmanydevicetag()->get() as $fau)
+								{!! $fau->device_tag !!}<br />
+							@endforeach
+						@endif
+					</td>
 					<td>{{ Carbon::parse($fa->date)->format('D, j M Y g:i A') }}</td>
 					<td>{{ $fa->belongtobuilding->building }}</td>
 					<td>
