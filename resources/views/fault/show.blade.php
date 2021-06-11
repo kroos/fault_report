@@ -77,7 +77,7 @@
 
 						<div class="row justify-content-center">
 							<div class="col-4">Status :</div>
-							<div class="col-8">{{ $fault->status_id }}</div>
+							<div class="col-8">{{ $fault->belongtostatus->status }}</div>
 						</div>
 
 					</div>
