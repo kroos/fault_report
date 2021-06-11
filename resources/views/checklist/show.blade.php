@@ -187,7 +187,7 @@
 			<div class="col-auto">
 				@if($inspection->reviewed == NULL)
 				@if( $inspection->staff_id !=  \Auth::user()->belongtostaff->id )
-				@if( \Auth::user()->belongtostaff->id == 3 || \Auth::user()->belongtostaff->id == 6 || \Auth::user()->belongtostaff->id == 7 )
+				@if( \Auth::user()->belongtostaff->id == 3 || \Auth::user()->belongtostaff->id == 6 || \Auth::user()->belongtostaff->id == 7 || \Auth::user()->belongtostaff->id == 14 )
 					<button class="btn btn-primary" role="button" aria-pressed="true" id="review"><i class="fas fa-binoculars"></i> Review</button>
 				@endif
 				@endif
