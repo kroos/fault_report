@@ -20,7 +20,7 @@ class InspectionObserver
 	{
             if ($inspection->ready == 1) {
                 // sent email to reviewer
-                $users = \App\Model\Login::find([3,6,7]);
+                $users = \App\Model\Login::find([3,6,7,14]);
                 foreach ($users as $user) {
 					$user->notify(new InspectionUserNotification($inspection, $status = 'Review'));
                 }
@@ -51,7 +51,7 @@ class InspectionObserver
         } elseif ($inspection->ready == 1 && $inspection->reviewed == NULL && $inspection->approved == NULL) {
             // sent email to reviewer
             // info('sent email to reviewer');
-			$users = \App\Model\Login::find([3,6,7]);
+			$users = \App\Model\Login::find([3,6,7,14]);
 			foreach ($users as $user) {
 				$user->notify(new InspectionUserNotification($inspection, $status = 'Review'));
 			}
