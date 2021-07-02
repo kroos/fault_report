@@ -129,6 +129,8 @@ class FaultController extends Controller
 
 	public function update(FaultRequest $request, Fault $fault)
 	{
+		// dd( \Arr::add($request->only(['date', 'title', 'ticket_id', 'dateline', 'building_id', 'subsystem', 'issue', 'solution', 'status_id']), 'date', 'title', 'ticket_id', 'date') );
+		// dd( $request->hasfile('doc') );
 		// print_r( $request->syst );
 		// $user->roles()->updateExistingPivot($roleId, $attributes);
 		$dl = Carbon::parse($request->date)->format('Y-m-d H:i:s');
@@ -142,13 +144,14 @@ class FaultController extends Controller
 			$fault->belongtomanysystem()->sync( $syst );
 		};
 
-		if ($request->file('doc')) {
-			foreach($request->file('doc') as $k => $v){
+		if ($request->hasfile('doc')) {
+			foreach($request->file('doc') as $kv){
 				$fault->hasmanyfaultdoc()->create([
-					'doc' => $v['doc']->store('public/images/fault/documents'),
-					'original_name' => $v['doc']->getClientOriginalName(),
+					'doc' => $kv->store('public/images/fault/documents'),
+					'original_name' => $kv->getClientOriginalName(),
 				]);
-				File::move(storage_path('app/'.$v['doc']->store('public/images/fault/documents')), '/home/prpcdxws/public_html/'.$v['doc']->store('public/images/fault/documents'));
+				File::move(storage_path('app/'.$kv->store('public/images/fault/documents')), $kv->store('public/images/fault/documents'));
+				// File::move(storage_path('app/'.$kv->store('public/images/fault/documents')), '/home/prpcdxws/public_html/'.$kv->store('public/images/fault/documents'));
 			}
 		}
 
