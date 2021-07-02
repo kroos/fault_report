@@ -16,7 +16,7 @@ class FaultRequest extends FormRequest
 		return [
 			// 'doc.*' => 'mimes:doc,xls,ppt,docx,xlsx,pptx,txt,csv,pdf',
 			// 'image.*' => 'image|max:5000',
-			'date' => 'required|date',
+			// 'date' => 'required|date',
 			'title' => 'required',
 			'ticket_id' => 'nullable',
 			'building_id' => 'required',
