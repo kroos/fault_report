@@ -33,8 +33,8 @@ class FaultRequest extends FormRequest
 	{
 		return [
 			'ticket_id.required' => 'The ticket ID field is required. ',
-			'image.image' => 'Image uploaded must be jpeg, png, bmp, gif, svg, or webp',
-			'doc.mimes' => 'Documents uploaded must be excel, word, power point, text, csv or pdf',
+			'image.*' => 'Image uploaded must be jpeg, png, bmp, gif, svg, or webp',
+			'doc.*' => 'Documents uploaded must be excel, word, power point, text, csv or pdf',
 			'title.required' => 'The title field is required. ',
 			'date.required' => 'The date field is required. ',
 			'building_id.required' => 'The building is required. ',
