@@ -14,8 +14,8 @@ class FaultRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'doc.*' => 'mimes:doc,xls,ppt,docx,xlsx,pptx,txt,csv,pdf',
-			'image.*' => 'image|max:5000',
+			// 'doc.*' => 'mimes:doc,xls,ppt,docx,xlsx,pptx,txt,csv,pdf',
+			// 'image.*' => 'image|max:5000',
 			'date' => 'required|date',
 			'title' => 'required',
 			'ticket_id' => 'nullable',
