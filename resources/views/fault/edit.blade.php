@@ -25,7 +25,7 @@ $rt4 = 1;
 /////////////////////////////////////////////////////////////////////////////////////////
 // table
 $('#date').datetimepicker({
-	format:'YYYY-MM-DD hh:mm A',
+	format:'YYYY-MM-DD',
 	useCurrent: true,
 	icons: {
 		time: "far fa-clock",
