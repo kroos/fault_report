@@ -10,7 +10,7 @@
 			@include('layouts.errorform')
 		<p><a href="https://tickets.prpctelecommania.com">Please click here for Telecom Maintenance Submit Ticket</a></p>
 		<img src="{{ asset('images/maintenance.jpg') }}" class="img-fluid rounded mx-auto d-block" alt="RAPID Avengers">
-<!-- 		<div class="container">
+<!-- <!-- --> 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 jumbotron">
 					test
@@ -154,12 +154,19 @@
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div> <!-- --> -->
 	</div>
 </div>
+{!! $calendar->calendar() !!}
 @endsection
 
 @section('js')
+
+{!! $calendar->script() !!}
+
+console.log(moment());
+
+
 		$('#example').DataTable({
 			// paging: false,
 			"lengthMenu": [ [10, -1], [10, "All"] ],
@@ -268,7 +275,7 @@
 			success: function (response) {
 				// you will get response from your php page (what you echo or print)
 				// alert(response);
-				swal({
+				swal.fire({
 						title: 'Success Insert!',
 						text: 'Your data has been inserted.',
 						html: 'You can use <b>bold text</b>, ' +
@@ -299,7 +306,7 @@
 	// }
 
 	function SwalDelete(productId){
-		swal({
+		swal.fire({
 			title: 'Are you sure?',
 			text: "It will be deleted permanently!",
 			type: 'warning',
@@ -330,7 +337,7 @@
 		})
 		.then((result) => {
 			if (result.dismiss === swal.DismissReason.cancel) {
-				swal('Cancelled', 'Your data is safe from delete', 'info')
+				swal.fire('Cancelled', 'Your data is safe from delete', 'info')
 			}
 		});
 	}

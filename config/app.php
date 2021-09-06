@@ -194,6 +194,9 @@ return [
         // ModelObserver for observe the change in specific column in database.
         App\Providers\ModelObserver\InspectionModelServiceProvider::class,
 
+        // https://github.com/nelkasovic/laravel-full-calendar
+        LaravelFullCalendar\FullCalendarServiceProvider::class,
+
     ],
 
     /*
@@ -258,6 +261,9 @@ return [
 
         // https://github.com/HTMLMin/Laravel-HTMLMin
         // 'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+
+        // https://github.com/nelkasovic/laravel-full-calendar
+        'Calendar' => LaravelFullCalendar\Facades\Calendar::class,
     ],
 
 ];

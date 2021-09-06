@@ -13,26 +13,17 @@ try {
 
     require('bootstrap');
 
-
 	require('@claviska/jquery-minicolors');
-	require('bootstrap-carousel-swipe');
 	require('datatables.net');
 	require('datatables.net-bs4');
 	require('datatables.net-colreorder-bs4');
 	require('datatables.net-responsive-bs4');
-	require('jquery-touchswipe');
-	require('jquery-viewport-checker');
-	require('jquery.cookie');
 	require('pc-bootstrap4-datetimepicker');
 	require('select2');
-	require('colresizable/colResizable-1.6.min');
 	window.moment = require('moment');
 	window.swal = require ('sweetalert2');
 	require('fullcalendar');
-	require('chart.js/dist/Chart');
-	require('chartjs-color/index');
-	require('chartjs-color-string/color-string');
-
+	require('chart.js');
 
 	require ('./bootstrapValidator4/js/bootstrapValidator');
 	require ('jquery-chained/jquery.chained.js');

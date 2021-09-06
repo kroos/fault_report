@@ -26,6 +26,8 @@ use \Carbon\Carbon;
 
 use Illuminate\Support\Arr;
 
+use Calendar;
+
 // load session
 use Session;
 
@@ -43,7 +45,22 @@ class InspectionController extends Controller
 
 	public function index()
 	{
-		return view('checklist.index');
+$events = [];
+$events[] = \Calendar::event(
+    "Valentine's Day", //event title
+    true, //full day event?
+    new \DateTime('2020-02-14'), //start time (you can also use Carbon instead of DateTime)
+    new \DateTime('2020-02-14'), //end time (you can also use Carbon instead of DateTime)
+);
+
+$calendar = \Calendar::addEvents($events); //add an array with addEvents
+// ->setOptions([ //set fullcalendar options
+// 	'firstDay' => 1
+// ])->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
+//     'viewRender' => 'function() {alert("Callbacks!");}'
+// ]);
+
+		return view('checklist.index', compact('calendar'));
 	}
 
 	public function create()

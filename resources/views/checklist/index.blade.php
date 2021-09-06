@@ -13,6 +13,8 @@
 			</li>
 		</ul>
 
+{!! $calendar->calendar() !!}
+
 		<table class="table table-hover table-sm" style="font-size:12px" id="orderitem1">
 			<thead>
 				<tr>
@@ -67,10 +69,13 @@
 
 	</div>
 </div>
+
 @endsection
 
 @section('js')
 /////////////////////////////////////////////////////////////////////////////////////////
+{!! $calendar->script() !!}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 // table
 $.fn.dataTable.moment( 'ddd, D MMM YYYY h:mm A' );

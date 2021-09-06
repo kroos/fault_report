@@ -26,7 +26,7 @@ mix.js('resources/js/app.js', 'public/js')
 		'node_modules/jarallax/dist/jarallax.css',
 		'resources/js/jquery-ui/css/jquery-ui.css',
 		'resources/js/jquery-ui/css/jquery-ui.structure.css',
-		'resources/js/jquery-ui/css/jquery-ui.themes.css',
+		'resources/js/jquery-ui/css/jquery-ui.theme.css',
 		'resources/sass/animate/animate.css',
 		], 'public/css/app.css')
 	// .setPublicPath('public/)
