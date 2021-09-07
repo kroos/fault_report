@@ -2739,13 +2739,13 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
-"fullcalendar@3.4":
-  "integrity" "sha1-NNq/8qvl6F9wAlx4mludw+pMR2I="
-  "resolved" "https://registry.npmjs.org/fullcalendar/-/fullcalendar-3.4.0.tgz"
-  "version" "3.4.0"
+"fullcalendar@3.9":
+  "integrity" "sha512-bbALDK8+SBqluv8SKPDeVNtaSr87NYblte/pRgV5NnDJWCEARpRlQ1qQ/XEakcAXbMZov6rWYIvLOrtKwQo2Bg=="
+  "resolved" "https://registry.npmjs.org/fullcalendar/-/fullcalendar-3.9.0.tgz"
+  "version" "3.9.0"
   dependencies:
     "jquery" "2 - 3"
-    "moment" "^2.9.0"
+    "moment" "^2.20.1"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -3723,7 +3723,7 @@
   dependencies:
     "moment" ">= 2.6.0"
 
-"moment@^2.10", "moment@^2.29.1", "moment@^2.9.0", "moment@>= 2", "moment@>= 2.6.0":
+"moment@^2.10", "moment@^2.20.1", "moment@^2.29.1", "moment@>= 2", "moment@>= 2.6.0":
   "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
   "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
   "version" "2.29.1"

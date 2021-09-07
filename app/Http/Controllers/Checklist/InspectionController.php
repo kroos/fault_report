@@ -45,21 +45,12 @@ class InspectionController extends Controller
 
 	public function index()
 	{
-$events = [];
-$events[] = \Calendar::event(
-    "Valentine's Day", //event title
-    true, //full day event?
-    new \DateTime('2020-02-14'), //start time (you can also use Carbon instead of DateTime)
-    new \DateTime('2020-02-14'), //end time (you can also use Carbon instead of DateTime)
-);
-
-$calendar = \Calendar::addEvents($events); //add an array with addEvents
-// ->setOptions([ //set fullcalendar options
-// 	'firstDay' => 1
-// ])->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
-//     'viewRender' => 'function() {alert("Callbacks!");}'
-// ]);
-
+		$events = Inspection::where('active', 1)->get();
+		$calendar = \Calendar::addEvents($events)
+		->setOptions([ //set fullcalendar options
+			'isAllDay' => false,
+			'displayEventTime' => false,
+		]);
 		return view('checklist.index', compact('calendar'));
 	}
 

@@ -13,8 +13,6 @@
 			</li>
 		</ul>
 
-{!! $calendar->calendar() !!}
-
 		<table class="table table-hover table-sm" style="font-size:12px" id="orderitem1">
 			<thead>
 				<tr>
@@ -67,6 +65,13 @@
 			</tbody>
 		</table>
 
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">PPM Checklist Calendar</div>
+				<div class="card-body">{!! $calendar->calendar() !!}</div>
+			</div>
+		</div>
+
 	</div>
 </div>
 
@@ -74,6 +79,7 @@
 
 @section('js')
 /////////////////////////////////////////////////////////////////////////////////////////
+// calendar
 {!! $calendar->script() !!}
 
 /////////////////////////////////////////////////////////////////////////////////////////

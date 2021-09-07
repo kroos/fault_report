@@ -11,7 +11,7 @@ window.Popper = require('popper.js').default;
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+    require('bootstrap');	// pls use bootstrap version 4.6
 
 	require('@claviska/jquery-minicolors');
 	require('datatables.net');
@@ -22,11 +22,11 @@ try {
 	require('select2');
 	window.moment = require('moment');
 	window.swal = require ('sweetalert2');
-	require('fullcalendar');
+	require('fullcalendar');		// pls use fullcalendar version 3.9
 	require('chart.js');
 
 	require ('./bootstrapValidator4/js/bootstrapValidator');
-	require ('jquery-chained/jquery.chained.js');
+	require ('jquery-chained/jquery.chained.js');	// pls use bootstrap version 1.0
 	require ('jquery-chained/jquery.chained.remote.js');
 	require ('jarallax/dist/jarallax.js');
 	require ('jarallax/dist/jarallax-element.js');

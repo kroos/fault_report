@@ -11,7 +11,8 @@ class PDF extends Fpdf
 	function Header()
 	{
 		// Logo
-		$this->Image('images/maintenance.JPG', 40, 10, 20);
+		$this->Image('images/logofgv.png', 40, 10, 20);
+		// $this->Image('images/maintenance.JPG', 40, 10, 20);
 
 		// set margin
 		$this->SetRightMargin(10);

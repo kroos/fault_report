@@ -2,13 +2,76 @@
 
 namespace App\Model;
 
+use \Carbon\Carbon;
+
 // use Illuminate\Database\Eloquent\Model;
-class Inspection extends Model
+// class Inspection extends Model 	<-- 
+class Inspection extends Model implements \LaravelFullCalendar\Event
 {
 
 	protected $connection = 'mysql';
 	protected $table = 'inspections';
+	protected $dates = ['date', 'date'];
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// fullcalendar
+
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	/**
+	 * Get the event's title
+	 *
+	 * @return string
+	 */
+	public function getTitle()
+	{
+	    return $this->title;
+	}
+
+	/**
+	 * Is it an all day event?
+	 *
+	 * @return bool
+	 */
+	public function isAllDay()
+	{
+	    // return (bool)$this->all_day;
+	    return false;
+	}
+
+	/**
+	 * Get the start time
+	 *
+	 * @return DateTime
+	 */
+	public function getStart()
+	{
+	    return Carbon::parse($this->date);
+	}
+
+	/**
+	 * Get the end time
+	 *
+	 * @return DateTime
+	 */
+	public function getEnd()
+	{
+	    return Carbon::parse($this->date);
+	}
+
+
+	public function getEventOptions()
+	{
+		return [
+			'url' => url('inspection', $this->getId().'/show'),
+			//'isAllDay' => false,
+			//'displayEventTime' => false,
+		];
+	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // hasmanyinspectionchecklist
