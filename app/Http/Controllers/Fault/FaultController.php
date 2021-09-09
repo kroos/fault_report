@@ -246,4 +246,8 @@ class FaultController extends Controller
 		]);
 	}
 
+	public function showpdf(Fault $fault)
+	{
+		return view('fault.showpdf', compact(['fault']));
+	}
 }

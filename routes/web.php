@@ -92,6 +92,7 @@ Route::resources([
 	'building' => 'BuildingController',
 	'staff' => 'StaffController',
 ]);
+Route::get('/fault/{fault}/showpdf', 'Fault\FaultController@showpdf')->name('fault.showpdf')->middleware('auth');
 
 // delete fault system
 Route::post('/faultsystem/{fault}', [

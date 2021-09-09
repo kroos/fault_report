@@ -39,8 +39,8 @@ class Inspection extends Model implements \LaravelFullCalendar\Event
 	 */
 	public function isAllDay()
 	{
-	    // return (bool)$this->all_day;
-	    return false;
+	    return (bool)$this->all_day;
+	    // return false;
 	}
 
 	/**
