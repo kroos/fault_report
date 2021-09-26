@@ -4,85 +4,10 @@ use Crabbly\Fpdf\Fpdf as Fpdf;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 
-use \App\Model\Fault;
+// use \App\Model\Fault;
+// use Illuminate\Http\Request;
 
-class PDF extends Fpdf
-{
-
-
-	// Page header
-	function Header()
-	{
-		// Logo
-		$this->Image('images/logofgv.png', 15, 10, 0);
-
-		// set margin
-		$this->SetRightMargin(15);
-		$this->SetLeftMargin(15);
-
-		// Arial bold 15 and font color grey scale
-		// $this->SetFont('Arial', NULL, 6);
-		// $this->SetTextColor(100);
-
-		// pointer positioning
-		// $this->SetX(45);
-
-		// $this->Cell(27, 4, 'DOCUMENT:', 'LTR', 0, 'L');
-		// $this->Cell(27, 4, 'RET PERIOD:', 'LTR', 0, 'L');
-		// $this->Cell(27, 4, 'DOC NO:', 'LTR', 0, 'L');
-		// $this->Cell(27, 4, 'REV NO:', 'LTR', 0, 'L');
-		// $this->Cell(27, 4, 'EFF. DATE:', 'LTR', 0, 'L');
-		// $this->Cell(15, 4, 'PAGE:', 'LTR', 1, 'L');
-		// $this->SetX(45);
-		// $this->Cell(27, 4, 'QUALITY RECORD', 'LBR', 0, 'L');
-		// $this->Cell(27, 4, '3 YEARS', 'LBR', 0, 'L');
-		// $this->Cell(27, 4, 'IPMA(SM)-F01', 'LBR', 0, 'L');
-		// $this->Cell(27, 4, 'E', 'LBR', 0, 'L');
-		// $this->Cell(27, 4, '28/3/2016', 'LBR', 0, 'L');
-		// $this->Cell(15, 4, $this->PageNo().' OF {nb}', 'LBR', 1, 'L');
-		// $this->Ln(1);
-
-		// Arial bold 15 and font color grey scale
-		$this->SetY( $this->GetY() + 1);
-		$this->SetFont('Arial', 'B', 15);
-		$this->SetTextColor(100);
-
-		$this->Cell(0, 5, 'PENGERANG INTEGRATED COMPLEX', 0, 1, 'C');
-		$this->SetFont('Arial', 'B', 10);
-		$this->Cell(0, 5, 'PETRONAS REFINERY AND PETROCHEMICAL CORPORATION', 0, 1, 'C');
-		$this->Cell(0, 5, 'UTILITIES & FACILITIES (PRPRC UF)', 0, 1, 'C');
-		$this->SetFont('Arial', 'UB',9);
-		$this->Cell(0, 5, 'FAULTY REPORT', 0, 1, 'C');
-		$this->Image('images/logo.png', 170, 10, 25);
-
-		// reset again for content
-		$this->SetRightMargin(15);
-		$this->SetLeftMargin(15);
-
-		// Line break
-		$this->Ln(10);
-	}
-	
-	// Page footer
-	function Footer()
-	{
-		// due to multicell setLeftMargin from the body of the page
-		// $this->SetLeftMargin(10);
-		$this->SetTextColor(128);
-		// Position at 3.0 cm from bottom
-		$this->SetY(-18);
-		$this->SetFont('Arial','I',6);
-		$this->Cell(0, 4, 'Telecom Department, PRPC UF, PIC Pengerang, Johor', 0, 1, 'C');
-		// $this->Cell(0, 4, 'Lot 1266, Bandar DarulAman Industrial Park, 06000, Jitra, Kedah Darul Aman '.$this->GetY(), 0, 1, 'C');	// just to check the position
-		// Arial italic 5
-		$this->SetFont('Arial', 'I', 5);
-		// Page number
-		$this->Cell(0,4,'Page '.$this->PageNo().'of {nb}', 0, 1, 'C');
-		// $this->Cell(0,4,'Page '.$this->PageNo().'of {nb} '.$this->GetY(), 0, 1, 'C');	// just to check the position
-	}
-}
-
-class PDF_MC_Table extends PDF {
+class PDF_MC_Table extends Fpdf {
 	// variable to store widths and aligns of cells, and line height
 		var $widths;
 		var $aligns;
@@ -193,11 +118,92 @@ class PDF_MC_Table extends PDF {
 		}
 }
 
-class PDFTI extends PDF_MC_Table {
-	const DPI = 300;
-	const MM_IN_INCH = 25.4;
-	const A4_HEIGHT = 297;
-	const A4_WIDTH = 210;
+class PDF_FancyRow extends PDF_MC_Table
+{
+	function FancyRow($data, $border=array(), $align=array(), $style=array(), $maxline=array())
+	{
+//Calculate the height of the row
+		$nb = 0;
+		for($i=0;$i<count($data);$i++) {
+			$nb = max($nb, $this->NbLines($this->widths[$i],$data[$i]));
+		}
+		if (count($maxline)) {
+			$_maxline = max($maxline);
+			if ($nb > $_maxline) {
+				$nb = $_maxline;
+			}
+		}
+		$h = 5*$nb;
+//Issue a page break first if needed
+		$this->CheckPageBreak($h);
+//Draw the cells of the row
+		for($i=0;$i<count($data);$i++) {
+			$w=$this->widths[$i];
+// alignment
+			$a = isset($align[$i]) ? $align[$i] : 'L';
+// maxline
+			$m = isset($maxline[$i]) ? $maxline[$i] : false;
+//Save the current position
+			$x = $this->GetX();
+			$y = $this->GetY();
+//Draw the border
+			if ($border[$i]==1) {
+				$this->Rect($x,$y,$w,$h);
+			} else {
+				$_border = strtoupper($border[$i]);
+				if (strstr($_border, 'L')!==false) {
+					$this->Line($x, $y, $x, $y+$h);
+				}
+				if (strstr($_border, 'R')!==false) {
+					$this->Line($x+$w, $y, $x+$w, $y+$h);
+				}
+				if (strstr($_border, 'T')!==false) {
+					$this->Line($x, $y, $x+$w, $y);
+				}
+				if (strstr($_border, 'B')!==false) {
+					$this->Line($x, $y+$h, $x+$w, $y+$h);
+				}
+			}
+// Setting Style
+			if (isset($style[$i])) {
+				$this->SetFont('', $style[$i]);
+			}
+			$this->MultiCell($w, 5, $data[$i], 0, $a, 0, $m);
+//Put the position to the right of the cell
+			$this->SetXY($x+$w, $y);
+		}
+//Go to the next line
+		$this->Ln($h);
+	}
+}
+
+class PDF_MCB extends PDF_FancyRow
+{
+//MultiCell with bullet
+	function MultiCellBlt($w, $h, $blt, $txt, $border=0, $align='J', $fill=false)
+	{
+//Get bullet width including margins
+		$blt_width = $this->GetStringWidth($blt)+$this->cMargin*2;
+
+//Save x
+		$bak_x = $this->x;
+
+//Output bullet
+		$this->Cell($blt_width,$h,$blt,0,'',$fill);
+
+//Output text
+		$this->MultiCell($w-$blt_width,$h,$txt,$border,$align,$fill);
+
+//Restore x
+		$this->x = $bak_x;
+	}
+}
+
+class PDFTI extends PDF_MCB {
+    const DPI = 300;
+    const MM_IN_INCH = 25.4;
+    const A4_HEIGHT = 297;
+    const A4_WIDTH = 210;
 
 	/**
 	* Resize et fit une image image
@@ -213,7 +219,7 @@ class PDFTI extends PDF_MC_Table {
 	public function imageUniformToFill(string $imgPath, int $x = 0, int $y = 0, int $containerWidth = 210, int $containerHeight = 297, string $alignment = 'C')
 	{
 		list($width, $height) = $this->resizeToFit($imgPath, $containerWidth, $containerHeight);
-	
+
 		if ($alignment === 'R')
 		{
 			$this->Image($imgPath, $x+$containerWidth-$width, $y+($containerHeight-$height)/2, $width, $height);
@@ -231,7 +237,7 @@ class PDFTI extends PDF_MC_Table {
 			$this->Image($imgPath, $x, $y, $width, $height);
 		}
 	}
-	
+
 	/**
 	* Convertit des pixels en mm
 	*
@@ -242,7 +248,7 @@ class PDFTI extends PDF_MC_Table {
 	{
 		return (int)(round($val * $this::MM_IN_INCH / $this::DPI));
 	}
-	
+
 	/**
 	* Convertit des mm en pixels
 	*
@@ -253,7 +259,7 @@ class PDFTI extends PDF_MC_Table {
 	{
 		return (int)(round($this::DPI * $val / $this::MM_IN_INCH));
 	}
-	
+
 	/**
 	* Resize une image
 	*
@@ -273,7 +279,96 @@ class PDFTI extends PDF_MC_Table {
 			$this->pixelsToMM($scale * $height)
 		);
 	}
+
+	function centreImage($img) {
+		list($width, $height) = $this->resizeToFit($img);
+		// you will probably want to swap the width/height
+		// around depending on the page's orientation
+		$this->Image(
+			$img, (self::A4_HEIGHT - $width) / 2,
+			(self::A4_WIDTH - $height) / 2,
+			$width,
+			$height
+		);
+	}
 }
+
+class PDF extends PDFTI
+{
+	// Page header
+	function Header()
+	{
+		// set margin
+		$this->SetTopMargin(10);
+		$this->SetRightMargin(15);
+		$this->SetLeftMargin(15);
+
+		$this->SetFont('Arial', 'B', 15);
+
+		// start fancyrow
+		$this->SetWidths([30, 120, 30]);
+
+		// $this->FancyRow($caption, $border, $align, $style);
+		$this->FancyRow([$this->Image('images/logofgv.png',15,10,30),NULL,$this->Image('images/logo.png',165,10,30)], [NULL,NULL,NULL], ['L','C','R'], ['','B','']);
+
+		$this->FancyRow([NULL,'PENGERANG INTEGRATED COMPLEX',NULL], [NULL,NULL,NULL], ['L','C','R'], ['','B','']);
+		$this->SetFont('Arial', 'B', 10);
+
+		$this->FancyRow([NULL,'PETRONAS REFINERY AND PETROCHEMICAL CORPORATION',NULL], [NULL,NULL,NULL], ['L','C','R'], ['','B','']);
+		$this->FancyRow([NULL,'UTILITIES & FACILITIES (PRPRC UF)',NULL], [NULL,NULL,NULL], ['L','C','R'], ['','B','']);
+		$this->FancyRow([NULL,'FAULTY REPORT',NULL], [NULL,NULL,NULL], ['L','C','R'], ['','BU','']);
+
+		$this->Ln(2);
+
+		$this->SetFont('Arial', NULL, 9);
+		$this->SetWidths([30, 150]);
+		$this->FancyRow(['Document no :','FGV-TISM-FR-'.str_pad(request()->route()->fault->id, 6, '0', STR_PAD_LEFT)], [1,1], ['L','L'], ['','B']);
+		$this->FancyRow(['Project :','Telecom Infrastructure and System Maintenance'], [1,1], ['L','L'], ['','B']);
+		$this->FancyRow(['Project no :','PRPCUF/2020/0028'], [1,1], ['L','L'], ['','B']);
+
+
+		$q = \App\Model\Fault::find(request()->route()->fault->id);
+
+		$da = '';
+		if($q->belongtomanysystem()->get()->count() > 1) {
+			foreach($q->belongtomanysystem()->get() as $r) {
+				$da .= $r->system.utf8_decode(chr(10));					// '\n' => newline
+			}
+		} else {
+			foreach($q->belongtomanysystem()->get() as $r) {
+				$da .= $r->system;
+			}
+		}
+
+		if($q->belongtomanysystem()->get()->count()) {
+			$this->FancyRow(['System :',$da], [1,1], ['L','L'], ['','B']);
+		} else {
+			$this->FancyRow(['System :',NULL], [1,1], ['L','L'], ['','B']);
+		}
+
+
+		// Line break
+		// $this->Ln(10);
+	}
+	
+	// Page footer
+	function Footer()
+	{
+		// due to multicell setLeftMargin from the body of the page
+		// Position at 1.8cm from bottom
+		$this->SetY(-18);
+		$this->SetTextColor(128);
+		$this->SetFont('Arial','I',6);
+		$this->Cell(0, 4, 'Telecom Department, PRPC UF, PIC, Johor'.$this->GetY(), 0, 1, 'C');
+		// $this->Cell(0, 4, 'Lot 1266, Bandar DarulAman Industrial Park, 06000, Jitra, Kedah Darul Aman '.$this->GetY(), 0, 1, 'C');	// just to check the position
+		$this->SetFont('Arial', 'I', 5);
+		// Page number
+		$this->Cell(0,4,'Page '.$this->PageNo().'of {nb}'.$this->GetY(), 0, 1, 'C');
+		// $this->Cell(0,4,'Page '.$this->PageNo().'of {nb} '.$this->GetY(), 0, 1, 'C');	// just to check the position
+	}
+}
+
+
 
 // cari fault
 // $induk = $fault->hasmanyinspchecklist()->get();
@@ -290,10 +385,11 @@ class PDFTI extends PDF_MC_Table {
 		// // set pointer
 		// $this->SetX(15);
 
-
+// dd(request()->route()->fault->id);
+// dd(\Request::route()->fault->id);
 
 // Instanciation of inherited class
-	$pdf = new PDFTI('P','mm', 'A4');
+	$pdf = new PDF('P','mm', 'A4');
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
 	$pdf->SetTitle($fault->belongtomanysystem()->first()->system.' : Fault Report-'.sprintf("%06d", $fault->id));
@@ -303,26 +399,6 @@ class PDFTI extends PDF_MC_Table {
 	$pdf->SetLeftMargin(15);
 	// $pdf->Ln(10);
 
-	// reset font
-	$pdf->SetFont('Arial', NULL, 9);
-	$pdf->Cell(30, 5, 'Document no :', 1, 0, 'L');
-	$pdf->SetFont('Arial','B',9);
-	$pdf->Cell(0, 5, 'FGV-TISM-FR-'.sprintf("%06d", $fault->id), 1, 1, 'L');
-
-	$pdf->SetFont('Arial', NULL, 9);
-	$pdf->Cell(30, 5, 'Project :', 1, 0, 'L');
-	$pdf->SetFont('Arial','B',9);
-	$pdf->Cell(0, 5, 'Telecom Infrastructure and System Maintenance', 1, 1, 'L');
-
-	$pdf->SetFont('Arial', NULL, 9);
-	$pdf->Cell(30, 5, 'Project no :', 1, 0, 'L');
-	$pdf->SetFont('Arial','B',9);
-	$pdf->Cell(0, 5, 'PRPCUF/2020/0028', 1, 1, 'L');
-
-	$pdf->SetFont('Arial', NULL, 9);
-	$pdf->Cell(30, 5, 'System :', 1, 0, 'L');
-	$pdf->SetFont('Arial','B',9);
-	$pdf->Cell(0, 5, $fault->belongtomanysystem()->first()->system, 1, 1, 'L');
 
 	$pdf->SetFont('Arial', NULL, 9);
 	$pdf->Cell(30, 5, 'REM ticket no :', 1, 0, 'L');

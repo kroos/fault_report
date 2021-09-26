@@ -31,6 +31,22 @@ class Fault extends Model
 	{
 		return $this->hasMany('App\Model\FaultDeviceTag', 'fault_id');
 	}
+
+	public function hasmanyfaultfinding()
+	{
+		return $this->hasMany('App\Model\FaultFinding', 'fault_id');
+	}
+
+	public function hasmanyfaultissue()
+	{
+		return $this->hasMany('App\Model\FaultIssue', 'fault_id');
+	}
+
+	public function hasmanyfaultsolution()
+	{
+		return $this->hasMany('App\Model\FaultSolution', 'fault_id');
+	}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // https://laravel.com/docs/5.6/eloquent-relationships#many-to-many
 	public function belongtomanysystem()

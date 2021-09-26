@@ -88,3 +88,8 @@ footer{
 	// z-index: -1;
 	// background-color: #000;
 }
+
+// fixed modal behind backdrop
+.modal-backdrop {
+	z-index: -1;
+}

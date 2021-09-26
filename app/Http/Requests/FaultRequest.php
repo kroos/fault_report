@@ -21,11 +21,14 @@ class FaultRequest extends FormRequest
 			'ticket_id' => 'nullable',
 			'building_id' => 'required',
 			'subsystem' => 'required',
-			'issue' => 'required',
+			// 'issue' => 'required',
 			// 'solution' => 'required',
 			'syst.*.system_id' => 'required',
-			// 'attd.*.attendees_id' => 'required',
+			'attd.*.attendees_id' => 'required',
 			// 'dtag.*.device_tag' => 'required',
+			'ffind.*.image.*' => 'image',
+			'fissu.*.image.*' => 'image',
+			'fsolu.*.image.*' => 'image',
 		];
 	}
 	
@@ -33,17 +36,20 @@ class FaultRequest extends FormRequest
 	{
 		return [
 			'ticket_id.required' => 'The ticket ID field is required. ',
-			'image.*' => 'Image uploaded must be jpeg, png, bmp, gif, svg, or webp',
-			'doc.*' => 'Documents uploaded must be excel, word, power point, text, csv or pdf',
+			// 'image.*' => 'Image uploaded must be jpeg, png, bmp, gif, svg, or webp',
+			// 'doc.*' => 'Documents uploaded must be excel, word, power point, text, csv or pdf',
 			'title.required' => 'The title field is required. ',
 			'date.required' => 'The date field is required. ',
 			'building_id.required' => 'The building is required. ',
 			'subsystem.required' => 'The Subsystem is required. ',
-			'issue.required' => 'The Problem/Findings/Issue is required. ',
-			'solution.required' => 'The Solution is required. ',
+			// 'issue.required' => 'The Problem/Findings/Issue is required. ',
+			// 'solution.required' => 'The Solution is required. ',
 			'syst.*.required' => 'The System that is effected is required. ',
 			'attd.*.required' => 'The Person/Attendance involved in troubleshooting is required. ',
 			'dtag.*.required' => 'The Device Tag is required. ',
+			'ffind.*.image.*' => 'The file should be jpeg, jpg, png and bmp.',
+			'fissu.*.image.*' => 'The file should be jpeg, jpg, png and bmp.',
+			'fsolu.*.image.*' => 'The file should be jpeg, jpg, png and bmp.',
 		];
 	}
 }

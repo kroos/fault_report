@@ -364,7 +364,7 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 
 	$pdf->Row([
 		'Question',
-		'Answer',
+		'Checklist',
 		'Remarks',
 	]);
 

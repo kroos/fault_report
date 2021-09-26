@@ -87,6 +87,12 @@ Route::patch('/update/{staff}', [
 // fault route
 Route::resources([
 	'fault' => 'Fault\FaultController',
+	'faultFinding' => 'Fault\FaultFindingController',
+	'faultFindingImage' => 'Fault\FaultFindingImageController',
+	'faultIssue' => 'Fault\FaultIssueController',
+	'faultIssueImage' => 'Fault\FaultIssueImageController',
+	'faultSolution' => 'Fault\FaultSolutionController',
+	'faultSolutionImage' => 'Fault\FaultSolutionImageController',
 	'faultImage' => 'Fault\FaultImageController',
 	'faultDoc' => 'Fault\FaultDocumentController',
 	'building' => 'BuildingController',

@@ -28,6 +28,7 @@ use Carbon\CarbonPeriod;
 					<td>
 						{{ $fa->id }} <a href="{!! route('fault.edit', $fa->id) !!}" title="Update"><i class="far fa-edit"></i></a>
 						<a href="{!! route('fault.show', $fa->id) !!}" title="Show"><i class="fas fa-tv"></i></a>
+						<a href="{!! route('fault.showpdf', $fa->id) !!}" title="Show"><i class="far fa-file-pdf"></i></a>
 						<span class="text-danger inactivate" data-id="{!! $fa->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 					</td>
 					<td>{{ $fa->title }}</td>

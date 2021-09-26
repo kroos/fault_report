@@ -8,7 +8,7 @@ class FaultDeviceTag extends Model
 
 	protected $connection = 'mysql';
 	protected $table = 'faults_device_tags';
-
+	protected $primaryKey = 'id';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // hasmany
