@@ -104,8 +104,8 @@
 								<div class="col-sm-6 border border-prime">
 									<span class="text-danger delete_findingimage" data-id="{!! $u1->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 									<span data-toggle="modal" data-target="#form1-{!! $u1->id !!}">
-										<!-- <img src="{{ asset('public/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
-										<img src="{{ asset('storage/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+										<img src="{{ asset('public/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+										<!-- <img src="{{ asset('storage/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
 									</span>
 								</div>
 								<!-- Modal -->
@@ -119,8 +119,8 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<!-- <img src="{{ asset('public/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
-												<img src="{{ asset('storage/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+												<img src="{{ asset('public/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+												<!-- <img src="{{ asset('storage/'.$u1->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
 											</div>
 											<div class="modal-footer">
 												{!! Form::button('Close', ['type' => 'button', 'class' => 'btn btn-primary', 'data-dismiss' => 'modal']) !!}
@@ -219,8 +219,8 @@
 								<div class="col-sm-6 border border-prime">
 									<span class="text-danger delete_findingimage" data-id="{!! $u3->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
 									<span data-toggle="modal" data-target="#form3-{!! $u3->id !!}">
-										<!-- <img src="{{ asset('public/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
-										<img src="{{ asset('storage/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+										<img src="{{ asset('public/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+										<!-- <img src="{{ asset('storage/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
 									</span>
 								</div>
 								<!-- Modal -->
@@ -234,8 +234,8 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<!-- <img src="{{ asset('public/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
-												<img src="{{ asset('storage/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+												<img src="{{ asset('public/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt="">
+												<!-- <img src="{{ asset('storage/'.$u3->image) }}" class="rounded d-block img-fluid img-thumbnail" alt=""> -->
 											</div>
 											<div class="modal-footer">
 												{!! Form::button('Close', ['type' => 'button', 'class' => 'btn btn-primary', 'data-dismiss' => 'modal']) !!}
