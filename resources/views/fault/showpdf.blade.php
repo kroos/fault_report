@@ -125,6 +125,7 @@
 
 						<br />
 <!-- findings -->
+@if($fault->hasmanyfaultfinding()->get()->count())
 						<table border="0">
 							<tr>
 								<th style="background-color: lightskyblue;">Findings</th>
@@ -163,7 +164,9 @@
 						</table>
 
 						<br />
+@endif
 <!-- issues -->
+@if($fault->hasmanyfaultissue()->get()->count())
 						<table border="0">
 							<tr>
 								<th style="background-color: lightskyblue;">Issues</th>
@@ -200,7 +203,9 @@
 						</table>
 
 						<br />
+@endif
 <!-- solution -->
+@if($fault->hasmanyfaultsolution()->get()->count())
 						<table border="0">
 							<tr>
 								<th style="background-color: lightskyblue;">Solution</th>
@@ -237,6 +242,7 @@
 						</table>
 
 						<br />
+@endif
 						<table border="1">
 							<tr>
 								<th width="33%">Prepared by</th>
