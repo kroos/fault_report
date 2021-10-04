@@ -27,7 +27,7 @@ $.fn.dataTable.moment( 'ddd, D MMM YYYY h:mm A' );
 $.fn.dataTable.moment( 'ddd, D MMM YYYY' );
 $("#orderitem1,#orderitem2").DataTable({
 	"lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-	"order": [[2, "desc" ]],	// sorting the 2nd column ascending
+	"order": [[0, "desc" ]],	// sorting the 1st column ascending
 	// responsive: true
 });
 

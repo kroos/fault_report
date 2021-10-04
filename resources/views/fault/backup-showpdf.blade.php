@@ -11,7 +11,7 @@ class PDF extends Fpdf
 	function Header()
 	{
 		// Logo
-		$this->Image('images/logofgv.jpeg', 40, 10, 20);
+		$this->Image('images/logofgv.png', 40, 10, 20);
 		// $this->Image('images/maintenance.JPG', 40, 10, 20);
 
 		// set margin
@@ -364,7 +364,7 @@ $induk = $inspection->hasmanyinspchecklist()->get();
 
 	$pdf->Row([
 		'Question',
-		'Checklist',
+		'Answer',
 		'Remarks',
 	]);
 

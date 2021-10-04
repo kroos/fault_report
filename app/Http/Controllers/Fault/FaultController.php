@@ -85,7 +85,7 @@ class FaultController extends Controller
 							'image' => $image
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
-						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
+						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
 						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 
@@ -130,7 +130,7 @@ class FaultController extends Controller
 							'image' => $image
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
-						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
+						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
 						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 
@@ -175,7 +175,7 @@ class FaultController extends Controller
 							'image' => $image
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
-						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
+						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
 						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 

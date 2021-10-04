@@ -88,7 +88,7 @@ $.fn.dataTable.moment( 'ddd, D MMM YYYY h:mm A' );
 $.fn.dataTable.moment( 'ddd, D MMM YYYY' );
 $("#orderitem1,#orderitem2").DataTable({
 	"lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-	"order": [[0, "asc" ]],	// sorting the 2nd column ascending
+	"order": [[0, "desc" ]],	// sorting the 2nd column ascending
 	// responsive: true
 });
 
