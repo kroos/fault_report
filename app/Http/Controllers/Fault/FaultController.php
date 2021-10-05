@@ -87,7 +87,7 @@ class FaultController extends Controller
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
-						// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
+						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 					}
 				} else {}
@@ -131,7 +131,7 @@ class FaultController extends Controller
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
-						// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
+						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 
 					}
@@ -176,7 +176,7 @@ class FaultController extends Controller
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
-						// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
+						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 
 					}
@@ -286,7 +286,7 @@ class FaultController extends Controller
 					// ]
 				);
 
-				if( isset($v1['image']) ){
+				if( \Arr::has($v1, 'image') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -334,7 +334,7 @@ class FaultController extends Controller
 					// ]
 				);
 
-				if( isset($v1['image']) ){
+				if( \Arr::has($v1, 'image') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -381,7 +381,7 @@ class FaultController extends Controller
 					// ]
 				);
 
-				if( isset($v1['image']) ){
+				if( \Arr::has($v1, 'image') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
