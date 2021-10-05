@@ -56,9 +56,10 @@ class FaultController extends Controller
 							'finding' => $v1['finding'],
 						]);
 				// dd($request->file('ffind.*.image.*'));
-				// dd($v1['image']);
+				// dd($k1);
+				// dd($v1);
 				// if( $request->has('ffind.*.image') ){
-				if( !$request->file('ffind.*.image.*') ){
+				if( \Arr::has($v1, 'image') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -86,11 +87,10 @@ class FaultController extends Controller
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
-						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
+						// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
-
 					}
-				}
+				} else {}
 			}
 		}
 
@@ -103,7 +103,7 @@ class FaultController extends Controller
 				// dd($request->file('fissu.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('fissu.*.image') ){
-				if( !$request->file('fissu.*.image.*') ){
+				if( \Arr::has($v1, 'image') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -131,7 +131,7 @@ class FaultController extends Controller
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
-						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
+						// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 
 					}
@@ -148,7 +148,7 @@ class FaultController extends Controller
 				// dd($request->file('fsolu.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('fsolu.*.image') ){
-				if( !$request->file('fsolu.*.image.*') ){
+				if( \Arr::has($v1, 'image') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -176,7 +176,7 @@ class FaultController extends Controller
 						]);
 						// Storage::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\html/'.$filename);
 						// File::move(storage_path('app/'.$filename), 'C:\Users\User\Desktop\fault_report/'.$filename);
-						File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
+						// File::move(storage_path('app/'.$filename), '/home/prpcdxws/public_html/'.$filename);
 						// public_html/storage/images/fault
 
 					}

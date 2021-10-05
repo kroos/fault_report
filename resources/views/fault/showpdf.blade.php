@@ -142,7 +142,7 @@
 
 								@foreach($fault->hasmanyfaultfinding()->get() as $ff)
 							<tr>
-								<td width="80%">{!! $ff->finding !!}</td>
+								<td width="80%">{!! nl2br($ff->finding) !!}</td>
 								<td width="20%">
 									@if($ff->hasmanyfindingimage()->get()->count())
 									<table border="1">
@@ -182,7 +182,7 @@
 							</tr>
 								@foreach($fault->hasmanyfaultissue()->get() as $ff)
 							<tr>
-								<td width="80%">{!! $ff->issue !!}</td>
+								<td width="80%">{!! nl2br($ff->issue) !!}</td>
 								<td width="20%">
 									@if($ff->hasmanyissueimage()->get()->count())
 									<table border="1">
@@ -221,7 +221,7 @@
 							</tr>
 								@foreach($fault->hasmanyfaultsolution()->get() as $ff)
 							<tr>
-								<td width="80%">{!! $ff->solution !!}</td>
+								<td width="80%">{!! nl2br($ff->solution) !!}</td>
 								<td width="20%">
 									@if($ff->hasmanysolutionimage()->get()->count())
 									<table border="1">
