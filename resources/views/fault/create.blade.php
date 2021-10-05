@@ -468,9 +468,9 @@ $('#form').bootstrapValidator({
 		},
 		'ffind[{{ $l3 }}][image][]': {
 			validators: {
-				notEmpty: {
-					message: 'Please insert images. '
-				},
+				// notEmpty: {
+				// 	message: 'Please insert images. '
+				// },
 				file: {
 					extension : 'jpeg,png,bmp,jpg',
 					type: 'image/jpeg,image/png,image/x-ms-bmp',
@@ -489,9 +489,9 @@ $('#form').bootstrapValidator({
 		},
 		'fissu[{{ $l4 }}][image][]': {
 			validators: {
-				notEmpty: {
-					message: 'Please insert images. '
-				},
+				// notEmpty: {
+				// 	message: 'Please insert images. '
+				// },
 				file: {
 					extension : 'jpeg,png,bmp,jpg',
 					type: 'image/jpeg,image/png,image/x-ms-bmp',
@@ -510,9 +510,9 @@ $('#form').bootstrapValidator({
 		},
 		'fsolu[{{ $l5 }}][image][]': {
 			validators: {
-				notEmpty: {
-					message: 'Please insert images. '
-				},
+				// notEmpty: {
+				// 	message: 'Please insert images. '
+				// },
 				file: {
 					extension : 'jpeg,png,bmp,jpg',
 					type: 'image/jpeg,image/png,image/x-ms-bmp',
