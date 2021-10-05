@@ -58,7 +58,7 @@ class FaultController extends Controller
 				// dd($request->file('ffind.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('ffind.*.image') ){
-				if( $request->file('ffind.*.image.*') ){
+				if( !$request->file('ffind.*.image.*') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -103,7 +103,7 @@ class FaultController extends Controller
 				// dd($request->file('fissu.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('fissu.*.image') ){
-				if( $request->file('fissu.*.image.*') ){
+				if( !$request->file('fissu.*.image.*') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -148,7 +148,7 @@ class FaultController extends Controller
 				// dd($request->file('fsolu.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('fsolu.*.image') ){
-				if( $request->file('fsolu.*.image.*') ){
+				if( !$request->file('fsolu.*.image.*') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
