@@ -41,7 +41,7 @@
 						</div>
 						<div class="row justify-content-center">
 							<div class="col-4">Remarks : </div>
-							<div class="col-8">{{ $inspection->remarks }}</div>
+							<div class="col-8">{!! $inspection->remarks !!}</div>
 						</div>
 
 					</div>
@@ -79,7 +79,7 @@
 				<div class="card">
 					<div class="card-header">Remarks</div>
 					<div class="card-body">
-						{{ nl2br($inspection->remarks) }}
+						{!! nl2br($inspection->remarks) !!}
 					</div>
 				</div>
 			</div>

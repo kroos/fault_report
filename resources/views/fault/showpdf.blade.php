@@ -13,7 +13,7 @@
 		<table border="0" width="100%">
 			<tbody>
 				<tr>
-					<td align="center" width="10%"><img src="{!! asset('images/logofgv.jpeg') !!}" alt="FGV Prodata" width="100%" height="100%"></td>
+					<td align="center" width="10%"><img src="{!! asset('images/logofgv.png') !!}" alt="FGV Prodata" width="100%" height="100%"></td>
 					<td align="center" width="80%">
 						<strong>PENGERANG INTEGRATED COMPLEX</strong><br />
 						<strong>PETRONAS REFINERY AND PETROCHEMICAL CORPORATION</strong><br />
@@ -255,7 +255,10 @@
 								<td height="70mm"></td>
 							</tr>
 							<tr>
-								<td>{!! $fault->belongtostaff->name !!}</td>
+								<td>
+									{!! $fault->belongtostaff->name !!}<br />
+									{!! \Carbon\Carbon::parse($fault->updated_at)->format('j F Y') !!}
+								</td>
 								<td></td>
 								<td></td>
 							</tr>
