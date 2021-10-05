@@ -149,7 +149,7 @@
 												@foreach($ff->hasmanyfindingimage()->get() as $ffi)
 										<tr>
 											<td align="center">
-												<img src="{!! asset('storage/'.$ffi->image) !!}" alt="" width="90%">
+												<img src="{!! asset('public/'.$ffi->image) !!}" alt="" width="90%">
 											</td>
 										</tr>
 												@endforeach
@@ -189,7 +189,7 @@
 												@foreach($ff->hasmanyissueimage()->get() as $ffi)
 										<tr>
 											<td align="center">
-												<img src="{!! asset('storage/'.$ffi->image) !!}" alt="" width="90%">
+												<img src="{!! asset('public/'.$ffi->image) !!}" alt="" width="90%">
 											</td>
 										</tr>
 												@endforeach
@@ -228,7 +228,8 @@
 												@foreach($ff->hasmanysolutionimage()->get() as $ffi)
 										<tr>
 											<td align="center">
-												<img src="{!! asset('storage/'.$ffi->image) !!}" alt="" width="90%">
+												<!-- <img src="{!! asset('storage/'.$ffi->image) !!}" alt="" width="90%"> -->
+												<img src="{!! asset('public/'.$ffi->image) !!}" alt="" width="90%">
 											</td>
 										</tr>
 												@endforeach
