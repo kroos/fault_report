@@ -55,10 +55,10 @@ class FaultController extends Controller
 				$ffind = $fault->hasmanyfaultfinding()->create([
 							'finding' => $v1['finding'],
 						]);
-				// dd($request->file('ffind.*.image'));
+				// dd($request->file('ffind.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('ffind.*.image') ){
-				if( $v1['image'] ){
+				if( $request->file('ffind.*.image.*') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -100,10 +100,10 @@ class FaultController extends Controller
 				$fissu = $fault->hasmanyfaultissue()->create([
 							'issue' => $v1['issue'],
 						]);
-				// dd($request->file('fissu.*.image'));
+				// dd($request->file('fissu.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('fissu.*.image') ){
-				if( $v1['image'] ){
+				if( $request->file('fissu.*.image.*') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
@@ -145,10 +145,10 @@ class FaultController extends Controller
 				$fsolu = $fault->hasmanyfaultsolution()->create([
 							'solution' => $v1['solution'],
 						]);
-				// dd($request->file('fsolu.*.image'));
+				// dd($request->file('fsolu.*.image.*'));
 				// dd($v1['image']);
 				// if( $request->has('fsolu.*.image') ){
-				if( $v1['image'] ){
+				if( $request->file('fsolu.*.image.*') ){
 					foreach($v1['image'] as $y1) {
 						// echo 'success</br>';
 
