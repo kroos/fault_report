@@ -154,8 +154,6 @@
 										</tr>
 												@endforeach
 									</table>
-									@else
-										{!! 'No image' !!}
 									@endif
 								</td>
 							</tr>
@@ -194,8 +192,6 @@
 										</tr>
 												@endforeach
 									</table>
-									@else
-										{!! 'No image' !!}
 									@endif
 								</td>
 							</tr>
@@ -234,8 +230,6 @@
 										</tr>
 												@endforeach
 									</table>
-									@else
-										{!! 'No image' !!}
 									@endif
 								</td>
 							</tr>
