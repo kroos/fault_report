@@ -35,6 +35,11 @@ class System extends Model
 		return $this->belongsToMany('App\Model\Fault', 'faults_systems', 'fault_id', 'system_id' )->withPivot('id')->withPivot('remarks')->withTimestamps();
 	}
 
+	public function belongtomanystaff()
+	{
+		return $this->belongsToMany('App\Model\Staff', 'staffs_systems', 'staff_id', 'system_id' )->withPivot('id')->withTimestamps();
+	}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // belongto
 

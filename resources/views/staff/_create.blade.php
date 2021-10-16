@@ -1,7 +1,7 @@
 			<div class="form-group row {{ $errors->has('username') ? 'has-error' : '' }}">
-				{{ Form::label( 'nam', 'RAPID Pass ID : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+				{{ Form::label( 'nam', 'PIC ID : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
 				<div class="col-md-6">
-					{{ Form::text('username', @$value, ['class' => 'form-control', 'id' => 'nam', 'placeholder' => 'RAPID Pass ID', 'autocomplete' => 'off']) }}
+					{{ Form::text('username', @$value, ['class' => 'form-control', 'id' => 'nam', 'placeholder' => 'PIC ID', 'autocomplete' => 'off']) }}
 				</div>
 			</div>
 
@@ -40,8 +40,46 @@
 				</div>
 			</div>
 
-<div class="form-group row mb-0">
-	<div class="col-md-8 offset-md-4">
-		{!! Form::button('Add New Member', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
-	</div>
-</div>
+			<div class="form-group row {{ $errors->has('position_id') ? 'has-error' : '' }}">
+				{{ Form::label( 'pos', 'Position : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+				<div class="col-md-6">
+					{!! Form::select('position_id', \App\Model\Position::pluck('position', 'id')->sortKeys()->toArray(), @$value, ['class' => 'form-control', 'id' => 'pos', 'placeholder' => 'Position']) !!}
+				</div>
+			</div>
+
+			<div class="form-group row">
+				{{ Form::label( 'sys', 'System Responsibility : ', ['class' => 'col-md-4 col-form-label text-md-right'] ) }}
+				<div class="col-md-6">
+					<div class="col system_wrap">
+						<div class="rowsystem">
+							<div class="col-sm-12 form-row">
+								<div class="col-sm-1 text-danger">
+										<i class="fas fa-trash remove_system" aria-hidden="true" id="delete_system_1"></i>
+								</div>
+
+								<div class="form-group col {{ $errors->has('system_id.*') ? 'has-error' : '' }}">
+									<select name="system_id[1]" id="ois_1" class="form-control form-control-sm" autocomplete="off" placeholder="Please choose">
+										<option value="">Please choose</option>
+			@foreach( \App\Model\System::all() as $mod )
+										<option value="{!! $mod->id !!}" {{ ($mod->id == 0)?'selected':'' }}>{!! $mod->system !!}</option>
+			@endforeach
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row col-lg-12 add_system">
+						<span class="text-primary"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;Add System</span>
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+			<div class="form-group row mb-0">
+				<div class="col-md-8 offset-md-4">
+					{!! Form::button('Add', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
+				</div>
+			</div>

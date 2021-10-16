@@ -9,6 +9,6 @@
 
 <div class="form-group row mb-0">
 	<div class="col-md-8 offset-md-4">
-		{!! Form::button('Save', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
+		{!! Form::button('Save', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
 	</div>
 </div>

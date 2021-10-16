@@ -59,12 +59,27 @@ class Staff extends Model
 		return $this->belongsToMany('App\Model\Fault', 'faults_attendees', 'staff_id', 'fault_id' )->withPivot('id')->withTimestamps();
 	}
 
+	public function belongtomanysystem()
+	{
+		return $this->belongsToMany('App\Model\System', 'staffs_systems', 'staff_id', 'system_id' )->withPivot('id')->withTimestamps();
+	}
+
+	public function belongtomanysystemrole()
+	{
+		return $this->belongsToMany('App\Model\System', 'staffs_systems', 'staff_id', 'system_id' )->withPivot('id')->withTimestamps();
+	}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // belongto
-	// public function belongtolabel()
-	// {
-	// 	return $this->belongsTo('App\Model\Label', 'active');
-	// }
+	public function belongtoposition()
+	{
+		return $this->belongsTo('App\Model\Position', 'position_id');
+	}
+
+	public function belongtorole()
+	{
+		return $this->belongsTo('App\Model\Role', 'role_id');
+	}
 
 }

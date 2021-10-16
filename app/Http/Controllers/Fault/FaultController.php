@@ -463,11 +463,16 @@ class FaultController extends Controller
 		if ($request->has('dtag')) {
 			// $fault->hasmanydevicetag()->updateOrCreate($request->dtag);
 			foreach($request->dtag as $k8 => $v8) {
-				// $fault->hasmanydevicetag()->updateOrCreate(				// cant use this one.. must use firstOrCreate
-				$fault->hasmanydevicetag()->firstOrCreate(
-					// [
-					// 	'id' => $v8['id'],
-					// ],
+
+				if (!\Arr::has($v8, ['id'])) {							// to make sure that updateOrCreate is running, firstOrCreate was not very accurate in this process
+					$v8['id'] = NULL;
+				}
+
+				$fault->hasmanydevicetag()->updateOrCreate(
+				// $fault->hasmanydevicetag()->firstOrCreate(
+					[
+						'id' => $v8['id'],
+					],
 					[
 						'device_tag' => $v8['device_tag']
 					]

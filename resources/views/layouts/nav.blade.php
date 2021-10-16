@@ -67,9 +67,9 @@ if ( Auth::user()->staff_id != 2 || Auth::user()->staff_id != 7 ) {
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ route('staff.create') }}">{{ __('Create New Members') }}</a>
 						<a class="dropdown-item" href="{{ route('profile.edit', \Auth::user()->belongtostaff->id) }}">{{ __('Profile') }}</a>
 						<a class="dropdown-item" href="{{ route('change_password', \Auth::user()->id) }}">{{ __('Change Password') }}</a>
+						<a class="dropdown-item" href="{{ route('setting.index') }}">{{ __('Setting') }}</a>
 
 						<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>

@@ -24,7 +24,7 @@
 
 			<div class="form-group row mb-0">
 				<div class="col-8 offset-4">
-					{!! Form::button('Change Password', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
+					{!! Form::button('Change Password', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
 				</div>
 			</div>
 {{ Form::close() }}

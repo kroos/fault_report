@@ -72,6 +72,13 @@ Route::patch('/user_change_password/{login}', [
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////
+// setting
+Route::get('/setting', [
+	'as' => 'setting.index',
+	'uses' => 'SettingController@index'
+]);
+
+/////////////////////////////////////////////////////////////////////////////////////////
 // user profile
 Route::get('/edit/{staff}', [
 	'as' => 'profile.edit',
@@ -116,6 +123,12 @@ Route::post('/faultdeviceTag/{fault}', [
 Route::post('/faultattendees/{fault}', [
 	'as' => 'fault.attendees',
 	'uses' => 'Fault\FaultController@deleteAttendees'
+]);
+
+// delete staff system
+Route::delete('/staffsystem/{staff}', [
+	'as' => 'staff.system',
+	'uses' => 'StaffController@deleteSystem'
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////
