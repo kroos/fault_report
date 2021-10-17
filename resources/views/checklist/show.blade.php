@@ -187,15 +187,37 @@
 			<div class="col-auto">
 				@if($inspection->reviewed == NULL)
 				@if( $inspection->staff_id !=  \Auth::user()->belongtostaff->id )
-				@if( \Auth::user()->belongtostaff->id == 3 || \Auth::user()->belongtostaff->id == 6 || \Auth::user()->belongtostaff->id == 7 || \Auth::user()->belongtostaff->id == 14 )
-					<button class="btn btn-primary" role="button" aria-pressed="true" id="review"><i class="fas fa-binoculars"></i> Review</button>
-				@endif
+<?php
+				$sr = \App\Model\SystemRole::find(2);			// reviewer
+				// $users = $sr->hasmanyposition()->hasmanystaff()->where('active', 1)->get();
+				$users = $sr->hasmanyposition()->get();
+				foreach ($users as $v) {
+					foreach($v->hasmanystaff()->where('active', 1)->get() as $k){
+						if(\Auth::user()->belongtostaff->id == $k->id) {
+?>
+							<button class="btn btn-primary" role="button" aria-pressed="true" id="review"><i class="fas fa-binoculars"></i> Review</button>
+<?php
+						}
+					}
+				}
+?>
 				@endif
 				@endif
 				@if($inspection->reviewed !== NULL && $inspection->approved == NULL)
-				@if(\Auth::user()->belongtostaff->id == 2 || \Auth::user()->belongtostaff->id == 7)
-					<button class="btn btn-primary" role="button" aria-pressed="true" id="approve"><i class="far fa-thumbs-up"></i> Approval</button>
-				@endif
+<?php
+				$sr = \App\Model\SystemRole::find(2);			// reviewer
+				// $users = $sr->hasmanyposition()->hasmanystaff()->where('active', 1)->get();
+				$users = $sr->hasmanyposition()->get();
+				foreach ($users as $v) {
+					foreach($v->hasmanystaff()->where('active', 1)->get() as $k){
+						if(\Auth::user()->belongtostaff->id == $k->id) {
+?>
+							<button class="btn btn-primary" role="button" aria-pressed="true" id="approve"><i class="far fa-thumbs-up"></i> Approval</button>
+<?php
+						}
+					}
+				}
+?>
 				@endif
 			</div>
 		</div>
