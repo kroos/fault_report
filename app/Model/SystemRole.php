@@ -4,16 +4,16 @@ namespace App\Model;
 
 // use Illuminate\Database\Eloquent\Model;
 
-class Position extends Model
+class SystemRole extends Model
 {
 	protected $connection = 'mysql';
-    protected $table = 'positions';
+    protected $table = 'systems_roles';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public function hasmanystaff()
+	public function hasmanyposition()
 	{
-		return $this->hasMany('App\Model\Staff', 'position_id');
+		return $this->hasMany('App\Model\Position', 'system_role_id');
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,8 +27,8 @@ class Position extends Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // belongto
-	public function belongtosystemrole()
-	{
-		return $this->belongsTo('App\Model\SystemRole', 'system_role_id');
-	}
+	// public function belongtosystemrole()
+	// {
+	// 	return $this->belongsTo('App\Model\SystemRole', 'position_id');
+	// }
 }

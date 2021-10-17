@@ -72,13 +72,6 @@ Route::patch('/user_change_password/{login}', [
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////
-// setting
-Route::get('/setting', [
-	'as' => 'setting.index',
-	'uses' => 'SettingController@index'
-]);
-
-/////////////////////////////////////////////////////////////////////////////////////////
 // user profile
 Route::get('/edit/{staff}', [
 	'as' => 'profile.edit',
@@ -88,6 +81,21 @@ Route::get('/edit/{staff}', [
 Route::patch('/update/{staff}', [
 	'as' => 'profile.update',
 	'uses' => 'ProfileController@update'
+]);
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// setting
+Route::get('/setting', [
+	'as' => 'setting.index',
+	'uses' => 'SettingController@index'
+]);
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// position
+Route::resources([
+	'building' => 'BuildingController',
+	'staff' => 'StaffController',
+	'position' => 'PositionController',
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -102,9 +110,8 @@ Route::resources([
 	'faultSolutionImage' => 'Fault\FaultSolutionImageController',
 	'faultImage' => 'Fault\FaultImageController',
 	'faultDoc' => 'Fault\FaultDocumentController',
-	'building' => 'BuildingController',
-	'staff' => 'StaffController',
 ]);
+
 Route::get('/fault/{fault}/showpdf', 'Fault\FaultController@showpdf')->name('fault.showpdf')->middleware('auth');
 
 // delete fault system
@@ -155,8 +162,6 @@ Route::delete('/inspection/{inspection}', 'Checklist\InspectionController@destro
 
 Route::delete('/inspectionAttend/{inspectionAttend}', 'Checklist\InspectionAttendeesController@destroy')->name('inspectionAttend.destroy')->middleware('auth');
 Route::delete('/inspectionImage/{inspectionImage}', 'Checklist\InspectionImageController@destroy')->name('inspectionImage.destroy')->middleware('auth');
-
-
 
 Route::get('/template', 'Checklist\TemplateController@index')->name('template.index')->middleware('auth');
 Route::get('/template/create', 'Checklist\TemplateController@create')->name('template.create')->middleware('auth');

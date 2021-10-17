@@ -11,7 +11,7 @@
  Target Server Version : 100511
  File Encoding         : 65001
 
- Date: 16/10/2021 12:03:11
+ Date: 17/10/2021 00:51:32
 */
 
 SET NAMES utf8mb4;
@@ -25,8 +25,8 @@ CREATE TABLE `buildings`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `building` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 201 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -233,7 +233,7 @@ CREATE TABLE `faults`  (
   `staff_id` int(11) NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `ticket_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `date` datetime(0) NULL DEFAULT NULL,
+  `date` datetime NULL DEFAULT NULL,
   `priority_id` int(11) NOT NULL,
   `dateline` date NOT NULL,
   `building_id` int(11) NULL DEFAULT NULL,
@@ -243,8 +243,8 @@ CREATE TABLE `faults`  (
   `status_id` int(11) NOT NULL,
   `active` tinyint(4) NULL DEFAULT NULL,
   `remarks` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 119 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -370,8 +370,8 @@ CREATE TABLE `faults_attendees`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `attendees_id` int(11) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 141 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -520,8 +520,8 @@ CREATE TABLE `faults_device_tags`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `device_tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 139 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -649,8 +649,8 @@ CREATE TABLE `faults_documents`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `doc` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `original_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fault_id`(`fault_id`) USING BTREE,
   CONSTRAINT `faults_documents_ibfk_1` FOREIGN KEY (`fault_id`) REFERENCES `faults` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -692,8 +692,8 @@ CREATE TABLE `faults_findings`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `finding` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 41 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -750,8 +750,8 @@ CREATE TABLE `faults_findings_images`  (
   `fault_finding_id` int(11) NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -788,8 +788,8 @@ CREATE TABLE `faults_images`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 193 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -962,8 +962,8 @@ CREATE TABLE `faults_issues`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `issue` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 93 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -1072,8 +1072,8 @@ CREATE TABLE `faults_issues_images`  (
   `fault_issue_id` int(11) NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 165 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -1254,8 +1254,8 @@ CREATE TABLE `faults_solutions`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `solution` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 92 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -1363,8 +1363,8 @@ CREATE TABLE `faults_solutions_images`  (
   `fault_solution_id` int(11) NULL DEFAULT NULL,
   `image` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -1384,8 +1384,8 @@ CREATE TABLE `faults_systems`  (
   `fault_id` int(11) NULL DEFAULT NULL,
   `system_id` int(11) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -1496,8 +1496,8 @@ CREATE TABLE `inspection_approved`  (
   `inspection_id` int(11) NULL DEFAULT NULL,
   `approved_id` int(11) NULL DEFAULT NULL,
   `comments` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -1527,14 +1527,14 @@ CREATE TABLE `inspection_attendees`  (
   `inspection_id` int(11) NULL DEFAULT NULL,
   `attendees_id` int(11) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `inspection_id`(`inspection_id`) USING BTREE,
   INDEX `attendees_id`(`attendees_id`) USING BTREE,
   CONSTRAINT `inspection_attendees_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `inspection_attendees_ibfk_2` FOREIGN KEY (`attendees_id`) REFERENCES `staffs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 970 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 971 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of inspection_attendees
@@ -2491,6 +2491,7 @@ INSERT INTO `inspection_attendees` VALUES (966, 433, 17, NULL, '2021-09-25 15:00
 INSERT INTO `inspection_attendees` VALUES (967, 433, 1, NULL, '2021-09-25 15:00:04', '2021-09-25 15:00:04');
 INSERT INTO `inspection_attendees` VALUES (968, 434, 17, NULL, '2021-09-25 16:11:10', '2021-09-25 16:11:10');
 INSERT INTO `inspection_attendees` VALUES (969, 434, 1, NULL, '2021-09-25 16:11:10', '2021-09-25 16:11:10');
+INSERT INTO `inspection_attendees` VALUES (970, 437, 1, NULL, '2021-10-16 12:30:17', '2021-10-16 12:30:17');
 
 -- ----------------------------
 -- Table structure for inspection_checklists
@@ -2503,8 +2504,8 @@ CREATE TABLE `inspection_checklists`  (
   `input` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `input_type` int(11) NULL DEFAULT NULL,
   `remarks` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `inspection_id`(`inspection_id`) USING BTREE,
   CONSTRAINT `inspection_checklists_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -7494,8 +7495,8 @@ CREATE TABLE `inspection_documents`  (
   `input` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `input_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `inspection_id`(`inspection_id`) USING BTREE,
   CONSTRAINT `inspection_documents_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -7518,8 +7519,8 @@ CREATE TABLE `inspection_images`  (
   `input` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `input_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `inspection_id`(`inspection_id`) USING BTREE,
   CONSTRAINT `inspection_images_ibfk_1` FOREIGN KEY (`inspection_id`) REFERENCES `inspections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -8160,8 +8161,8 @@ CREATE TABLE `inspection_reviewed`  (
   `inspection_id` int(11) NULL DEFAULT NULL,
   `reviewed_id` int(11) NULL DEFAULT NULL,
   `comments` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 286 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -8468,8 +8469,8 @@ CREATE TABLE `inspections`  (
   `approved` tinyint(1) NULL DEFAULT NULL,
   `active` int(11) NULL DEFAULT NULL,
   `remarks` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `staff_id`(`staff_id`) USING BTREE,
   INDEX `system_id`(`system_id`) USING BTREE,
@@ -8901,7 +8902,7 @@ INSERT INTO `inspections` VALUES (433, 17, 1, 'PPM Cabinet Inspection Checklist'
 INSERT INTO `inspections` VALUES (434, 17, 1, 'PPM Cabinet Inspection Checklist', '2021-09-24', 'GDW-6QS-NVMQ', '6850-SUB-123', 'SUB123-FON-701', NULL, NULL, NULL, 1, '1Found two additional fiber optic patch panel mounted on the back of the cabinet\r\n2.No cover for the power supply terminal block', '2021-09-25 16:11:05', '2021-09-25 16:11:05');
 INSERT INTO `inspections` VALUES (435, 1, 1, 'PPM Cabinet Inspection Checklist', '2021-10-07', '123123', '123123', '123123', 1, NULL, NULL, 1, '123123', '2021-10-07 02:56:48', '2021-10-07 02:56:48');
 INSERT INTO `inspections` VALUES (436, 1, 1, 'PPM Cabinet Inspection Checklist', '2021-10-07', '123123', '123123', '123123', 1, NULL, NULL, 1, '123123', '2021-10-07 02:58:20', '2021-10-07 02:58:20');
-INSERT INTO `inspections` VALUES (437, 1, 1, 'PPM Cabinet Inspection Checklist', '2021-10-07', '123123', '123123', '123123', NULL, NULL, NULL, 1, '123123', '2021-10-07 02:59:32', '2021-10-07 02:59:32');
+INSERT INTO `inspections` VALUES (437, 1, 1, 'PPM Cabinet Inspection Checklist', '2021-10-07', '123123', '123123', '123123', NULL, NULL, NULL, 1, '123123', '2021-10-07 02:59:32', '2021-10-16 14:27:46');
 
 -- ----------------------------
 -- Table structure for labels
@@ -8912,8 +8913,8 @@ CREATE TABLE `labels`  (
   `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `value` tinyint(4) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -8934,8 +8935,8 @@ CREATE TABLE `logins`  (
   `password` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `remember_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `active` tinyint(1) NULL DEFAULT 1,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `staff_id`(`staff_id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE,
@@ -8945,9 +8946,9 @@ CREATE TABLE `logins`  (
 -- ----------------------------
 -- Records of logins
 -- ----------------------------
-INSERT INTO `logins` VALUES (1, 1, 'PRO0007', '$2y$10$sQYf6KcSD8S/7UNPhJUSi.931ZAgZO8wp7QmIA5/0IOesVVJm5Tt2', '3hm63r95tSGPlPkFrliFpwiUpjjskdbspwDxc4nXcaRhucs3M6gepAGzQcY2', 1, '2019-06-13 16:58:12', '2021-10-14 00:56:56');
+INSERT INTO `logins` VALUES (1, 1, 'PRO0007', '$2y$10$sQYf6KcSD8S/7UNPhJUSi.931ZAgZO8wp7QmIA5/0IOesVVJm5Tt2', 'fgvAQF5i8fw8aXOlGfB08feNqSWdkwvYqDLrRiAARiVxC5HssIldkWuB3bqm', 1, '2019-06-13 16:58:12', '2021-10-14 00:56:56');
 INSERT INTO `logins` VALUES (2, 2, 'PET01580', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'pr0R68w8ROlUDtEiThc9uwdMhhmYSLk5M99HhRP7TwrCmeRVRKNYhsFpKnYW', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
-INSERT INTO `logins` VALUES (3, 3, 'PET03869', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'neg3fGsj0W1vQMWug9GtJzBt02Cw33dPPIN0jalbKUM0XBJSmSKN8lSya8f2', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
+INSERT INTO `logins` VALUES (3, 3, 'PET03869', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'WOEND0qYbgS8pnZPd9TEP625fU4lqIJAilbwXIsa9NDspVNGa4eV1oJan7TQ', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
 INSERT INTO `logins` VALUES (4, 4, 'OUI34912', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'aWxSNLdaREkJA97FheF9m6ahpSXFJZRvu0SQSLRSUwgMKty4V5DX3HKTORnk', 0, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
 INSERT INTO `logins` VALUES (5, 5, 'OUI47180', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', '6HRM1FP9Ku1K6DlDj9Ngvc0A7jfRuvLmS3m1jwtiliYXP4FRlJoFhHAxcxKG', 1, '2019-06-29 15:47:31', '2019-06-29 15:47:31');
 INSERT INTO `logins` VALUES (6, 6, 'PET04369', '$2y$10$3JbzyL.tNYzGiImKe4JG8.FdYyqe7KEJBPIa8Sf4.3YAYgCD4WViK', 'LuiSA8UGeWQ4qSe5Pr2g96t6zcQofw1aeolK2dh1BBszbn1kIDYa6Jse2Fni', 1, '2019-07-02 01:42:13', '2020-09-02 03:06:30');
@@ -8971,8 +8972,8 @@ DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets`  (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -9002,8 +9003,8 @@ CREATE TABLE `positions`  (
   `system_role_id` int(11) NULL DEFAULT NULL,
   `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `system_role_id`(`system_role_id`) USING BTREE,
   CONSTRAINT `positions_ibfk_1` FOREIGN KEY (`system_role_id`) REFERENCES `systems_roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -9018,10 +9019,10 @@ INSERT INTO `positions` VALUES (3, 2, 'Technician (PRPC UF)', NULL, '2021-10-07 
 INSERT INTO `positions` VALUES (4, 3, 'General Manager', NULL, '2021-10-07 09:12:36', '2021-10-07 09:12:39');
 INSERT INTO `positions` VALUES (5, 3, 'Technical Manager', NULL, '2021-10-07 09:12:55', '2021-10-07 09:12:59');
 INSERT INTO `positions` VALUES (6, 3, 'Telecom Engineer', NULL, '2021-10-07 09:13:18', '2021-10-07 09:13:21');
-INSERT INTO `positions` VALUES (7, NULL, 'Technician', NULL, '2021-10-07 09:13:35', '2021-10-07 09:13:38');
-INSERT INTO `positions` VALUES (8, NULL, 'Technical Admin', NULL, '2021-10-07 09:13:55', '2021-10-07 09:13:58');
-INSERT INTO `positions` VALUES (9, NULL, 'Safety Officer', NULL, '2021-10-07 09:13:55', '2021-10-07 09:13:55');
-INSERT INTO `positions` VALUES (10, NULL, 'Planner', NULL, '2021-10-07 09:13:55', '2021-10-07 09:13:55');
+INSERT INTO `positions` VALUES (7, 4, 'Technician', NULL, '2021-10-07 09:13:35', '2021-10-07 09:13:38');
+INSERT INTO `positions` VALUES (8, 4, 'Technical Admin', NULL, '2021-10-07 09:13:55', '2021-10-07 09:13:58');
+INSERT INTO `positions` VALUES (9, 4, 'Safety Officer', NULL, '2021-10-07 09:13:55', '2021-10-07 09:13:55');
+INSERT INTO `positions` VALUES (10, 4, 'Planner', NULL, '2021-10-07 09:13:55', '2021-10-07 09:13:55');
 
 -- ----------------------------
 -- Table structure for priorities
@@ -9031,8 +9032,8 @@ CREATE TABLE `priorities`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `priority` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -9051,8 +9052,8 @@ CREATE TABLE `roles`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `roles` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -9073,13 +9074,12 @@ CREATE TABLE `staffs`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `position_id` int(11) NULL DEFAULT NULL,
   `role_id` int(11) NULL DEFAULT NULL,
-  `system_role_id` int(11) NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `active` tinyint(1) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `position_id`(`position_id`) USING BTREE,
   INDEX `role_id`(`role_id`) USING BTREE,
@@ -9090,25 +9090,25 @@ CREATE TABLE `staffs`  (
 -- ----------------------------
 -- Records of staffs
 -- ----------------------------
-INSERT INTO `staffs` VALUES (1, NULL, 'Noor Dhiauddin Karim', 6, 1, NULL, 'dhiauddin@mychronosys.com', '0193699315', 1, NULL, '2019-06-13 23:43:59', '2021-10-11 00:27:40');
-INSERT INTO `staffs` VALUES (2, NULL, 'Aswan Norhairis Che Omar', 1, 2, NULL, 'aswannorhairis.che@petronas.com.my', '0193136566', 1, NULL, '2019-06-29 15:30:21', '2019-07-06 04:14:52');
-INSERT INTO `staffs` VALUES (3, NULL, 'M Faisal Abu Bakar', 3, 3, NULL, 'mfaisal.abubaka@petronas.com', '0127161979', 1, NULL, '2019-06-29 15:30:21', '2019-06-29 15:30:21');
-INSERT INTO `staffs` VALUES (4, NULL, 'Norhisham Laham', 7, 3, NULL, 'norhisham@mychronosys.com', '0132582123', 1, NULL, '2019-06-29 15:52:46', '2019-06-29 15:52:46');
-INSERT INTO `staffs` VALUES (5, NULL, 'Stavehogans John Little', 7, 3, NULL, 'stave@mychronosys.com', '01116011045', 1, NULL, '2019-06-29 15:52:46', '2019-06-29 15:52:46');
-INSERT INTO `staffs` VALUES (6, NULL, 'M Faisal Abd Malik', 3, 3, NULL, 'mfaisal.abdmali@petronas.com', '0125925859', 1, NULL, '2019-07-02 01:42:13', '2019-07-02 01:42:13');
-INSERT INTO `staffs` VALUES (7, NULL, 'Edwandy', 2, 2, NULL, 'edwandy.afand@petronas.com.my', '0143177375', 1, NULL, '2019-07-06 07:46:25', '2019-07-06 07:46:25');
-INSERT INTO `staffs` VALUES (8, NULL, 'Yaacob Abdul Hamid', 7, 3, NULL, 'yaacob.abdulhamid@gmail.com', '01133339928', 1, NULL, '2019-07-09 00:16:49', '2019-07-09 00:16:49');
-INSERT INTO `staffs` VALUES (9, NULL, 'Khairul', 7, 3, NULL, 'khairul@mychronosys.com', '0137965724', 0, NULL, '2020-08-03 09:26:46', '2020-08-03 09:26:46');
-INSERT INTO `staffs` VALUES (11, NULL, 'Iqzal Ismail', 9, 3, NULL, 'iqzal.i@fgvholdings.com', '0122353778', 1, NULL, '2021-06-02 00:29:42', '2021-06-02 00:29:42');
-INSERT INTO `staffs` VALUES (12, NULL, 'Timothy Mark A L Nelson', 6, 3, NULL, 'timothy.mn@fgvholdings.com', '0173284824', 0, NULL, '2021-06-02 00:30:37', '2021-06-02 00:30:37');
-INSERT INTO `staffs` VALUES (13, NULL, 'Mohamad Syarhan Zabree', 7, 3, NULL, 'syarhan.z@fgvholdings.com', '0137226603', 1, NULL, '2021-06-02 00:31:31', '2021-06-02 00:31:31');
-INSERT INTO `staffs` VALUES (14, NULL, 'Mohd Fazli Razali', 3, 3, NULL, 'mfazli.razal@petronas.com.my', '0197532355', 1, NULL, '2021-06-02 01:23:41', '2021-06-02 01:23:41');
-INSERT INTO `staffs` VALUES (15, NULL, 'Ludfi Kamarudin', 7, 3, NULL, 'ludfi.k@fgvholdings.com', '0195437855', 0, NULL, '2021-06-11 03:02:06', '2021-06-11 03:02:06');
-INSERT INTO `staffs` VALUES (16, NULL, 'Ir Mohd Zainun Mat Yunus', 5, 3, NULL, 'zainun.my@fgvholdings.com', '0195467195', 1, NULL, '2021-06-11 03:04:07', '2021-06-11 03:04:07');
-INSERT INTO `staffs` VALUES (17, NULL, 'Khairulazren Abu Hassan', 7, 3, NULL, 'khairulazren.ah@fgvholdings.com', '0177123128', 1, NULL, '2021-07-09 06:37:07', '2021-07-09 06:37:07');
-INSERT INTO `staffs` VALUES (19, NULL, 'Ihsan Malek', 7, 3, NULL, 'ihsan.am@fgvholdings.com', '+60 197200787', 1, NULL, '2021-08-11 06:09:35', '2021-08-11 06:09:35');
-INSERT INTO `staffs` VALUES (20, NULL, 'Hisyam Husin', 10, 3, NULL, 'hisyam.h@fgvholdings.com', '+60 164454955', 1, NULL, '2021-08-11 06:11:16', '2021-08-11 06:11:16');
-INSERT INTO `staffs` VALUES (21, NULL, 'qweqwe', 4, 3, NULL, 'qweqwe@asd.asd', '0123123123', 0, NULL, '2021-10-13 14:24:03', '2021-10-14 12:57:10');
+INSERT INTO `staffs` VALUES (1, NULL, 'Noor Dhiauddin Karim', 6, 1, 'dhiauddin@mychronosys.com', '0193699315', 1, NULL, '2019-06-13 23:43:59', '2021-10-11 00:27:40');
+INSERT INTO `staffs` VALUES (2, NULL, 'Aswan Norhairis Che Omar', 1, 2, 'aswannorhairis.che@petronas.com.my', '0193136566', 1, NULL, '2019-06-29 15:30:21', '2019-07-06 04:14:52');
+INSERT INTO `staffs` VALUES (3, NULL, 'M Faisal Abu Bakar', 3, 3, 'mfaisal.abubaka@petronas.com', '0127161979', 1, NULL, '2019-06-29 15:30:21', '2019-06-29 15:30:21');
+INSERT INTO `staffs` VALUES (4, NULL, 'Norhisham Laham', 7, 3, 'norhisham@mychronosys.com', '0132582123', 0, NULL, '2019-06-29 15:52:46', '2019-06-29 15:52:46');
+INSERT INTO `staffs` VALUES (5, NULL, 'Stavehogans John Little', 7, 3, 'stave@mychronosys.com', '01116011045', 1, NULL, '2019-06-29 15:52:46', '2019-06-29 15:52:46');
+INSERT INTO `staffs` VALUES (6, NULL, 'M Faisal Abd Malik', 3, 3, 'mfaisal.abdmali@petronas.com', '0125925859', 1, NULL, '2019-07-02 01:42:13', '2019-07-02 01:42:13');
+INSERT INTO `staffs` VALUES (7, NULL, 'Edwandy', 2, 2, 'edwandy.afand@petronas.com.my', '0143177375', 1, NULL, '2019-07-06 07:46:25', '2019-07-06 07:46:25');
+INSERT INTO `staffs` VALUES (8, NULL, 'Yaacob Abdul Hamid', 7, 3, 'yaacob.abdulhamid@gmail.com', '01133339928', 1, NULL, '2019-07-09 00:16:49', '2019-07-09 00:16:49');
+INSERT INTO `staffs` VALUES (9, NULL, 'Khairul', 7, 3, 'khairul@mychronosys.com', '0137965724', 0, NULL, '2020-08-03 09:26:46', '2020-08-03 09:26:46');
+INSERT INTO `staffs` VALUES (11, NULL, 'Iqzal Ismail', 9, 3, 'iqzal.i@fgvholdings.com', '0122353778', 1, NULL, '2021-06-02 00:29:42', '2021-06-02 00:29:42');
+INSERT INTO `staffs` VALUES (12, NULL, 'Timothy Mark A L Nelson', 6, 3, 'timothy.mn@fgvholdings.com', '0173284824', 0, NULL, '2021-06-02 00:30:37', '2021-06-02 00:30:37');
+INSERT INTO `staffs` VALUES (13, NULL, 'Mohamad Syarhan Zabree', 7, 3, 'syarhan.z@fgvholdings.com', '0137226603', 1, NULL, '2021-06-02 00:31:31', '2021-06-02 00:31:31');
+INSERT INTO `staffs` VALUES (14, NULL, 'Mohd Fazli Razali', 3, 3, 'mfazli.razal@petronas.com.my', '0197532355', 1, NULL, '2021-06-02 01:23:41', '2021-06-02 01:23:41');
+INSERT INTO `staffs` VALUES (15, NULL, 'Ludfi Kamarudin', 7, 3, 'ludfi.k@fgvholdings.com', '0195437855', 0, NULL, '2021-06-11 03:02:06', '2021-06-11 03:02:06');
+INSERT INTO `staffs` VALUES (16, NULL, 'Ir Mohd Zainun Mat Yunus', 5, 3, 'zainun.my@fgvholdings.com', '0195467195', 0, NULL, '2021-06-11 03:04:07', '2021-06-11 03:04:07');
+INSERT INTO `staffs` VALUES (17, NULL, 'Khairulazren Abu Hassan', 7, 3, 'khairulazren.ah@fgvholdings.com', '0177123128', 1, NULL, '2021-07-09 06:37:07', '2021-07-09 06:37:07');
+INSERT INTO `staffs` VALUES (19, NULL, 'Ihsan Malek', 7, 3, 'ihsan.am@fgvholdings.com', '+60 197200787', 1, NULL, '2021-08-11 06:09:35', '2021-08-11 06:09:35');
+INSERT INTO `staffs` VALUES (20, NULL, 'Hisyam Husin', 10, 3, 'hisyam.h@fgvholdings.com', '+60 164454955', 1, NULL, '2021-08-11 06:11:16', '2021-08-11 06:11:16');
+INSERT INTO `staffs` VALUES (21, NULL, 'qweqwe', 4, 3, 'qweqwe@asd.asd', '0123123123', 0, NULL, '2021-10-13 14:24:03', '2021-10-14 12:57:10');
 
 -- ----------------------------
 -- Table structure for staffs_systems
@@ -9119,8 +9119,8 @@ CREATE TABLE `staffs_systems`  (
   `system_id` int(11) NULL DEFAULT NULL,
   `staff_id` int(11) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -9148,8 +9148,8 @@ CREATE TABLE `status`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -9169,8 +9169,8 @@ CREATE TABLE `swaccess_pic`  (
   `swAccess_PIC` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
@@ -9207,8 +9207,8 @@ CREATE TABLE `swaccess_ptw`  (
   `swAccess_id` int(11) NULL DEFAULT NULL,
   `swAccess_PTW` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
@@ -9238,8 +9238,8 @@ CREATE TABLE `swaccess_switch`  (
   `switch_id` int(11) NULL DEFAULT NULL,
   `swtag_id` int(11) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 121 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
@@ -9372,8 +9372,8 @@ CREATE TABLE `switch_tags`  (
   `switch_id` int(11) NULL DEFAULT NULL,
   `tag_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `switch_id`(`switch_id`) USING BTREE,
   CONSTRAINT `switch_tags_ibfk_1` FOREIGN KEY (`switch_id`) REFERENCES `switches` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -10000,8 +10000,8 @@ CREATE TABLE `switchaccess`  (
   `access_end` date NULL DEFAULT NULL,
   `status_id` int(11) NULL DEFAULT NULL,
   `remarks` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
@@ -10038,8 +10038,8 @@ CREATE TABLE `switches`  (
   `hostname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `ip_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 400 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
@@ -10454,8 +10454,8 @@ CREATE TABLE `systems`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `system` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -10480,10 +10480,10 @@ CREATE TABLE `systems_roles`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `system_role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of systems_roles
@@ -10491,6 +10491,7 @@ CREATE TABLE `systems_roles`  (
 INSERT INTO `systems_roles` VALUES (1, 'Approval', NULL, '2021-10-07 09:17:37', '2021-10-07 09:17:40');
 INSERT INTO `systems_roles` VALUES (2, 'Reviewer', NULL, '2021-10-07 09:17:52', '2021-10-07 09:17:55');
 INSERT INTO `systems_roles` VALUES (3, 'Checker', NULL, '2021-10-07 09:18:14', '2021-10-07 09:18:18');
+INSERT INTO `systems_roles` VALUES (4, 'Prepare', 'to acknowledge the creator of inspection and fault report', '2021-10-16 13:00:22', '2021-10-16 13:00:22');
 
 -- ----------------------------
 -- Table structure for template_checklists
@@ -10502,8 +10503,8 @@ CREATE TABLE `template_checklists`  (
   `input_type` int(11) NULL DEFAULT NULL,
   `label` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `active` int(11) NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `template_id`(`template_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 645 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
@@ -11163,8 +11164,8 @@ CREATE TABLE `templates`  (
   `title` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `active` int(11) NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `staff_id`(`staff_id`) USING BTREE,
   INDEX `system_id`(`system_id`) USING BTREE,

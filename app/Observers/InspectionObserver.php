@@ -18,19 +18,26 @@ class InspectionObserver
 	 */
 	public function created(Inspection $inspection)
 	{
-            if ($inspection->ready == 1) {
-                // sent email to reviewer
-                $users = \App\Model\Login::find([3,6,7,14]);
-                foreach ($users as $user) {
-					$user->notify(new InspectionUserNotification($inspection, $status = 'Review'));
-                }
-            } elseif ($inspection->ready == NULL) {
-                // sent email to ppm creator
-                // info('sent email to creator = '.$inspection->staff_id);
-                // $user = App\Model\Login::find(7);
-                // $user->notify(new InspectionUserNotification("A new user has visited on your application."));
-                $inspection->belongtostaff->notify(new InspectionUserNotification($inspection, $status = 'Update'));
-            }
+        if ($inspection->ready == 1) {
+            // sent email to reviewer
+            // $users = \App\Model\Login::find([3,6,7,14]);
+			$sr = \App\Model\SystemRole::find(2);			// reviewer
+			// $users = $sr->hasmanyposition()->hasmanystaff()->where('active', 1)->get();
+			$users = $sr->hasmanyposition()->get();
+			foreach ($users as $v) {
+				foreach($v->hasmanystaff()->where('active', 1)->get() as $k){
+					foreach($k->hasmanylogin()->where('active', 1)->get() as $l){
+						$l->notify(new InspectionUserNotification($inspection, $status = 'Review'));
+					}
+				}
+			}
+        } elseif ($inspection->ready == NULL) {
+            // sent email to ppm creator
+            // info('sent email to creator = '.$inspection->staff_id);
+            // $user = App\Model\Login::find(7);
+            // $user->notify(new InspectionUserNotification("A new user has visited on your application."));
+            $inspection->belongtostaff->notify(new InspectionUserNotification($inspection, $status = 'Update'));
+        }
 	}
 
 	 /**
@@ -44,16 +51,30 @@ class InspectionObserver
         if ($inspection->ready == 1 && $inspection->reviewed == 1 && $inspection->approved == NULL) {
             // sent email to approval
             // info('sent email to approval');
-			$users = \App\Model\Login::find([2,7]);
-			foreach ($users as $user) {
-				$user->notify(new InspectionUserNotification($inspection, $status = 'Approval'));
+			// $users = \App\Model\Login::find([2,7]);
+			$sr = \App\Model\SystemRole::find(1);			// approval
+			// $users = $sr->hasmanyposition()->hasmanystaff()->where('active', 1)->get();
+			$users = $sr->hasmanyposition()->get();
+			foreach ($users as $v) {
+				foreach($v->hasmanystaff()->where('active', 1)->get() as $k){
+					foreach($k->hasmanylogin()->where('active', 1)->get() as $l){
+						$l->notify(new InspectionUserNotification($inspection, $status = 'Review'));
+					}
+				}
 			}
         } elseif ($inspection->ready == 1 && $inspection->reviewed == NULL && $inspection->approved == NULL) {
             // sent email to reviewer
             // info('sent email to reviewer');
-			$users = \App\Model\Login::find([3,6,7,14]);
-			foreach ($users as $user) {
-				$user->notify(new InspectionUserNotification($inspection, $status = 'Review'));
+			// $users = \App\Model\Login::find([3,6,7,14]);
+			$sr = \App\Model\SystemRole::find(2);			// reviewer
+			// $users = $sr->hasmanyposition()->hasmanystaff()->where('active', 1)->get();
+			$users = $sr->hasmanyposition()->get();
+			foreach ($users as $v) {
+				foreach($v->hasmanystaff()->where('active', 1)->get() as $k){
+					foreach($k->hasmanylogin()->where('active', 1)->get() as $l){
+						$l->notify(new InspectionUserNotification($inspection, $status = 'Review'));
+					}
+				}
 			}
         } elseif ($inspection->ready == NULL && $inspection->reviewed == NULL && $inspection->approved == NULL) {
             // sent email to creator

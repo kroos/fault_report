@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'faultImageCreator' => \App\Http\Middleware\Fault\RedirectIfNotFaultImageCreator::class,
         'userChangePasswd' => \App\Http\Middleware\Profile\RedirectIfNotUserPassword::class,
         'userChangeProfile' => \App\Http\Middleware\Profile\RedirectIfNotUserProfile::class,
+        'isAdmin' => \App\Http\Middleware\Setting\RedirectIfNotAdmin::class,
 
     ];
 

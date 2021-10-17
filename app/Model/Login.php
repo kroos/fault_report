@@ -84,4 +84,16 @@ class Login extends Authenticatable
 			}
 		}
 	}
+
+	public function onlyAdmin($id)
+	{
+		// if(\Auth::user()->belongtostaff->belongtorole->id == $id) {
+		if(\Auth::user()->belongtostaff->belongtorole->id == $id) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
 }

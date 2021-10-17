@@ -2,67 +2,26 @@
 
 @section('content')
 <div class="card">
-	<div class="card-header"><h1 class="card-title">Setting</h1></div>
+	<div class="card-header"><h1 class="card-title">Position</h1></div>
 	<div class="card-body">
 		@include('layouts.info')
 		@include('layouts.errorform')
 
+		@include('position._index')
 
-		<ul class="nav nav-tabs">
-			<li class="nav-item">
-				<a class="nav-link" href="{!! route('staff.create') !!}">Add Members</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{!! route('position.index') !!}">Position</a>
-			</li>
-
-		</ul>
-
-		<table class="table table-hover table-sm" style="font-size:12px" id="orderitem1">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Name</th>
-					<th>Position</th>
-					<th>System</th>
-					<th>System Roles</th>
-					<th>#</th>
-				</tr>
-			</thead>
-			<tbody>
-@foreach(\App\Model\Staff::where('active', 1)->get() as $j)
-				<tr>
-					<td>{!! $j->id !!}</td>
-					<td>{!! $j->name !!}</td>
-					<td>{!! $j->belongtoposition->position !!}</td>
-					<td>
-@foreach($j->belongtomanysystem()->get() as $h)
-						{!! $h->system !!}<br />
-@endforeach
-					</td>
-					<td>
-							{!! $j->belongtoposition->belongtosystemrole->system_role !!}
-					</td>
-					<td>
-						<a href="{!! route('staff.edit', $j->id) !!}" title="Update"><i class="far fa-edit"></i></a>
-						<span class="text-danger inactivate" data-id="{!! $j->id !!}" title="Delete"><i class="far fa-trash-alt"></i></span>
-					</td>
-				</tr>
-@endforeach
-			</tbody>
-		</table>
 	</div>
 </div>
 @endsection
 
 @section('js')
 /////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
 // table
 $.fn.dataTable.moment( 'ddd, D MMM YYYY h:mm A' );
 $.fn.dataTable.moment( 'ddd, D MMM YYYY' );
 $("#orderitem1,#orderitem2").DataTable({
 	"lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-	"order": [[0, "asc" ]],	// sorting the 1st column ascending
+	"order": [[0, "acs" ]],	// sorting the 1st column ascending
 	// responsive: true
 });
 
@@ -77,7 +36,7 @@ $(document).on('click', '.inactivate', function(e){
 function SwalDelete(productId){
 	swal.fire({
 		title: 'Are you sure?',
-		text: "User will be deactivate!",
+		text: "Data will be deleted!",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
@@ -90,8 +49,7 @@ function SwalDelete(productId){
 			return new Promise(function(resolve) {
 				$.ajax({
 					type: 'DELETE',
-					url: '{{ url('staff') }}' + '/' + productId,
-					// url: '{{ url('staff') }}' + '/' + productId,
+					url: '{{ url('position') }}' + '/' + productId,
 					data: {
 							_token : $('meta[name=csrf-token]').attr('content'),
 							id: productId,
@@ -113,11 +71,10 @@ function SwalDelete(productId){
 	})
 	.then((result) => {
 		if (result.dismiss === swal.DismissReason.cancel) {
-			swal.fire('Cancelled', 'User is safe from deactivate.', 'info')
+			swal.fire('Cancelled', 'Your data is safe from delete', 'info')
 		}
 	});
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
-
 @endsection
