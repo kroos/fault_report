@@ -56,7 +56,7 @@ class SwAccessSwitch extends Model
 
 	public function belongtoswitch()
 	{
-		return $this->belongsTo('App\Model\Switch', 'switch_id');
+		return $this->belongsTo('App\Model\Switches', 'switch_id');
 	}
 
 	public function belongtoswitchtag()

@@ -261,7 +261,7 @@
  * ©2010-2021 SpryMedia Ltd - datatables.net/license
  */
 
-/*! DataTables 1.11.0
+/*! DataTables 1.11.3
  * ©2008-2021 SpryMedia Ltd - datatables.net/license
  */
 

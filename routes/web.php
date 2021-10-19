@@ -145,6 +145,8 @@ Route::resources([
 	'swAccPIC' => 'SwitchAccess\SwAccPICController',
 	'swAccPTW' => 'SwitchAccess\SwAccPTWController',
 	'swAccSW' => 'SwitchAccess\SwAccSWController',
+	'switches' => 'SwitchAccess\SwitchController',
+	'switchTag' => 'SwitchAccess\SwitchTagController',
 ]);
 
 /////////////////////////////////////////////////////////////////////////////////////////

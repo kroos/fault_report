@@ -9,7 +9,7 @@
 
 		<ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link" href="{{ route('building.index') }}">Switches</a>
+				<a class="nav-link" href="{{ route('switches.index') }}">Switches</a>
 			</li>
 		</ul>
 
