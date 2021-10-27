@@ -275,15 +275,19 @@ class FaultController extends Controller
 		if($request->has('ffind')) {
 			foreach ($request->ffind as $k1 => $v1) {
 				// dd(\Arr::except($v1, ['image']));
-				// $ffind = $fault->hasmanyfaultfinding()->updateOrCreate(
+				if (!\Arr::has($v1, ['id'])) {							// to make sure that updateOrCreate is running, firstOrCreate was not very accurate in this process
+					$v1['id'] = NULL;
+				}
+				// if (!\Arr::has($v1, ['fault_id'])) {					// to make sure that updateOrCreate is running, firstOrCreate was not very accurate in this process
+				// 	$v1['fault_id'] = NULL;
+				// }
 				$ffind = $fault->hasmanyfaultfinding()->updateOrCreate(
-					\Arr::except($v1, ['image'])
-					// [
-					// 	'id' => $v1['id'],
-					// 	'fault_id' => $v1['fault_id']
-					// ],[
-					// 	'finding' => $v1['finding'],
-					// ]
+					[
+						'id' => $v1['id'],
+						// 'fault_id' => $v1['fault_id']
+					],[
+						'finding' => $v1['finding'],
+					]
 				);
 
 				if( \Arr::has($v1, 'image') ){
@@ -323,15 +327,20 @@ class FaultController extends Controller
 
 		if($request->has('fissu')) {
 			foreach ($request->fissu as $k1 => $v1) {
-				// $fissu = $fault->hasmanyfaultissue()->updateOrCreate(
+				// dd(\Arr::except($v1, ['image']));
+				if (!\Arr::has($v1, ['id'])) {							// to make sure that updateOrCreate is running, firstOrCreate was not very accurate in this process
+					$v1['id'] = NULL;
+				}
+				// if (!\Arr::has($v1, ['fault_id'])) {					// to make sure that updateOrCreate is running, firstOrCreate was not very accurate in this process
+				// 	$v1['fault_id'] = NULL;
+				// }
 				$fissu = $fault->hasmanyfaultissue()->updateOrCreate(
-					\Arr::except($v1, ['image'])
-					// [
-					// 	'id' => $v1['id'],
-					// 	'fault_id' => $v1['fault_id']
-					// ],[
-					// 	'issue' => $v1['issue'],
-					// ]
+					[
+						'id' => $v1['id'],
+						// 'fault_id' => $v1['fault_id']
+					],[
+						'issue' => $v1['issue'],
+					]
 				);
 
 				if( \Arr::has($v1, 'image') ){
@@ -371,14 +380,20 @@ class FaultController extends Controller
 
 		if($request->has('fsolu')) {
 			foreach ($request->fsolu as $k1 => $v1) {
+				if (!\Arr::has($v1, ['id'])) {							// to make sure that updateOrCreate is running, firstOrCreate was not very accurate in this process
+					$v1['id'] = NULL;
+				}
+				// if (!\Arr::has($v1, ['fault_id'])) {					// to make sure that updateOrCreate is running, firstOrCreate was not very accurate in this process
+				// 	$v1['fault_id'] = NULL;
+				// }
+
 				$fsolu = $fault->hasmanyfaultsolution()->updateOrCreate(
-					\Arr::except($v1, ['image'])
-					// [
-					// 	'id' => $v1['id'],
-					// 	'fault_id' => $v1['fault_id']
-					// ],[
-					// 	'solution' => $v1['solution'],
-					// ]
+					[
+						'id' => $v1['id'],
+						// 'fault_id' => $v1['fault_id']
+					],[
+						'solution' => $v1['solution'],
+					]
 				);
 
 				if( \Arr::has($v1, 'image') ){
