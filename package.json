@@ -10,7 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "@claviska/jquery-minicolors": "^2.3.5",
+        "@claviska/jquery-minicolors": "^2.3.6",
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@mdi/font": "^5.9.55",
         "animate.css": "^4.1.1",
